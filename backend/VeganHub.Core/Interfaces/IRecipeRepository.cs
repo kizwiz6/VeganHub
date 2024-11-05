@@ -1,6 +1,14 @@
 // VeganHub.Core/Interfaces/IRecipeRepository.cs
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using VeganHub.Core.Models;
+
 namespace VeganHub.Core.Interfaces;
 
+/// <summary>
+/// Interface for recipe repository operations.
+/// </summary>
 public interface IRecipeRepository
 {
     Task<Recipe> GetByIdAsync(Guid id);

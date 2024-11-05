@@ -1,9 +1,13 @@
 // VeganHub.Core/Models/Recipe.cs
 using System;
 using System.Collections.Generic;
+using VeganHub.Core.Enums;
 
 namespace VeganHub.Core.Models;
 
+/// <summary>
+/// Represents a recipe in the system.
+/// </summary>
 public class Recipe
 {
     private Recipe() { } // For EF Core

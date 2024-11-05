@@ -3,11 +3,11 @@ namespace VeganHub.Core.Models;
 
 public class NutritionalInfo
 {
-    public decimal Calories { get; private set; }
-    public decimal Protein { get; private set; }
-    public decimal Carbohydrates { get; private set; }
-    public decimal Fat { get; private set; }
-    public decimal Fiber { get; private set; }
+    public decimal Calories { get; set; }
+    public decimal Protein { get; set; }
+    public decimal Carbohydrates { get; set; }
+    public decimal Fat { get; set; }
+    public decimal Fiber { get; set; }
 
     public NutritionalInfo()
     {
@@ -20,6 +20,8 @@ public class NutritionalInfo
 
     public void Add(NutritionalInfo other)
     {
+        if (other == null) return;
+
         Calories += other.Calories;
         Protein += other.Protein;
         Carbohydrates += other.Carbohydrates;
