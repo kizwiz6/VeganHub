@@ -6,14 +6,18 @@ export default {
   ],
   theme: {
     extend: {
-      fontFamily: {
-        sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+      animation: {
+        "in": "in 150ms cubic-bezier(0.16, 1, 0.3, 1)",
+        "out": "out 150ms cubic-bezier(0.16, 1, 0.3, 1)",
       },
-      container: {
-        center: true,
-        padding: "2rem",
-        screens: {
-          "2xl": "1400px",
+      keyframes: {
+        in: {
+          "0%": { transform: "translateY(100%)" },
+          "100%": { transform: "translateY(0)" },
+        },
+        out: {
+          "0%": { transform: "translateY(0)" },
+          "100%": { transform: "translateY(100%)" },
         },
       },
     },
