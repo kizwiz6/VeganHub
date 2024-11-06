@@ -2,71 +2,13 @@ import { useState, useCallback } from 'react';
 import { RecipeGrid } from '@/components/RecipeGrid';
 import { RecipeFilters, FilterOptions } from '@/components/RecipeFilters';
 import { RecipeSort } from '@/components/RecipeSort';
-import { Recipe } from '@/types/recipe';
+import { RecipeWithDifficulty } from '@/types/recipe';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 import { PlusCircle } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { ErrorBoundary } from '@/components/ErrorBoundary';
-
-// Update Recipe type to include difficulty
-interface RecipeWithDifficulty extends Recipe {
-  difficulty?: string;
-}
-
-// Update sample data type
-const sampleRecipes: RecipeWithDifficulty[] = [
-  {
-    id: '1',
-    title: 'Vegan Chocolate Cake',
-    description: 'Rich and moist chocolate cake that\'s completely plant-based',
-    instructions: '1. Mix dry ingredients\n2. Add wet ingredients\n3. Bake at 350°F for 30 minutes',
-    prepTime: '20',
-    cookTime: '30',
-    servings: 8,
-    createdById: 'user1',
-    createdAt: new Date().toISOString(),
-    nutritionalInfo: {
-      calories: 350,
-      protein: 5,
-      carbohydrates: 45,
-      fat: 18,
-      fiber: 3,
-    },
-    ingredients: [],
-    tags: [
-      { id: '1', name: 'dessert' },
-      { id: '2', name: 'chocolate' },
-    ],
-    likes: 42,
-    difficulty: 'Medium'
-  },
-  {
-    id: '2',
-    title: 'Quinoa Buddha Bowl',
-    description: 'A nutritious and filling bowl packed with protein',
-    instructions: '1. Cook quinoa\n2. Roast vegetables\n3. Assemble bowl',
-    prepTime: '15',
-    cookTime: '20',
-    servings: 4,
-    createdById: 'user1',
-    createdAt: new Date(Date.now() - 86400000).toISOString(),
-    nutritionalInfo: {
-      calories: 400,
-      protein: 15,
-      carbohydrates: 60,
-      fat: 12,
-      fiber: 8,
-    },
-    ingredients: [],
-    tags: [
-      { id: '3', name: 'lunch' },
-      { id: '4', name: 'healthy' },
-    ],
-    likes: 28,
-    difficulty: 'Easy'
-  },
-];
+import { sampleRecipes } from '@/data';
 
 export default function Home() {
   const [recipes, setRecipes] = useState<RecipeWithDifficulty[]>(sampleRecipes);
