@@ -1,6 +1,5 @@
 import { RecipeWithDifficulty } from '@/types/recipe';
 
-// Update sample data type
 export const sampleRecipes: RecipeWithDifficulty[] = [
     {
       id: '1',
@@ -25,7 +24,8 @@ export const sampleRecipes: RecipeWithDifficulty[] = [
         { id: '2', name: 'chocolate' }
       ],
       likes: 42,
-      difficulty: 'Medium'
+      difficulty: 'Medium',
+      imageUrl: '/images/recipes/chocolate-cake.jpg'
     },
     {
       id: '2',
@@ -50,7 +50,8 @@ export const sampleRecipes: RecipeWithDifficulty[] = [
         { id: '4', name: 'healthy' }
       ],
       likes: 28,
-      difficulty: 'Easy'
+      difficulty: 'Easy',
+      imageUrl: '/images/recipes/buddha-bowl.jpg'
     },
     {
       id: '3',
@@ -61,7 +62,7 @@ export const sampleRecipes: RecipeWithDifficulty[] = [
       cookTime: '0',
       servings: 1,
       createdById: 'user2',
-      createdAt: new Date(Date.now() - 172800000).toISOString(), // 2 days ago
+      createdAt: new Date(Date.now() - 172800000).toISOString(),
       nutritionalInfo: {
         calories: 320,
         protein: 12,
@@ -76,7 +77,8 @@ export const sampleRecipes: RecipeWithDifficulty[] = [
         { id: '7', name: 'gluten-free' }
       ],
       likes: 56,
-      difficulty: 'Easy'
+      difficulty: 'Easy',
+      imageUrl: '/images/recipes/overnight-oats.jpg'
     },
     {
       id: '4',
@@ -87,7 +89,7 @@ export const sampleRecipes: RecipeWithDifficulty[] = [
       cookTime: '25',
       servings: 6,
       createdById: 'user3',
-      createdAt: new Date(Date.now() - 259200000).toISOString(), // 3 days ago
+      createdAt: new Date(Date.now() - 259200000).toISOString(),
       nutritionalInfo: {
         calories: 380,
         protein: 10,
@@ -102,7 +104,8 @@ export const sampleRecipes: RecipeWithDifficulty[] = [
         { id: '10', name: 'gluten-free' }
       ],
       likes: 89,
-      difficulty: 'Hard'
+      difficulty: 'Hard',
+      imageUrl: '/images/recipes/thai-curry.jpg'
     },
     {
       id: '5',
@@ -128,7 +131,8 @@ export const sampleRecipes: RecipeWithDifficulty[] = [
         { id: '13', name: 'gluten-free' }
       ],
       likes: 45,
-      difficulty: 'Easy'
+      difficulty: 'Easy',
+      imageUrl: '/images/recipes/energy-balls.jpg'
     },
     {
       id: '6',
@@ -153,7 +157,8 @@ export const sampleRecipes: RecipeWithDifficulty[] = [
         { id: '15', name: 'italian' }
       ],
       likes: 76,
-      difficulty: 'Medium'
+      difficulty: 'Medium',
+      imageUrl: '/images/recipes/homemade-pizza.jpg'
     },
     {
       id: '7',
@@ -179,7 +184,8 @@ export const sampleRecipes: RecipeWithDifficulty[] = [
         { id: '18', name: 'quick' }
       ],
       likes: 63,
-      difficulty: 'Easy'
+      difficulty: 'Easy',
+      imageUrl: '/images/recipes/green-smoothie-bowl.jpg'
     },
     {
       id: '8',
@@ -204,6 +210,7 @@ export const sampleRecipes: RecipeWithDifficulty[] = [
         { id: '20', name: 'special occasion' }
       ],
       likes: 94,
-      difficulty: 'Hard'
+      difficulty: 'Hard',
+      imageUrl: '/images/recipes/mushroom-wellington.jpg'
     }
   ];

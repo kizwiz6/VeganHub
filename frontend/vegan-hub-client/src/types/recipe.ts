@@ -14,9 +14,10 @@ export interface Recipe {
   likes: number;
 }
 
-  export interface RecipeWithDifficulty extends Recipe {
-    difficulty?: string;
-  }
+export interface RecipeWithDifficulty extends Recipe {
+  difficulty?: string;
+  imageUrl?: string;
+}
 
   export interface NutritionalInfo {
     calories: number;
