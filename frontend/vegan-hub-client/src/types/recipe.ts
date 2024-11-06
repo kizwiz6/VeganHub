@@ -12,6 +12,8 @@ export interface Recipe {
   ingredients: RecipeIngredient[];
   tags: RecipeTag[];
   likes: number;
+  imageUrl?: string;
+  difficulty?: string;
 }
 
 export interface RecipeWithDifficulty extends Recipe {
