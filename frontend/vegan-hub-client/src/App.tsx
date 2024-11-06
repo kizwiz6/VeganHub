@@ -1,16 +1,21 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Layout from './components/Layout';
 import Home from './pages/Home';
 import CreateRecipe from './pages/CreateRecipe';
+import { Toaster } from './components/ui/toaster';
 
 function App() {
   return (
     <Router>
-      <div className="min-h-screen bg-gray-50">
+      <Layout>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/recipes" element={<Home />} />
           <Route path="/recipes/new" element={<CreateRecipe />} />
+          {/* Add other routes here */}
         </Routes>
-      </div>
+      </Layout>
+      <Toaster />
     </Router>
   );
 }
