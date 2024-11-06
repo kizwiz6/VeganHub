@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 import { PlusCircle } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { ErrorBoundary } from '@/components/ErrorBoundary';
-import { sampleRecipes } from '@/data';
+import { sampleRecipes, mockData } from '@/data';
 
 export default function Home() {
   const [recipes, setRecipes] = useState<RecipeWithDifficulty[]>(sampleRecipes);
@@ -30,7 +30,7 @@ export default function Home() {
         );
       }
 
-      // Category filter
+      // Category filter using mockData.categories
       if (filters.category) {
         filtered = filtered.filter(recipe => 
           recipe.tags.some(tag => 
@@ -39,33 +39,30 @@ export default function Home() {
         );
       }
 
-      // Prep time filter
+      // Prep time filter using mockData.cookingTimes
       if (filters.prepTime) {
-        switch (filters.prepTime) {
-          case 'Quick (< 15min)':
-            filtered = filtered.filter(recipe => parseInt(recipe.prepTime) < 15);
-            break;
-          case 'Medium (15-30min)':
-            filtered = filtered.filter(recipe => 
-              parseInt(recipe.prepTime) >= 15 && parseInt(recipe.prepTime) <= 30
-            );
-            break;
-          case 'Long (> 30min)':
-            filtered = filtered.filter(recipe => parseInt(recipe.prepTime) > 30);
-            break;
+        const cookingTime = mockData.cookingTimes.find(ct => ct.label === filters.prepTime);
+        if (cookingTime) {
+          filtered = filtered.filter(recipe => 
+            parseInt(recipe.prepTime) <= cookingTime.maxMinutes
+          );
         }
       }
 
-      // Difficulty filter
+      // Difficulty filter using mockData.difficulties
       if (filters.difficulty) {
-        filtered = filtered.filter(recipe => recipe.difficulty === filters.difficulty);
+        filtered = filtered.filter(recipe => 
+          recipe.difficulty === filters.difficulty
+        );
       }
 
-      // Dietary restrictions filter
+      // Dietary restrictions filter using mockData.dietaryRestrictions
       if (filters.dietaryRestrictions?.length) {
         filtered = filtered.filter(recipe => 
           filters.dietaryRestrictions?.every(restriction =>
-            recipe.tags.some(tag => tag.name.toLowerCase() === restriction.toLowerCase())
+            recipe.tags.some(tag => 
+              tag.name.toLowerCase() === restriction.toLowerCase()
+            )
           )
         );
       }
@@ -87,14 +84,14 @@ export default function Home() {
     }
   }, [toast]);
 
-  const resetFilters = () => {
+  const resetFilters = useCallback(() => {
     setActiveFilters({});
     setRecipes(sampleRecipes);
     toast({
       title: 'Filters reset',
       description: 'Showing all recipes',
     });
-  };
+  }, [toast]);
 
   const handleSort = useCallback((option: string) => {
     setSortBy(option);
