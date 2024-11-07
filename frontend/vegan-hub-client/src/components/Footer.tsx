@@ -1,4 +1,4 @@
-import { Github, Linkedin, Mail } from 'lucide-react';
+import { Linkedin, Mail } from 'lucide-react';
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -9,14 +9,6 @@ export function Footer() {
         <div className="flex flex-col items-center justify-center space-y-4">
           {/* Social Links */}
           <div className="flex space-x-4">
-            <a
-              href="https://github.com/kizwiz6"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-gray-500 hover:text-gray-700 transition-colors"
-            >
-              <Github className="h-5 w-5" />
-            </a>
             <a
               href="https://www.linkedin.com/in/kizwiz/"
               target="_blank"
