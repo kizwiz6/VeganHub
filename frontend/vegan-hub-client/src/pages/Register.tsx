@@ -1,24 +1,27 @@
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import { useAuth } from '@/contexts/AuthContext';
+import { useAuth } from '@/hooks/useAuth';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { useForm } from 'react-hook-form';
+import { useForm, useWatch } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { PasswordStrength } from '@/components/ui/password-strength';
+import { SocialLogin } from '@/components/ui/social-login';
 
 const registerSchema = z.object({
   username: z.string()
     .min(3, 'Username must be at least 3 characters')
-    .max(20, 'Username must be less than 20 characters'),
+    .max(20, 'Username must be less than 20 characters')
+    .regex(/^[a-zA-Z0-9_-]+$/, 'Username can only contain letters, numbers, underscores, and dashes'),
   email: z.string()
     .email('Invalid email address'),
   password: z.string()
-    .min(6, 'Password must be at least 6 characters')
-    .regex(
-      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)/,
-      'Password must contain at least one uppercase letter, one lowercase letter, and one number'
-    ),
+    .min(8, 'Password must be at least 8 characters')
+    .regex(/[A-Z]/, 'Password must contain at least one uppercase letter')
+    .regex(/[a-z]/, 'Password must contain at least one lowercase letter')
+    .regex(/[0-9]/, 'Password must contain at least one number')
+    .regex(/[^A-Za-z0-9]/, 'Password must contain at least one special character'),
   confirmPassword: z.string()
 }).refine((data) => data.password === data.confirmPassword, {
   message: "Passwords don't match",
@@ -34,10 +37,17 @@ export default function Register() {
 
   const {
     register,
+    control,
     handleSubmit,
     formState: { errors },
   } = useForm<RegisterForm>({
     resolver: zodResolver(registerSchema),
+  });
+
+  const password = useWatch({
+    control,
+    name: "password",
+    defaultValue: ""
   });
 
   const onSubmit = async (data: RegisterForm) => {
@@ -47,6 +57,18 @@ export default function Register() {
       navigate('/recipes');
     } catch (error) {
       console.error('Registration error:', error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handleSocialLogin = async (provider: 'google' | 'github' | 'twitter') => {
+    try {
+      setIsLoading(true);
+      // Implement social login logic here
+      console.log(`Logging in with ${provider}`);
+    } catch (error) {
+      console.error(`${provider} login error:`, error);
     } finally {
       setIsLoading(false);
     }
@@ -112,6 +134,7 @@ export default function Register() {
                 placeholder="Password"
                 className={errors.password ? 'border-red-500' : ''}
               />
+              {password && <PasswordStrength password={password} />}
               {errors.password && (
                 <p className="mt-1 text-sm text-red-500">{errors.password.message}</p>
               )}
@@ -142,6 +165,8 @@ export default function Register() {
               {isLoading ? 'Creating account...' : 'Create account'}
             </Button>
           </div>
+
+          <SocialLogin onSocialLogin={handleSocialLogin} isLoading={isLoading} />
 
           <div className="text-xs text-gray-500 text-center">
             By registering, you agree to our{' '}

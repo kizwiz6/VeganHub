@@ -1,139 +1,158 @@
-import { createContext, useContext, useEffect, useState, ReactNode } from 'react';
+import { createContext, useState, useEffect, ReactNode } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useToast } from '@/hooks/use-toast';
+import { authApi } from '@/lib/api/auth';
+import type { User, AuthContextType } from '@/types/auth';
 
-interface User {
-  id: string;
-  email: string;
-  username: string;
-}
+export const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
-interface AuthState {
-  user: User | null;
-  isAuthenticated: boolean;
-  isLoading: boolean;
-}
+type AuthError = {
+  message: string;
+  errors?: Record<string, string[]>;
+};
 
-interface AuthContextType extends AuthState {
-  login: (email: string, password: string) => Promise<void>;
-  register: (email: string, password: string, username: string) => Promise<void>;
-  logout: () => void;
-}
-
-const AuthContext = createContext<AuthContextType | undefined>(undefined);
+const SESSION_CHECK_INTERVAL = 5 * 60 * 1000; // 5 minutes
 
 export function AuthProvider({ children }: { children: ReactNode }) {
-  const [state, setState] = useState<AuthState>({
-    user: null,
-    isAuthenticated: false,
-    isLoading: true,
-  });
+  const [user, setUser] = useState<User | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [sessionCheckInterval, setSessionCheckInterval] = useState<number | null>(null);
   const { toast } = useToast();
+  const navigate = useNavigate();
 
-  useEffect(() => {
-    // Check for existing session
-    const user = localStorage.getItem('user');
-    if (user) {
-      setState({
-        user: JSON.parse(user),
-        isAuthenticated: true,
-        isLoading: false,
-      });
-    } else {
-      setState(prev => ({ ...prev, isLoading: false }));
+  // Session verification
+  const verifySession = async () => {
+    try {
+      const token = localStorage.getItem('token');
+      if (!token) {
+        setUser(null);
+        return;
+      }
+
+      const response = await authApi.verifySession();
+      setUser(response.user);
+    } catch (error) {
+      console.error('Session verification failed:', error);
+      handleAuthError(error as AuthError);
+      await logout();
     }
+  };
+
+  // Set up session checking
+  useEffect(() => {
+    verifySession();
+
+    const interval = window.setInterval(verifySession, SESSION_CHECK_INTERVAL);
+    setSessionCheckInterval(interval);
+
+    return () => {
+      if (sessionCheckInterval) {
+        clearInterval(sessionCheckInterval);
+      }
+    };
   }, []);
 
+  const handleAuthError = (error: AuthError) => {
+    const errorMessage = error.errors 
+      ? Object.values(error.errors).flat().join('. ')
+      : error.message || 'An error occurred';
+
+    toast({
+      title: "Error",
+      description: errorMessage,
+      variant: "destructive",
+    });
+  };
+
   const login = async (email: string, password: string) => {
+    setIsLoading(true);
     try {
-      // Mock login - replace with actual API call
-      const mockUser = {
-        id: '1',
-        email,
-        username: email.split('@')[0],
-      };
-
-      localStorage.setItem('user', JSON.stringify(mockUser));
-      setState({
-        user: mockUser,
-        isAuthenticated: true,
-        isLoading: false,
-      });
+      const response = await authApi.login(email, password);
+      
+      localStorage.setItem('token', response.token);
+      setUser(response.user);
 
       toast({
-        title: 'Welcome back!',
-        description: 'Successfully logged in.',
+        title: "Success",
+        description: "Successfully logged in",
       });
+
+      navigate('/recipes');
     } catch (error) {
-      toast({
-        title: 'Error',
-        description: 'Invalid credentials.',
-        variant: 'destructive',
-      });
+      handleAuthError(error as AuthError);
       throw error;
+    } finally {
+      setIsLoading(false);
     }
   };
 
   const register = async (email: string, password: string, username: string) => {
+    setIsLoading(true);
     try {
-      // Mock registration - replace with actual API call
-      const mockUser = {
-        id: Date.now().toString(),
-        email,
-        username,
-      };
-
-      localStorage.setItem('user', JSON.stringify(mockUser));
-      setState({
-        user: mockUser,
-        isAuthenticated: true,
-        isLoading: false,
-      });
+      const response = await authApi.register(email, password, username);
+      
+      localStorage.setItem('token', response.token);
+      setUser(response.user);
 
       toast({
-        title: 'Welcome!',
-        description: 'Account created successfully.',
+        title: "Success",
+        description: "Account created successfully",
       });
+
+      navigate('/recipes');
     } catch (error) {
-      toast({
-        title: 'Error',
-        description: 'Could not create account.',
-        variant: 'destructive',
-      });
+      handleAuthError(error as AuthError);
       throw error;
+    } finally {
+      setIsLoading(false);
     }
   };
 
-  const logout = () => {
-    localStorage.removeItem('user');
-    setState({
-      user: null,
-      isAuthenticated: false,
-      isLoading: false,
-    });
-    toast({
-      title: 'Logged out',
-      description: 'Successfully logged out.',
-    });
+  const logout = async () => {
+    try {
+      const token = localStorage.getItem('token');
+      if (token) {
+        await authApi.logout(token);
+      }
+    } catch (error) {
+      console.error('Logout error:', error);
+    } finally {
+      localStorage.removeItem('token');
+      localStorage.removeItem('refreshToken');
+      setUser(null);
+      
+      if (sessionCheckInterval) {
+        clearInterval(sessionCheckInterval);
+      }
+
+      toast({
+        title: "Success",
+        description: "Successfully logged out",
+      });
+      
+      navigate('/login');
+    }
   };
 
   return (
     <AuthContext.Provider
       value={{
-        ...state,
+        user,
+        isAuthenticated: !!user,
+        isLoading,
         login,
         register,
-        logout,
+        logout
       }}
     >
-      {children}
+      {isLoading ? (
+        <div className="flex items-center justify-center min-h-screen">
+          {/* Add loading spinner component here */}
+          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-gray-900" />
+        </div>
+      ) : (
+        children
+      )}
     </AuthContext.Provider>
   );
-}
-
-export function useAuth() {
-  const context = useContext(AuthContext);
-  if (context === undefined) {
-    throw new Error('useAuth must be used within an AuthProvider');
-  }
-  return context;
 }
