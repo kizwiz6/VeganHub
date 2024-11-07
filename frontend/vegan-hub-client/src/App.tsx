@@ -1,26 +1,26 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { AuthProvider } from '@/contexts/AuthContext';
-import { ProtectedRoute } from '@/components/ProtectedRoute';
 import Layout from './components/Layout';
 import Home from './pages/Home';
-import CreateRecipe from './pages/CreateRecipe';
 import Login from './pages/Login';
 import Register from './pages/Register';
+import CreateRecipe from './pages/CreateRecipe';
 import { Toaster } from './components/ui/toaster';
+import { ProtectedRoute } from '@/components/ProtectedRoute';
 
 function App() {
   return (
-    <AuthProvider>
-      <Router>
+    <Router>
+      <AuthProvider>
         <Layout>
           <Routes>
-            {/* Public Routes */}
+            {/* Public routes */}
             <Route path="/" element={<Home />} />
             <Route path="/recipes" element={<Home />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
 
-            {/* Protected Routes */}
+            {/* Protected routes */}
             <Route
               path="/recipes/new"
               element={
@@ -30,10 +30,10 @@ function App() {
               }
             />
           </Routes>
+          <Toaster />
         </Layout>
-        <Toaster />
-      </Router>
-    </AuthProvider>
+      </AuthProvider>
+    </Router>
   );
 }
 
