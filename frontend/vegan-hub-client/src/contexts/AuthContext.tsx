@@ -26,31 +26,56 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       const token = localStorage.getItem('token');
       if (!token) {
         setUser(null);
+        setIsLoading(false);
         return;
       }
 
       const response = await authApi.verifySession();
       setUser(response.user);
+      setIsLoading(false);
     } catch (error) {
       console.error('Session verification failed:', error);
       handleAuthError(error as AuthError);
       await logout();
+      setIsLoading(false);
     }
   };
 
   // Set up session checking
   useEffect(() => {
-    verifySession();
+    let interval: number | null = null;
 
-    const interval = window.setInterval(verifySession, SESSION_CHECK_INTERVAL);
-    setSessionCheckInterval(interval);
+    const initAuth = async () => {
+      try {
+        await verifySession();
+        interval = window.setInterval(verifySession, SESSION_CHECK_INTERVAL);
+        setSessionCheckInterval(interval);
+      } catch (error) {
+        console.error('Auth initialization failed:', error);
+        setIsLoading(false); // Ensure loading state is cleared on error
+      }
+    };
+
+    initAuth();
 
     return () => {
-      if (sessionCheckInterval) {
-        clearInterval(sessionCheckInterval);
+      if (interval) {
+        clearInterval(interval);
       }
     };
   }, []);
+
+   // Add timeout to prevent infinite loading
+   useEffect(() => {
+    const timeout = setTimeout(() => {
+      if (isLoading) {
+        setIsLoading(false);
+        console.warn('Auth loading timed out');
+      }
+    }, 5000); // 5 seconds timeout
+
+    return () => clearTimeout(timeout);
+  }, [isLoading]);
 
   const handleAuthError = (error: AuthError) => {
     const errorMessage = error.errors 
