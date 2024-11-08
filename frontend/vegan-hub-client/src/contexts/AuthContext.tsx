@@ -92,8 +92,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const login = async (email: string, password: string) => {
     setIsLoading(true);
     try {
-      const response = await authApi.login(email, password);
-      
+      const response = await authApi.login({ email, password });
+
       localStorage.setItem('token', response.token);
       setUser(response.user);
 
@@ -114,8 +114,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const register = async (email: string, password: string, username: string) => {
     setIsLoading(true);
     try {
-      const response = await authApi.register(email, password, username);
-      
+      const response = await authApi.register({ email, password, username });
+
       localStorage.setItem('token', response.token);
       setUser(response.user);
 

@@ -7,6 +7,8 @@ import Register from './pages/Register';
 import CreateRecipe from './pages/CreateRecipe';
 import { Toaster } from './components/ui/toaster';
 import { ProtectedRoute } from '@/components/ProtectedRoute';
+import { EmailVerification } from './components/auth/EmailVerification';
+import ResetPassword from './pages/ResetPassword';
 
 function App() {
   return (
@@ -19,6 +21,8 @@ function App() {
             <Route path="/recipes" element={<Home />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
+            <Route path="/verify-email" element={<EmailVerification />} />
+            <Route path="/reset-password" element={<ResetPassword />} />
 
             {/* Protected routes */}
             <Route
