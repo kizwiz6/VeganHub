@@ -38,6 +38,12 @@ export interface LoginRequest {
   rememberMe?: boolean;
 }
 
+export interface RegisterRequest {
+  email: string;
+  password: string;
+  username: string;
+}
+
 export interface ResetPasswordRequest {
   email: string;
 }

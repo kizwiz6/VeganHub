@@ -65,8 +65,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     };
   }, []);
 
-   // Add timeout to prevent infinite loading
-   useEffect(() => {
+  // Add timeout to prevent infinite loading
+  useEffect(() => {
     const timeout = setTimeout(() => {
       if (isLoading) {
         setIsLoading(false);
@@ -94,7 +94,11 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     try {
       const response = await authApi.login({ email, password });
 
+      // Store token and set user state
       localStorage.setItem('token', response.token);
+      if (response.refreshToken) {
+        localStorage.setItem('refreshToken', response.refreshToken);  // Ensure refresh token is stored
+      }
       setUser(response.user);
 
       toast({
@@ -116,7 +120,11 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     try {
       const response = await authApi.register({ email, password, username });
 
+      // Store token and set user state
       localStorage.setItem('token', response.token);
+      if (response.refreshToken) {
+        localStorage.setItem('refreshToken', response.refreshToken);  // Ensure refresh token is stored
+      }
       setUser(response.user);
 
       toast({
@@ -145,7 +153,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       localStorage.removeItem('token');
       localStorage.removeItem('refreshToken');
       setUser(null);
-      
+
       if (sessionCheckInterval) {
         clearInterval(sessionCheckInterval);
       }
@@ -154,7 +162,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         title: "Success",
         description: "Successfully logged out",
       });
-      
+
       navigate('/login');
     }
   };
@@ -167,7 +175,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         isLoading,
         login,
         register,
-        logout
+        logout,
       }}
     >
       {isLoading ? (

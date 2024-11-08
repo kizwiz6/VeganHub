@@ -1,3 +1,5 @@
+// VeganHub.API/Controllers/RecipesController.cs
+
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
 using VeganHub.Core.Interfaces;
@@ -12,24 +14,32 @@ namespace VeganHub.API.Controllers;
 [ApiController]
 [Route("api/[controller]")]
 public class RecipesController : ControllerBase
-{
+    {
     private readonly IUnitOfWork _unitOfWork;
     private readonly ILogger<RecipesController> _logger;
+    private readonly IWebHostEnvironment _webHostEnvironment;
 
     /// <summary>
-    /// Initializes a new instance of the RecipesController.
+    /// Initialises a new instance of the RecipesController.
     /// </summary>
-    public RecipesController(IUnitOfWork unitOfWork, ILogger<RecipesController> logger)
+
+    public RecipesController(
+        IUnitOfWork unitOfWork, 
+        ILogger<RecipesController> logger,
+        IWebHostEnvironment webHostEnvironment)
     {
         _unitOfWork = unitOfWork;
         _logger = logger;
+        _webHostEnvironment = webHostEnvironment;
     }
 
     /// <summary>
     /// Gets a paginated list of recipes.
     /// </summary>
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<Recipe>>> GetRecipes([FromQuery] int page = 1, [FromQuery] int pageSize = 10)
+    public async Task<ActionResult<IEnumerable<Recipe>>> GetRecipes(
+        [FromQuery] int page = 1,
+        [FromQuery] int pageSize = 10)
     {
         try
         {
@@ -37,7 +47,6 @@ public class RecipesController : ControllerBase
             var totalCount = await _unitOfWork.Recipes.GetTotalCountAsync();
 
             Response.Headers.Append("X-Total-Count", totalCount.ToString());
-
             return Ok(recipes);
         }
         catch (Exception ex)
@@ -250,13 +259,21 @@ public class RecipesController : ControllerBase
             var fileName = $"{id}-{DateTime.UtcNow.Ticks}{Path.GetExtension(image.FileName)}";
             var filePath = Path.Combine(_webHostEnvironment.WebRootPath, "images", "recipes", fileName);
 
-            Directory.CreateDirectory(Path.GetDirectoryName(filePath));
+            Directory.CreateDirectory(Path.GetDirectoryName(filePath) ?? throw new InvalidOperationException("Invalid file path"));
             using (var stream = new FileStream(filePath, FileMode.Create))
             {
                 await image.CopyToAsync(stream);
             }
 
-            recipe.UpdateImageUrl($"/images/recipes/{fileName}");
+            recipe.UpdateDetails(
+                recipe.Title,
+                recipe.Description,
+                recipe.Instructions,
+                recipe.PrepTime,
+                recipe.CookTime,
+                recipe.Servings,
+                $"/images/recipes/{fileName}");
+
             await _unitOfWork.SaveChangesAsync();
 
             return Ok(new { imageUrl = recipe.ImageUrl });

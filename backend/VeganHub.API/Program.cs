@@ -6,11 +6,32 @@ using System.Text;
 using VeganHub.Core.Interfaces;
 using VeganHub.Infrastructure.Data;
 using VeganHub.Infrastructure.Repositories;
+using VeganHub.Core.Configuration;
+using Microsoft.AspNetCore.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
 
+if (builder.Environment.IsDevelopment())
+{
+    builder.WebHost.UseUrls("https://localhost:7777", "http://localhost:7776");
+}
+
 // Add services to the container.
 builder.Services.AddControllers();
+
+// Add JWT Settings first
+builder.Services.Configure<JwtSettings>(builder.Configuration.GetSection("JwtSettings"));
+var jwtSettings = builder.Configuration.GetSection("JwtSettings").Get<JwtSettings>();
+
+// Add this logging
+if (string.IsNullOrEmpty(jwtSettings?.Key))
+{
+    throw new InvalidOperationException(
+        "JWT Key is not configured. Check your appsettings.json file.");
+}
+
+Console.WriteLine($"JWT Key configured: {!string.IsNullOrEmpty(jwtSettings.Key)}");
+Console.WriteLine($"JWT Issuer: {jwtSettings.Issuer}");
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -49,6 +70,17 @@ builder.Services.AddSwaggerGen(c =>
     });
 });
 
+// Add Identity
+builder.Services.AddIdentity<VeganHub.Core.Models.ApplicationUser, IdentityRole>(options =>
+{
+    options.Password.RequiredLength = 8;
+    options.Password.RequireNonAlphanumeric = true;
+    options.Password.RequireUppercase = true;
+    options.SignIn.RequireConfirmedEmail = false;
+})
+.AddEntityFrameworkStores<ApplicationDbContext>()
+.AddDefaultTokenProviders();
+
 // Add authentication
 builder.Services.AddAuthentication(options =>
 {
@@ -63,10 +95,10 @@ builder.Services.AddAuthentication(options =>
         ValidateAudience = true,
         ValidateLifetime = true,
         ValidateIssuerSigningKey = true,
-        ValidIssuer = builder.Configuration["Jwt:Issuer"],
-        ValidAudience = builder.Configuration["Jwt:Audience"],
+        ValidIssuer = jwtSettings.Issuer,
+        ValidAudience = jwtSettings.Audience,
         IssuerSigningKey = new SymmetricSecurityKey(
-            Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"] ?? throw new InvalidOperationException("JWT Key is not configured")))
+            Encoding.UTF8.GetBytes(jwtSettings.Key))
     };
 });
 

@@ -50,6 +50,7 @@ public class Recipe
     public NutritionalInfo NutritionalInfo { get; private set; }
     public int Likes { get; private set; }
     public RecipeStatus Status { get; private set; }
+    public string? ImageUrl { get; set; }
 
     public void UpdateDetails(
         string title,
@@ -57,7 +58,8 @@ public class Recipe
         string instructions,
         TimeSpan prepTime,
         TimeSpan cookTime,
-        int servings)
+        int servings,
+        string url)
     {
         Title = title;
         Description = description;
@@ -65,6 +67,12 @@ public class Recipe
         PrepTime = prepTime;
         CookTime = cookTime;
         Servings = servings;
+        ImageUrl = url;
+    }
+
+    public void UpdateImageUrl(string url)
+    {
+        ImageUrl = url;
     }
 
     public void AddIngredient(RecipeIngredient ingredient)
