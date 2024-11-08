@@ -8,6 +8,7 @@ interface FormFieldProps {
   children: ReactNode;
   className?: string;
   helpText?: string;
+  isValid?: boolean;
 }
 
 export function FormField({

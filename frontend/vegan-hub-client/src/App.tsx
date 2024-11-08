@@ -8,6 +8,7 @@ import CreateRecipe from './pages/CreateRecipe';
 import { Toaster } from './components/ui/toaster';
 import { ProtectedRoute } from '@/components/ProtectedRoute';
 import { EmailVerification } from './components/auth/EmailVerification';
+import ResetPassword from './pages/ResetPassword';
 
 function App() {
   return (

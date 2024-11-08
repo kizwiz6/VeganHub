@@ -1,17 +1,15 @@
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import { useForm, FieldError } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { useAuth } from '@/hooks/useAuth';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Checkbox } from '@/components/ui/checkbox';
 import { useToast } from '@/hooks/use-toast';
 import { authApi } from '@/lib/api/auth';
 import { FormField } from '@/components/ui/form-field';
 import { PasswordResetForm } from '@/components/auth/PasswordResetForm';
-import { CheckboxField } from '@/components/ui/checkbox-field';
 
 const loginSchema = z.object({
   email: z.string().email('Invalid email address'),
@@ -42,11 +40,7 @@ export default function Login() {
   const onSubmit = async (data: LoginForm) => {
     try {
       setIsLoading(true);
-      await login({
-        email: data.email,
-        password: data.password,
-        rememberMe: data.rememberMe,
-      });
+      await login(data.email, data.password); 
       toast({
         title: "Success",
         description: "Successfully logged in",
@@ -132,15 +126,17 @@ export default function Login() {
             </FormField>
 
             <div className="flex items-center justify-between">
-              <div className="flex items-center">
-                <Checkbox
-                  id="remember-me"
-                  {...register('rememberMe')}
-                />
-                <label htmlFor="remember-me" className="ml-2 text-sm text-gray-600">
-                  Remember me
-                </label>
-              </div>
+            <div className="flex items-center">
+              <input
+                type="checkbox"
+                id="remember-me"
+                className="h-4 w-4 rounded border-gray-300 text-green-600 focus:ring-green-500"
+                {...register('rememberMe')}
+              />
+              <label htmlFor="remember-me" className="ml-2 text-sm text-gray-600">
+                Remember me
+              </label>
+            </div>
 
               <button
                 type="button"

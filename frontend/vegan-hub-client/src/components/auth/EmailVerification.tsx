@@ -4,6 +4,7 @@ import { useNavigate, useSearchParams } from 'react-router-dom';
 import { authApi } from '@/lib/api/auth';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
+import { LoadingSpinner } from '@/components/ui/loading-spinner';
 
 export function EmailVerification() {
   const [searchParams] = useSearchParams();
@@ -29,7 +30,8 @@ export function EmailVerification() {
         });
         navigate('/login');
       } catch (err) {
-        setError('Email verification failed. Please try again.');
+        const errorMessage = err instanceof Error ? err.message : 'Email verification failed';
+        setError(errorMessage);
       } finally {
         setVerifying(false);
       }

@@ -46,9 +46,12 @@ export function PasswordResetForm({ onSubmit, onCancel, isLoading }: PasswordRes
         <Button type="button" variant="outline" onClick={onCancel}>
           Cancel
         </Button>
-        <Button type="submit" loading={isLoading}>
-          Send Reset Link
-        </Button>
+        <Button
+            type="submit"
+            disabled={isLoading}
+            >
+            {isLoading ? 'Sending...' : 'Send Reset Link'}
+            </Button>
       </div>
     </form>
   );
