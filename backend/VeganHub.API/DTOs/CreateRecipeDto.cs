@@ -6,13 +6,13 @@ public class CreateRecipeDto
 {
     [Required]
     [StringLength(200)]
-    public string Title { get; set; }
+    public required string Title { get; set; }
 
     [StringLength(2000)]
-    public string Description { get; set; }
+    public required string Description { get; set; }
 
     [Required]
-    public string Instructions { get; set; }
+    public required string Instructions { get; set; }
 
     [Required]
     public TimeSpan PrepTime { get; set; }
@@ -25,13 +25,13 @@ public class CreateRecipeDto
     public int Servings { get; set; }
 
     [Required]
-    public string CreatedById { get; set; }
+    public required string CreatedById { get; set; }
 
     [Required]
-    public NutritionalInfoDto NutritionalInfo { get; set; }
+    public required NutritionalInfoDto NutritionalInfo { get; set; }
 
     [Required]
-    public List<CreateRecipeIngredientDto> Ingredients { get; set; }
+    public required List<CreateRecipeIngredientDto> Ingredients { get; set; }
 
-    public List<CreateRecipeTagDto> Tags { get; set; }
+    public required List<CreateRecipeTagDto> Tags { get; set; }
 }

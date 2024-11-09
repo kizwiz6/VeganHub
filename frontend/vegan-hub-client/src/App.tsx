@@ -4,11 +4,12 @@ import Layout from './components/Layout';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Register from './pages/Register';
-import CreateRecipe from './pages/CreateRecipe';
+// import CreateRecipe from './pages/CreateRecipe';
 import { Toaster } from './components/ui/toaster';
 import { ProtectedRoute } from '@/components/ProtectedRoute';
 import { EmailVerification } from './components/auth/EmailVerification';
 import ResetPassword from './pages/ResetPassword';
+import { Profile } from '@/pages/Profile';
 
 function App() {
   return (
@@ -26,10 +27,10 @@ function App() {
 
             {/* Protected routes */}
             <Route
-              path="/recipes/new"
+              path="/profile"
               element={
                 <ProtectedRoute>
-                  <CreateRecipe />
+                  <Profile />
                 </ProtectedRoute>
               }
             />

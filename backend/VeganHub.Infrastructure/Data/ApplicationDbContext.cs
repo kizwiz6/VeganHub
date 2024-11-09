@@ -1,39 +1,53 @@
 // VeganHub.Infrastructure/Data/ApplicationDbContext.cs
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using VeganHub.Core.Models;
+using System.Text.Json;
 
-namespace VeganHub.Infrastructure.Data;
-
-/// <summary>
-/// Represents the database context for the VeganHub application.
-/// </summary>
-public class ApplicationDbContext : DbContext
+namespace VeganHub.Infrastructure.Data
 {
-    /// <summary>
-    /// Initializes a new instance of the ApplicationDbContext.
-    /// </summary>
-    /// <param name="options">The options to be used by the DbContext.</param>
-    public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
-        : base(options)
+    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
-    }
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
+            : base(options)
+        {
+        }
 
-    /// <summary>
-    /// Gets or sets the recipes DbSet.
-    /// </summary>
-    public DbSet<Recipe> Recipes { get; set; }
+        // DbSets for other entities
+        public DbSet<Recipe> Recipes { get; set; }
+        public DbSet<RecipeTag> Tags { get; set; }
+        public DbSet<UserDietary> UserDietaries { get; set; } // Add DbSet for UserDietary
 
-    /// <summary>
-    /// Gets or sets the recipe tags DbSet.
-    /// </summary>
-    public DbSet<RecipeTag> Tags { get; set; }
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            // Call the base method to set up Identity entities
+            base.OnModelCreating(builder);
 
-    /// <summary>
-    /// Configures the model that was discovered by convention from the entity types.
-    /// </summary>
-    /// <param name="modelBuilder">The builder being used to construct the model for this context.</param>
-    protected override void OnModelCreating(ModelBuilder modelBuilder)
-    {
-        modelBuilder.ApplyConfigurationsFromAssembly(typeof(ApplicationDbContext).Assembly);
+            // Configure the UserDietary entity
+            builder.Entity<UserDietary>(entity =>
+            {
+                // Set the primary key
+                entity.HasKey(e => e.Id);
+
+                // Set up the one-to-one relationship with ApplicationUser
+                entity.HasOne(d => d.User)
+                    .WithOne(u => u.Dietary) // Assuming ApplicationUser has a 'Dietary' navigation property
+                    .HasForeignKey<UserDietary>(d => d.UserId);
+
+                // Configure Preferences and Allergies as JSON columns
+                entity.Property(e => e.Preferences)
+                    .HasConversion(
+                        v => JsonSerializer.Serialize(v, (JsonSerializerOptions?)null),
+                        v => JsonSerializer.Deserialize<List<string>>(v, (JsonSerializerOptions?)null) ?? new List<string>());
+
+                entity.Property(e => e.Allergies)
+                    .HasConversion(
+                        v => JsonSerializer.Serialize(v, (JsonSerializerOptions?)null),
+                        v => JsonSerializer.Deserialize<List<string>>(v, (JsonSerializerOptions?)null) ?? new List<string>());
+            });
+
+            // Additional configurations for other models can be added here
+            builder.ApplyConfigurationsFromAssembly(typeof(ApplicationDbContext).Assembly);
+        }
     }
 }

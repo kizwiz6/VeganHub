@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useToast } from '@/hooks/use-toast';
 import { authApi } from '@/lib/api/auth';
 import type { User, AuthContextType } from '@/types/auth';
+import type { ProfileFormData } from '@/types/profile';
 
 export const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
@@ -65,8 +66,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     };
   }, []);
 
-   // Add timeout to prevent infinite loading
-   useEffect(() => {
+  // Add timeout to prevent infinite loading
+  useEffect(() => {
     const timeout = setTimeout(() => {
       if (isLoading) {
         setIsLoading(false);
@@ -94,7 +95,11 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     try {
       const response = await authApi.login({ email, password });
 
+      // Store token and set user state
       localStorage.setItem('token', response.token);
+      if (response.refreshToken) {
+        localStorage.setItem('refreshToken', response.refreshToken);  // Ensure refresh token is stored
+      }
       setUser(response.user);
 
       toast({
@@ -116,7 +121,11 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     try {
       const response = await authApi.register({ email, password, username });
 
+      // Store token and set user state
       localStorage.setItem('token', response.token);
+      if (response.refreshToken) {
+        localStorage.setItem('refreshToken', response.refreshToken);  // Ensure refresh token is stored
+      }
       setUser(response.user);
 
       toast({
@@ -145,7 +154,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       localStorage.removeItem('token');
       localStorage.removeItem('refreshToken');
       setUser(null);
-      
+
       if (sessionCheckInterval) {
         clearInterval(sessionCheckInterval);
       }
@@ -154,8 +163,20 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         title: "Success",
         description: "Successfully logged out",
       });
-      
+
       navigate('/login');
+    }
+  };
+
+  // Function to update user profile
+  const updateProfile = async (data: ProfileFormData) => {
+    try {
+      const response = await authApi.updateProfile(data);
+      setUser(response.user);
+      return response; // Return the response
+    } catch (error) {
+      console.error('Update profile error:', error);
+      throw error;
     }
   };
 
@@ -167,12 +188,13 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         isLoading,
         login,
         register,
-        logout
+        logout,
+        updateProfile,
       }}
     >
       {isLoading ? (
         <div className="flex items-center justify-center min-h-screen">
-          {/* Add loading spinner component here */}
+          {/* loading spinner component */}
           <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-gray-900" />
         </div>
       ) : (

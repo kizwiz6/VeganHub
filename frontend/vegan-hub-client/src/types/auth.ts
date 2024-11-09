@@ -1,3 +1,6 @@
+// src/types/auth.ts
+import type { ProfileFormData } from './profile';
+
 export interface User {
   id: string;
   email: string;
@@ -24,6 +27,7 @@ export interface AuthContextType {
   login: (email: string, password: string) => Promise<void>;
   register: (email: string, password: string, username: string) => Promise<void>;
   logout: () => Promise<void>;
+  updateProfile: (data: ProfileFormData) => Promise<{ user: User }>;
 }
 
 export interface AuthResponse {
@@ -36,6 +40,12 @@ export interface LoginRequest {
   email: string;
   password: string;
   rememberMe?: boolean;
+}
+
+export interface RegisterRequest {
+  email: string;
+  password: string;
+  username: string;
 }
 
 export interface ResetPasswordRequest {

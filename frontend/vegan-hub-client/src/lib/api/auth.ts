@@ -1,4 +1,6 @@
 import axios, { AxiosError } from 'axios';
+import type { User } from '@/types/auth';
+import type { ProfileFormData } from '@/types/profile';
 
 const api = axios.create({
   baseURL: import.meta.env.VITE_API_URL || 'http://localhost:7777/api',
@@ -43,8 +45,10 @@ export const authApi = {
       // Store tokens based on remember me preference
       if (rememberMe && data.refreshToken) {
         localStorage.setItem('refreshToken', data.refreshToken);
+        localStorage.setItem('token', data.token);  // Store token in localStorage as well
       } else if (data.refreshToken) {
         sessionStorage.setItem('refreshToken', data.refreshToken);
+        sessionStorage.setItem('token', data.token);  // Store token in sessionStorage
       }
 
       return data;
@@ -63,8 +67,16 @@ export const authApi = {
       return data;
     } catch (error) {
       console.error('Registration failed:', error);
-      throw this.handleError(error);
-    }
+      if (axios.isAxiosError(error)) {
+          if (error.code === 'ERR_NETWORK') {
+              throw new Error('Cannot connect to server. Please check if the API is running.');
+          }
+          if (error.response) {
+              throw new Error(error.response.data.message || 'Registration failed');
+          }
+      }
+      throw new Error('An unexpected error occurred');
+  }
   },
 
   // Request password reset
@@ -162,10 +174,23 @@ export const authApi = {
     }
   },
 
+
+  async updateProfile(data: ProfileFormData): Promise<{ user: User }> {
+    try {
+      console.log('Updating profile...');
+      const { data: response } = await api.patch<{ user: User }>('/auth/profile', data);
+      console.log('Profile updated successfully');
+      return { user: response.user };
+    } catch (error) {
+      console.error('Profile update failed:', error);
+      throw this.handleError(error);
+    }
+  },
+
   // Enhanced error handler
   handleError(error: unknown) {
     if (axios.isAxiosError(error)) {
-      const axiosError = error as AxiosError<{ message: string; errors?: Record<string, string[]> }>;
+      const axiosError = error as AxiosError<{ message: string; errors?: Record<string, string[]> }> ;
       if (axiosError.response?.data?.errors) {
         // Join all error messages
         const messages = Object.values(axiosError.response.data.errors).flat();
@@ -209,7 +234,7 @@ api.interceptors.response.use(
         if (!token) throw new Error('No refresh token');
 
         const response = await authApi.refreshToken(token);
-        
+
         // Store new token in the same storage type as the refresh token
         if (localStorage.getItem('refreshToken')) {
           localStorage.setItem('token', response.token);
