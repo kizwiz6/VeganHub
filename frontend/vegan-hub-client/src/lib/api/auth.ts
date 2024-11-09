@@ -10,8 +10,6 @@ const api = axios.create({
   timeout: 10000,
 });
 
-console.log('API Base URL:', api.defaults.baseURL); // Add this line to check env variable
-
 export interface AuthResponse {
   user: {
     id: string;

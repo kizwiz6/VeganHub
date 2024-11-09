@@ -1,5 +1,6 @@
 // VeganHub.API/Controllers/AuthController.cs
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using VeganHub.Core.Configuration;
@@ -129,5 +130,43 @@ public class AuthController : ControllerBase
     private string GenerateRefreshToken()
     {
         return Convert.ToBase64String(Guid.NewGuid().ToByteArray());
+    }
+
+    [Authorize]
+    [HttpPatch("profile")]
+    public async Task<IActionResult> UpdateProfile([FromBody] UpdateProfileDto dto)
+    {
+        try
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            var user = await _userManager.FindByIdAsync(userId);
+
+            if (user == null)
+                return NotFound("User not found");
+
+            user.DisplayName = dto.DisplayName;
+            user.Bio = dto.Bio;
+            user.Email = dto.Email;
+
+            var result = await _userManager.UpdateAsync(user);
+
+            if (!result.Succeeded)
+                return BadRequest(new { Errors = result.Errors });
+
+            return Ok(new {
+                user = new {
+                    id = user.Id,
+                    email = user.Email,
+                    username = user.UserName,
+                    displayName = user.DisplayName,
+                    bio = user.Bio
+                }
+            });
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error updating profile");
+            return StatusCode(500, "An error occurred while updating the profile");
+        }
     }
 }
