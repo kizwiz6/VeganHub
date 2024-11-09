@@ -33,21 +33,30 @@ public class AuthController : ControllerBase
     [HttpPost("register")]
     public async Task<IActionResult> Register([FromBody] RegisterRequest request)
     {
-        var user = new ApplicationUser
+        _logger.LogInformation("Received registration request for email: {Email}", request.Email);
+        try
         {
-            UserName = request.Username,
-            Email = request.Email,
-            CreatedAt = DateTime.UtcNow
-        };
+            var user = new ApplicationUser
+            {
+                UserName = request.Username,
+                Email = request.Email,
+                CreatedAt = DateTime.UtcNow
+            };
 
-        var result = await _userManager.CreateAsync(user, request.Password);
-        if (result.Succeeded)
-        {
-            _logger.LogInformation("User created successfully");
-            return Ok(new { message = "Registration successful" });
+            var result = await _userManager.CreateAsync(user, request.Password);
+            if (result.Succeeded)
+            {
+                _logger.LogInformation("User created successfully");
+                return Ok(new { message = "Registration successful" });
+            }
+
+            return BadRequest(new { Errors = result.Errors });
         }
-
-        return BadRequest(new { Errors = result.Errors });
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Registration failed for email: {Email}", request.Email);
+            return BadRequest(new { message = ex.Message });
+        }
     }
 
     [HttpPost("login")]

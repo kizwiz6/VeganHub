@@ -1,4 +1,6 @@
 import axios, { AxiosError } from 'axios';
+import type { User } from '@/types/auth';
+import type { ProfileFormData } from '@/types/profile';
 
 const api = axios.create({
   baseURL: import.meta.env.VITE_API_URL || 'http://localhost:7777/api',
@@ -7,6 +9,8 @@ const api = axios.create({
   },
   timeout: 10000,
 });
+
+console.log('API Base URL:', api.defaults.baseURL); // Add this line to check env variable
 
 export interface AuthResponse {
   user: {
@@ -65,8 +69,16 @@ export const authApi = {
       return data;
     } catch (error) {
       console.error('Registration failed:', error);
-      throw this.handleError(error);
-    }
+      if (axios.isAxiosError(error)) {
+          if (error.code === 'ERR_NETWORK') {
+              throw new Error('Cannot connect to server. Please check if the API is running.');
+          }
+          if (error.response) {
+              throw new Error(error.response.data.message || 'Registration failed');
+          }
+      }
+      throw new Error('An unexpected error occurred');
+  }
   },
 
   // Request password reset
@@ -160,6 +172,19 @@ export const authApi = {
       return data;
     } catch (error) {
       console.error('Session verification failed:', error);
+      throw this.handleError(error);
+    }
+  },
+
+
+  async updateProfile(data: ProfileFormData): Promise<{ user: User }> {
+    try {
+      console.log('Updating profile...');
+      const { data: response } = await api.patch<{ user: User }>('/auth/profile', data);
+      console.log('Profile updated successfully');
+      return { user: response.user };
+    } catch (error) {
+      console.error('Profile update failed:', error);
       throw this.handleError(error);
     }
   },

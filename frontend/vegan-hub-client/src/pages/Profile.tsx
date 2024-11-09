@@ -3,21 +3,13 @@ import { useState } from 'react';
 import { useAuth } from '@/hooks/useAuth';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { z } from 'zod';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
+import { profileSchema, type ProfileFormData } from '@/types/profile';
 
-const profileSchema = z.object({
-  displayName: z.string().min(2, 'Display name must be at least 2 characters'),
-  bio: z.string().max(500, 'Bio must be less than 500 characters'),
-  email: z.string().email('Invalid email address'),
-  // Add more fields as needed
-});
-
-type ProfileFormData = z.infer<typeof profileSchema>;
 
 export function Profile() {
   const { user, updateProfile } = useAuth();

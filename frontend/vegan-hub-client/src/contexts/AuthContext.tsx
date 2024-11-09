@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useToast } from '@/hooks/use-toast';
 import { authApi } from '@/lib/api/auth';
 import type { User, AuthContextType } from '@/types/auth';
+import type { ProfileFormData } from '@/types/profile';
 
 export const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
@@ -167,6 +168,18 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     }
   };
 
+  // Function to update user profile
+  const updateProfile = async (data: ProfileFormData) => {
+    try {
+      const response = await authApi.updateProfile(data);
+      setUser(response.user);
+      return response; // Return the response
+    } catch (error) {
+      console.error('Update profile error:', error);
+      throw error;
+    }
+  };
+
   return (
     <AuthContext.Provider
       value={{
@@ -176,11 +189,12 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         login,
         register,
         logout,
+        updateProfile,
       }}
     >
       {isLoading ? (
         <div className="flex items-center justify-center min-h-screen">
-          {/* Add loading spinner component here */}
+          {/* loading spinner component */}
           <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-gray-900" />
         </div>
       ) : (
