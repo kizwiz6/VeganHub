@@ -53,6 +53,14 @@
       "PackagePath": "staticwebassets\\uploads\\avatars\\60823d41-71b1-417a-a0e0-95d86b979360-638670363033632437.jpg"
     },
     {
+      "Id": "C:\\Users\\kizwi\\source\\VeganHub\\backend\\VeganHub.API\\wwwroot\\uploads\\avatars\\60823d41-71b1-417a-a0e0-95d86b979360-638670368343658972.PNG",
+      "PackagePath": "staticwebassets\\uploads\\avatars\\60823d41-71b1-417a-a0e0-95d86b979360-638670368343658972.PNG"
+    },
+    {
+      "Id": "C:\\Users\\kizwi\\source\\VeganHub\\backend\\VeganHub.API\\wwwroot\\uploads\\avatars\\60823d41-71b1-417a-a0e0-95d86b979360-638670370569535886.PNG",
+      "PackagePath": "staticwebassets\\uploads\\avatars\\60823d41-71b1-417a-a0e0-95d86b979360-638670370569535886.PNG"
+    },
+    {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.VeganHub.API.Microsoft.AspNetCore.StaticWebAssets.props",
       "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
     },

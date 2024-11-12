@@ -92,6 +92,9 @@ public class AuthController : ControllerBase
                 user.RefreshTokenExpiryTime = DateTime.UtcNow.AddDays(_jwtSettings.RefreshTokenExpiryDays);
 
                 var updateResult = await _userManager.UpdateAsync(user);
+
+                _logger.LogInformation($"User avatar URL at login: {user.AvatarUrl}");
+
                 if (!updateResult.Succeeded)
                 {
                     _logger.LogError("Failed to update user with refresh token: {Errors}",
@@ -109,7 +112,7 @@ public class AuthController : ControllerBase
                         user.UserName,
                         user.DisplayName,
                         user.Bio,
-                        user.AvatarUrl
+                        avatar = user.AvatarUrl
                     }
                 });
             }
@@ -231,8 +234,9 @@ public class AuthController : ControllerBase
             }
 
             // Update user avatar URL
-            var avatarUrl = $"https://localhost:7777/uploads/avatars/{fileName}";
+            var avatarUrl = $"/uploads/avatars/{fileName}";
             user.AvatarUrl = avatarUrl;
+
             var updateResult = await _userManager.UpdateAsync(user);
 
             if (!updateResult.Succeeded)
@@ -246,7 +250,7 @@ public class AuthController : ControllerBase
             // Create response object
             var response = new
             {
-                avatarUrl = avatarUrl,
+                avatarUrl = $"https://localhost:7777{avatarUrl}",  // Add domain for client
                 user = new
                 {
                     user.Id,
@@ -254,7 +258,7 @@ public class AuthController : ControllerBase
                     user.UserName,
                     user.DisplayName,
                     user.Bio,
-                    avatar = user.AvatarUrl
+                    avatar = $"https://localhost:7777{avatarUrl}"
                 }
             };
 
@@ -291,7 +295,9 @@ public class AuthController : ControllerBase
                     username = user.UserName,
                     displayName = user.DisplayName,
                     bio = user.Bio,
-                    avatar = user.AvatarUrl,
+                    avatar = user.AvatarUrl != null
+                        ? $"https://localhost:7777{user.AvatarUrl}"  // Add domain
+                        : null,
                     createdAt = user.CreatedAt,
                     recipesCount = user.RecipesCount,
                     followersCount = user.FollowersCount,

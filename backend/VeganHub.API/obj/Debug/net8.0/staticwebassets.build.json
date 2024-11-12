@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "7veMndjqiMVsMgfouWOSdGskWxxhMZLYILMtllmBqq8=",
+  "Hash": "Y7GJvVygnAw3TgMiiyTPtbf7NPmHK458NBKk2nHW09E=",
   "Source": "VeganHub.API",
   "BasePath": "_content/VeganHub.API",
   "Mode": "Default",
@@ -262,6 +262,44 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\uploads\\avatars\\60823d41-71b1-417a-a0e0-95d86b979360-638670363033632437.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\kizwi\\source\\VeganHub\\backend\\VeganHub.API\\wwwroot\\uploads\\avatars\\60823d41-71b1-417a-a0e0-95d86b979360-638670368343658972.PNG",
+      "SourceId": "VeganHub.API",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\kizwi\\source\\VeganHub\\backend\\VeganHub.API\\wwwroot\\",
+      "BasePath": "_content/VeganHub.API",
+      "RelativePath": "uploads/avatars/60823d41-71b1-417a-a0e0-95d86b979360-638670368343658972.PNG",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\avatars\\60823d41-71b1-417a-a0e0-95d86b979360-638670368343658972.PNG"
+    },
+    {
+      "Identity": "C:\\Users\\kizwi\\source\\VeganHub\\backend\\VeganHub.API\\wwwroot\\uploads\\avatars\\60823d41-71b1-417a-a0e0-95d86b979360-638670370569535886.PNG",
+      "SourceId": "VeganHub.API",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\kizwi\\source\\VeganHub\\backend\\VeganHub.API\\wwwroot\\",
+      "BasePath": "_content/VeganHub.API",
+      "RelativePath": "uploads/avatars/60823d41-71b1-417a-a0e0-95d86b979360-638670370569535886.PNG",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\avatars\\60823d41-71b1-417a-a0e0-95d86b979360-638670370569535886.PNG"
     }
   ]
 }

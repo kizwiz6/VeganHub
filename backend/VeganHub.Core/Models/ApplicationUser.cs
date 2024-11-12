@@ -6,6 +6,7 @@ namespace VeganHub.Core.Models;
 public class ApplicationUser : IdentityUser
 {
     public string? DisplayName { get; set; }
+    [PersonalData]
     public string? AvatarUrl { get; set; }
     public string? Bio { get; set; }
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;

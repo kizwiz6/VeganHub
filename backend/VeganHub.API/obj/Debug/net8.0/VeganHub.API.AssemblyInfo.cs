@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("VeganHub.API")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6ff3dfca7ef1e6821c1a39e6e4f9508c91f130d8")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+36aa1242bdb5385670e8aa7c8430a9239b52beb3")]
 [assembly: System.Reflection.AssemblyProductAttribute("VeganHub.API")]
 [assembly: System.Reflection.AssemblyTitleAttribute("VeganHub.API")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
