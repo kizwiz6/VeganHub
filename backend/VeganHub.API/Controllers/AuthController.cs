@@ -90,11 +90,11 @@ public class AuthController : ControllerBase
                 // Store refresh token
                 user.RefreshToken = refreshToken;
                 user.RefreshTokenExpiryTime = DateTime.UtcNow.AddDays(_jwtSettings.RefreshTokenExpiryDays);
-                
+
                 var updateResult = await _userManager.UpdateAsync(user);
                 if (!updateResult.Succeeded)
                 {
-                    _logger.LogError("Failed to update user with refresh token: {Errors}", 
+                    _logger.LogError("Failed to update user with refresh token: {Errors}",
                         string.Join(", ", updateResult.Errors.Select(e => e.Description)));
                 }
 
@@ -106,7 +106,10 @@ public class AuthController : ControllerBase
                     {
                         user.Id,
                         user.Email,
-                        user.UserName
+                        user.UserName,
+                        user.DisplayName,
+                        user.Bio,
+                        user.AvatarUrl
                     }
                 });
             }
@@ -174,13 +177,16 @@ public class AuthController : ControllerBase
             if (!result.Succeeded)
                 return BadRequest(new { Errors = result.Errors });
 
-            return Ok(new {
-                user = new {
+            return Ok(new
+            {
+                user = new
+                {
                     id = user.Id,
                     email = user.Email,
                     username = user.UserName,
                     displayName = user.DisplayName,
-                    bio = user.Bio
+                    bio = user.Bio,
+                    avatarUrl = user.AvatarUrl
                 }
             });
         }
@@ -208,27 +214,111 @@ public class AuthController : ControllerBase
 
             // Generate unique filename
             var fileName = $"{userId}-{DateTime.UtcNow.Ticks}{Path.GetExtension(file.FileName)}";
-            var filePath = Path.Combine(_webHostEnvironment.WebRootPath, "uploads", "avatars", fileName);
+            var avatarPath = Path.Combine("uploads", "avatars", fileName);
+            var fullPath = Path.Combine(_webHostEnvironment.WebRootPath, avatarPath);
+
+            // Log the paths
+            _logger.LogInformation($"Saving file to: {fullPath}");
+            _logger.LogInformation($"Public URL will be: /uploads/avatars/{fileName}");
 
             // Ensure directory exists
-            Directory.CreateDirectory(Path.GetDirectoryName(filePath));
+            Directory.CreateDirectory(Path.GetDirectoryName(fullPath));
 
             // Save file
-            using (var stream = new FileStream(filePath, FileMode.Create))
+            using (var stream = new FileStream(fullPath, FileMode.Create))
             {
                 await file.CopyToAsync(stream);
             }
 
             // Update user avatar URL
-            user.AvatarUrl = $"/uploads/avatars/{fileName}";
-            await _userManager.UpdateAsync(user);
+            var avatarUrl = $"https://localhost:7777/uploads/avatars/{fileName}";
+            user.AvatarUrl = avatarUrl;
+            var updateResult = await _userManager.UpdateAsync(user);
 
-            return Ok(new { avatarUrl = user.AvatarUrl });
+            if (!updateResult.Succeeded)
+            {
+                _logger.LogError($"Failed to update user avatar: {string.Join(", ", updateResult.Errors)}");
+                return StatusCode(500, "Failed to update user avatar");
+            }
+
+            _logger.LogInformation($"Avatar URL updated to: {avatarUrl}");
+
+            // Create response object
+            var response = new
+            {
+                avatarUrl = avatarUrl,
+                user = new
+                {
+                    user.Id,
+                    user.Email,
+                    user.UserName,
+                    user.DisplayName,
+                    user.Bio,
+                    avatar = user.AvatarUrl
+                }
+            };
+
+            // Log the response
+            _logger.LogInformation($"Returning response: {System.Text.Json.JsonSerializer.Serialize(response)}");
+
+            return Ok(response);
         }
         catch (Exception ex)
         {
             _logger.LogError(ex, "Error uploading avatar");
             return StatusCode(500, "An error occurred while uploading the avatar");
+        }
+    }
+
+    [Authorize]
+    [HttpGet("session")]
+    public async Task<IActionResult> VerifySession()
+    {
+        try
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            var user = await _userManager.FindByIdAsync(userId);
+
+            if (user == null)
+                return NotFound("User not found");
+
+            return Ok(new
+            {
+                user = new
+                {
+                    id = user.Id,
+                    email = user.Email,
+                    username = user.UserName,
+                    displayName = user.DisplayName,
+                    bio = user.Bio,
+                    avatar = user.AvatarUrl,
+                    createdAt = user.CreatedAt,
+                    recipesCount = user.RecipesCount,
+                    followersCount = user.FollowersCount,
+                    followingCount = user.FollowingCount,
+                }
+            });
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error verifying session");
+            return StatusCode(500, "An error occurred while verifying the session");
+        }
+    }
+
+    [Authorize]
+    [HttpPost("logout")]
+    public async Task<IActionResult> Logout()
+    {
+        try
+        {
+            await _signInManager.SignOutAsync();
+            return Ok(new { message = "Successfully logged out" });
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error during logout");
+            return StatusCode(500, "An error occurred during logout");
         }
     }
 }

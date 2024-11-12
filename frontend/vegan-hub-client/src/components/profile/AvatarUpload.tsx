@@ -1,17 +1,20 @@
-// src/components/profile/AvatarUpload.tsx
-import { useRef } from 'react';
+// components/profile/AvatarUpload.tsx
+import { useRef } from 'react'; // Change useState to useRef
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
 import { Camera } from 'lucide-react';
+import { useAuth } from '@/hooks/useAuth';
 
 interface AvatarUploadProps {
-  avatarUrl?: string;
   username?: string;
   onUpload: (file: File) => Promise<void>;
 }
 
-export function AvatarUpload({ avatarUrl, username, onUpload }: AvatarUploadProps) {
+export function AvatarUpload({ username, onUpload }: AvatarUploadProps) {
+  const { user } = useAuth();
   const inputRef = useRef<HTMLInputElement>(null);
+
+  console.log('Current avatar URL:', user?.avatar); // Changed from avatarUrl to avatar
 
   const handleClick = () => {
     inputRef.current?.click();
@@ -26,8 +29,18 @@ export function AvatarUpload({ avatarUrl, username, onUpload }: AvatarUploadProp
 
   return (
     <div className="relative">
-      <Avatar className="h-24 w-24">
-        <AvatarImage src={avatarUrl} />
+      <Avatar className="h-24 w-24" key={user?.avatar}>
+        <AvatarImage
+          src={user?.avatar}
+          key={user?.avatar}
+          onError={(e) => {
+            console.error('Avatar load error:', user?.avatar);
+            e.currentTarget.src = '';
+          }}
+          onLoad={() => {
+            console.log('Avatar loaded successfully:', user?.avatar);
+          }}
+        />
         <AvatarFallback>{username?.[0]}</AvatarFallback>
       </Avatar>
       <Button

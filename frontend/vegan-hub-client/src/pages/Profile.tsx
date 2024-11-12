@@ -52,12 +52,28 @@ export function Profile() {
       const formData = new FormData();
       formData.append('file', file);
 
-      await authApi.updateAvatar(formData);
+      const response = await authApi.updateAvatar(formData);
+      console.log('Avatar upload response:', response);
+
+      // updateProfile from AuthContext to update the user state
+      if (updateProfile) {
+        await updateProfile({
+          displayName: user?.displayName || '',
+          bio: user?.bio || '',
+          email: user?.email || '',
+          avatar: response.user.avatar // Make sure this matches your User type
+        });
+      }
+
+    // Force a re-render
+    window.location.reload();
+
       toast({
         title: 'Success',
         description: 'Avatar updated successfully',
       });
     } catch (error) {
+      console.error('Avatar upload error:', error);
       toast({
         title: 'Error',
         description: error instanceof Error ? error.message : 'Failed to update avatar',
@@ -71,7 +87,6 @@ export function Profile() {
       <div className="bg-white rounded-lg shadow p-6">
         <div className="flex items-center space-x-6 mb-8">
         <AvatarUpload
-            avatarUrl={user?.avatar}
             username={user?.username}
             onUpload={handleAvatarUpload}
           />

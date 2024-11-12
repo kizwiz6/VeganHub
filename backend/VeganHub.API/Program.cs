@@ -165,12 +165,18 @@ app.UseAuthorization();
 // Serve static files (like images) from the "wwwroot/uploads" directory
 app.UseStaticFiles(); // Serve files from wwwroot by default
 
+var uploadsPath = Path.Combine(builder.Environment.ContentRootPath, "wwwroot", "uploads");
+Console.WriteLine($"Serving uploads from: {uploadsPath}");
+
 // Add static file serving for the 'uploads' directory
 app.UseStaticFiles(new StaticFileOptions
 {
-    FileProvider = new PhysicalFileProvider(
-        Path.Combine(builder.Environment.ContentRootPath, "wwwroot", "uploads")),
-    RequestPath = "/uploads" // Files will be accessible at /uploads/<file_name>
+    FileProvider = new PhysicalFileProvider(uploadsPath),
+    RequestPath = "/uploads",
+    OnPrepareResponse = ctx =>
+    {
+        Console.WriteLine($"Serving static file: {ctx.File.PhysicalPath}");
+    }
 });
 
 app.MapControllers();
