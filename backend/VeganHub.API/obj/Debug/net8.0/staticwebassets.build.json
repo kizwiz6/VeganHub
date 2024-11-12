@@ -1,11 +1,19 @@
 {
   "Version": 1,
-  "Hash": "oJCfa1/Zto9fxLD5mtkh1IKSjuX47NWZnREBW2UEiWM=",
+  "Hash": "3TeRoBcFYQ7oIT8sVQ8k62poGkRbcO5TZ6va3dPDmVA=",
   "Source": "VeganHub.API",
   "BasePath": "_content/VeganHub.API",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "VeganHub.API\\wwwroot",
+      "Source": "VeganHub.API",
+      "ContentRoot": "C:\\Users\\kizwi\\source\\VeganHub\\backend\\VeganHub.API\\wwwroot\\",
+      "BasePath": "_content/VeganHub.API",
+      "Pattern": "**"
+    }
+  ],
   "Assets": []
 }

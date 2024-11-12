@@ -155,3 +155,4 @@ C:\Users\kizwi\source\VeganHub\backend\VeganHub.API\obj\Debug\net8.0\refint\Vega
 C:\Users\kizwi\source\VeganHub\backend\VeganHub.API\obj\Debug\net8.0\VeganHub.API.pdb
 C:\Users\kizwi\source\VeganHub\backend\VeganHub.API\obj\Debug\net8.0\VeganHub.API.genruntimeconfig.cache
 C:\Users\kizwi\source\VeganHub\backend\VeganHub.API\obj\Debug\net8.0\ref\VeganHub.API.dll
+C:\Users\kizwi\source\VeganHub\backend\VeganHub.API\bin\Debug\net8.0\VeganHub.API.staticwebassets.runtime.json

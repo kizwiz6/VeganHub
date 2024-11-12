@@ -7,8 +7,9 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
-import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
 import { profileSchema, type ProfileFormData } from '@/types/profile';
+import { AvatarUpload } from '@/components/profile/AvatarUpload';
+import { authApi } from '@/lib/api/auth';
 
 
 export function Profile() {
@@ -46,16 +47,38 @@ export function Profile() {
     }
   };
 
+  const handleAvatarUpload = async (file: File) => {
+    try {
+      const formData = new FormData();
+      formData.append('file', file);
+
+      await authApi.updateAvatar(formData);
+      toast({
+        title: 'Success',
+        description: 'Avatar updated successfully',
+      });
+    } catch (error) {
+      toast({
+        title: 'Error',
+        description: error instanceof Error ? error.message : 'Failed to update avatar',
+        variant: 'destructive',
+      });
+    }
+  };
+
   return (
     <div className="max-w-4xl mx-auto p-6">
       <div className="bg-white rounded-lg shadow p-6">
         <div className="flex items-center space-x-6 mb-8">
-          <Avatar className="h-24 w-24">
-            <AvatarImage src={user?.avatar} />
-            <AvatarFallback>{user?.displayName?.[0] || user?.email?.[0]}</AvatarFallback>
-          </Avatar>
+        <AvatarUpload
+            avatarUrl={user?.avatar}
+            username={user?.username}
+            onUpload={handleAvatarUpload}
+          />
           <div>
-            <h1 className="text-2xl font-bold">{user?.displayName || user?.username}</h1>
+            <h1 className="text-2xl font-bold">
+              {user?.displayName || user?.username}
+            </h1>
             <p className="text-gray-600">{user?.email}</p>
           </div>
         </div>

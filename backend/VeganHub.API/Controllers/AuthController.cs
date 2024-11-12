@@ -1,8 +1,10 @@
 // VeganHub.API/Controllers/AuthController.cs
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
+using Microsoft.Extensions.Hosting;
 using VeganHub.Core.Configuration;
 using VeganHub.Core.Models;
 using System.IdentityModel.Tokens.Jwt;
@@ -18,17 +20,20 @@ public class AuthController : ControllerBase
     private readonly SignInManager<ApplicationUser> _signInManager;
     private readonly JwtSettings _jwtSettings;
     private readonly ILogger<AuthController> _logger;
+    private readonly IWebHostEnvironment _webHostEnvironment;
 
     public AuthController(
         UserManager<ApplicationUser> userManager,
         SignInManager<ApplicationUser> signInManager,
         IOptions<JwtSettings> jwtSettings,
-        ILogger<AuthController> logger)
+        ILogger<AuthController> logger,
+        IWebHostEnvironment webHostEnvironment)
     {
         _userManager = userManager;
         _signInManager = signInManager;
         _jwtSettings = jwtSettings.Value;
         _logger = logger;
+        _webHostEnvironment = webHostEnvironment;
     }
 
     [HttpPost("register")]
@@ -63,44 +68,60 @@ public class AuthController : ControllerBase
     [HttpPost("login")]
     public async Task<IActionResult> Login([FromBody] LoginRequest request)
     {
-        var user = await _userManager.FindByEmailAsync(request.Email);
-        if (user == null)
+        try
         {
-            _logger.LogWarning("Login failed - user not found: {Email}", request.Email);
+            _logger.LogInformation("Login attempt for email: {Email}", request.Email);
+
+            var user = await _userManager.FindByEmailAsync(request.Email);
+            if (user == null)
+            {
+                _logger.LogWarning("User not found: {Email}", request.Email);
+                return BadRequest(new { message = "Invalid credentials" });
+            }
+
+            var result = await _signInManager.CheckPasswordSignInAsync(user, request.Password, false);
+            _logger.LogInformation("Password check result: {Result}", result);
+
+            if (result.Succeeded)
+            {
+                var token = GenerateJwtToken(user);
+                var refreshToken = GenerateRefreshToken();
+
+                // Store refresh token
+                user.RefreshToken = refreshToken;
+                user.RefreshTokenExpiryTime = DateTime.UtcNow.AddDays(_jwtSettings.RefreshTokenExpiryDays);
+                
+                var updateResult = await _userManager.UpdateAsync(user);
+                if (!updateResult.Succeeded)
+                {
+                    _logger.LogError("Failed to update user with refresh token: {Errors}", 
+                        string.Join(", ", updateResult.Errors.Select(e => e.Description)));
+                }
+
+                return Ok(new
+                {
+                    token,
+                    refreshToken,
+                    user = new
+                    {
+                        user.Id,
+                        user.Email,
+                        user.UserName
+                    }
+                });
+            }
+
+            _logger.LogWarning("Login failed for user {Email}: {Reason}",
+                request.Email,
+                result.IsLockedOut ? "Locked out" : result.IsNotAllowed ? "Not allowed" : "Invalid password");
+
             return BadRequest(new { message = "Invalid credentials" });
         }
-
-        var result = await _signInManager.CheckPasswordSignInAsync(user, request.Password, false);
-        _logger.LogInformation("Password check result: {Result}", result);
-
-        if (result.Succeeded)
+        catch (Exception ex)
         {
-            var token = GenerateJwtToken(user);
-            var refreshToken = GenerateRefreshToken();
-
-            // Store refresh token in database
-            user.RefreshToken = refreshToken;
-            user.RefreshTokenExpiryTime = DateTime.UtcNow.AddDays(_jwtSettings.RefreshTokenExpiryDays);
-            await _userManager.UpdateAsync(user);
-
-            return Ok(new
-            {
-                token,
-                refreshToken,
-                user = new
-                {
-                    user.Id,
-                    user.Email,
-                    user.UserName
-                }
-            });
+            _logger.LogError(ex, "Login error for email: {Email}", request.Email);
+            return StatusCode(500, new { message = ex.Message });
         }
-
-        _logger.LogWarning("Login failed for user {Email}: {Reason}",
-        request.Email,
-        result.IsLockedOut ? "Locked out" : result.IsNotAllowed ? "Not allowed" : "Invalid password");
-
-        return BadRequest(new { message = "Invalid credentials" });
     }
 
     private string GenerateJwtToken(ApplicationUser user)
@@ -167,6 +188,47 @@ public class AuthController : ControllerBase
         {
             _logger.LogError(ex, "Error updating profile");
             return StatusCode(500, "An error occurred while updating the profile");
+        }
+    }
+
+    [Authorize]
+    [HttpPost("profile/avatar")]
+    public async Task<IActionResult> UploadAvatar(IFormFile file)
+    {
+        try
+        {
+            if (file == null || file.Length == 0)
+                return BadRequest("No file uploaded");
+
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            var user = await _userManager.FindByIdAsync(userId);
+
+            if (user == null)
+                return NotFound("User not found");
+
+            // Generate unique filename
+            var fileName = $"{userId}-{DateTime.UtcNow.Ticks}{Path.GetExtension(file.FileName)}";
+            var filePath = Path.Combine(_webHostEnvironment.WebRootPath, "uploads", "avatars", fileName);
+
+            // Ensure directory exists
+            Directory.CreateDirectory(Path.GetDirectoryName(filePath));
+
+            // Save file
+            using (var stream = new FileStream(filePath, FileMode.Create))
+            {
+                await file.CopyToAsync(stream);
+            }
+
+            // Update user avatar URL
+            user.AvatarUrl = $"/uploads/avatars/{fileName}";
+            await _userManager.UpdateAsync(user);
+
+            return Ok(new { avatarUrl = user.AvatarUrl });
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error uploading avatar");
+            return StatusCode(500, "An error occurred while uploading the avatar");
         }
     }
 }
