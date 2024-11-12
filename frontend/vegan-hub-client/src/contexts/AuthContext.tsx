@@ -171,9 +171,19 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   // Function to update user profile
   const updateProfile = async (data: ProfileFormData) => {
     try {
+      console.log('Current user before update:', user);
       const response = await authApi.updateProfile(data);
-      setUser(response.user);
-      return response; // Return the response
+      console.log('Update response:', response);
+
+      // Make sure we're updating the full user object
+      setUser(prev => ({
+        ...prev,
+        ...response.user,
+        avatar: response.user.avatar
+      }));
+
+      console.log('Updated user state:', user);
+      return response;
     } catch (error) {
       console.error('Update profile error:', error);
       throw error;

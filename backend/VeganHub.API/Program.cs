@@ -8,6 +8,8 @@ using VeganHub.Infrastructure.Data;
 using VeganHub.Infrastructure.Repositories;
 using VeganHub.Core.Configuration;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.FileProviders;
+using System.IO;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -110,6 +112,7 @@ builder.Services.AddAuthorization(options =>
             context.User.HasClaim(c =>
                 c.Type == "userId" &&
                 c.Value == context.Resource.ToString())));
+
 });
 
 // Add database context
@@ -159,9 +162,26 @@ app.UseCors("AllowLocalhost");
 app.UseAuthentication();
 app.UseAuthorization();
 
+// Serve static files (like images) from the "wwwroot/uploads" directory
+app.UseStaticFiles(); // Serve files from wwwroot by default
+
+var uploadsPath = Path.Combine(builder.Environment.ContentRootPath, "wwwroot", "uploads");
+Console.WriteLine($"Serving uploads from: {uploadsPath}");
+
+// Add static file serving for the 'uploads' directory
+app.UseStaticFiles(new StaticFileOptions
+{
+    FileProvider = new PhysicalFileProvider(uploadsPath),
+    RequestPath = "/uploads",
+    OnPrepareResponse = ctx =>
+    {
+        Console.WriteLine($"Serving static file: {ctx.File.PhysicalPath}");
+    }
+});
+
 app.MapControllers();
 
-// Create a scope to initialize/migrate the database
+// Create a scope to initialise/migrate the database
 using (var scope = app.Services.CreateScope())
 {
     var services = scope.ServiceProvider;

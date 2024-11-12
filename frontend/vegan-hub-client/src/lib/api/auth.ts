@@ -187,6 +187,23 @@ export const authApi = {
     }
   },
 
+
+  async updateAvatar(formData: FormData): Promise<{ user: User }> {
+    try {
+      console.log('Uploading avatar...');
+      const { data } = await api.post<{ user: User }>('/auth/profile/avatar', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
+      console.log('Avatar upload response data:', data);
+      return data;
+    } catch (error) {
+      console.error('Avatar upload failed:', error);
+      throw this.handleError(error);
+    }
+  },
+
   // Enhanced error handler
   handleError(error: unknown) {
     if (axios.isAxiosError(error)) {
