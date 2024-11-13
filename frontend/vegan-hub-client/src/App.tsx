@@ -10,6 +10,7 @@ import { ProtectedRoute } from '@/components/ProtectedRoute';
 import { EmailVerification } from './components/auth/EmailVerification';
 import ResetPassword from './pages/ResetPassword';
 import { Profile } from '@/pages/Profile';
+import Settings from './pages/Settings';
 
 function App() {
   return (
@@ -39,6 +40,15 @@ function App() {
               element={
                 <ProtectedRoute>
                   <CreateRecipe />
+                </ProtectedRoute>
+              }
+            />
+            {/* Add Settings route */}
+            <Route
+              path="/settings"
+              element={
+                <ProtectedRoute>
+                  <Settings />
                 </ProtectedRoute>
               }
             />
