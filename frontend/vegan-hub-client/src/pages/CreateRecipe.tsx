@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useForm } from 'react-hook-form';
+import { useForm, useFieldArray } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { createRecipeSchema, type CreateRecipeFormData } from '@/validations/recipeSchema';
 import { Button } from '@/components/ui/button';
@@ -8,8 +8,10 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { FormField } from '@/components/ui/form-field';
 import { FormProgress } from '@/components/ui/form-progress';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { useToast } from '@/hooks/use-toast';
 import { cn } from '@/lib/utils';
+import { Trash2 } from 'lucide-react';
 
 export default function CreateRecipe() {
   const [formProgress, setFormProgress] = useState(0);
@@ -18,12 +20,29 @@ export default function CreateRecipe() {
 
   const {
     register,
+    control,
     handleSubmit,
     watch,
+    setValue,
     formState: { errors, dirtyFields, isSubmitting, isValid }
   } = useForm<CreateRecipeFormData>({
     resolver: zodResolver(createRecipeSchema),
+    defaultValues: {
+      ingredients: [{ 
+        name: '', 
+        quantity: 0, 
+        unit: '', 
+        nutritionalInfo: { calories: 0, protein: 0, carbohydrates: 0, fat: 0, fiber: 0 } 
+      }],
+      tags: [],
+      difficulty: 'Medium'
+    },
     mode: 'onChange'
+  });
+
+  const { fields: ingredientFields, append: appendIngredient, remove: removeIngredient } = useFieldArray({
+    control,
+    name: 'ingredients'
   });
 
   // Watch all fields for progress calculation
@@ -74,6 +93,15 @@ export default function CreateRecipe() {
     }
   };
 
+  const handleAddIngredient = () => {
+    appendIngredient({ 
+      name: '', 
+      quantity: 0, 
+      unit: '', 
+      nutritionalInfo: { calories: 0, protein: 0, carbohydrates: 0, fat: 0, fiber: 0 } 
+    });
+  };
+
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="max-w-3xl mx-auto">
@@ -115,14 +143,14 @@ export default function CreateRecipe() {
             />
           </FormField>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
             <FormField
               label="Prep Time (mins)"
               error={errors.prepTime}
               isValid={dirtyFields.prepTime && !errors.prepTime}
             >
               <Input
-                {...register('prepTime')}
+                {...register('prepTime', { valueAsNumber: true })}
                 type="number"
                 placeholder="15"
                 className={cn(
@@ -138,7 +166,7 @@ export default function CreateRecipe() {
               isValid={dirtyFields.cookTime && !errors.cookTime}
             >
               <Input
-                {...register('cookTime')}
+                {...register('cookTime', { valueAsNumber: true })}
                 type="number"
                 placeholder="30"
                 className={cn(
@@ -154,7 +182,7 @@ export default function CreateRecipe() {
               isValid={dirtyFields.servings && !errors.servings}
             >
               <Input
-                {...register('servings')}
+                {...register('servings', { valueAsNumber: true })}
                 type="number"
                 placeholder="4"
                 className={cn(
@@ -163,6 +191,88 @@ export default function CreateRecipe() {
                 )}
               />
             </FormField>
+
+            <FormField
+              label="Difficulty"
+              error={errors.difficulty}
+              isValid={dirtyFields.difficulty && !errors.difficulty}
+            >
+            <Select
+              onValueChange={(value: 'Easy' | 'Medium' | 'Hard') => setValue('difficulty', value)}
+              defaultValue={watch('difficulty')}
+            >
+                <SelectTrigger>
+                  <SelectValue placeholder="Select difficulty" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="Easy">Easy</SelectItem>
+                  <SelectItem value="Medium">Medium</SelectItem>
+                  <SelectItem value="Hard">Hard</SelectItem>
+                </SelectContent>
+              </Select>
+            </FormField>
+          </div>
+
+          <div className="space-y-4">
+            <div className="flex justify-between items-center">
+              <h3 className="text-lg font-medium">Ingredients</h3>
+              <Button
+                type="button"
+                variant="outline"
+                onClick={handleAddIngredient}
+              >
+                Add Ingredient
+              </Button>
+            </div>
+
+            <div className="space-y-4">
+              {ingredientFields.map((field, index) => (
+                <div key={field.id} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 p-4 border rounded-lg">
+                  <FormField
+                    label="Name"
+                    error={errors.ingredients?.[index]?.name}
+                  >
+                    <Input
+                      {...register(`ingredients.${index}.name`)}
+                      placeholder="Ingredient name"
+                    />
+                  </FormField>
+
+                  <FormField
+                    label="Quantity"
+                    error={errors.ingredients?.[index]?.quantity}
+                  >
+                    <Input
+                      {...register(`ingredients.${index}.quantity`, { valueAsNumber: true })}
+                      type="number"
+                      step="0.01"
+                      placeholder="Amount"
+                    />
+                  </FormField>
+
+                  <FormField
+                    label="Unit"
+                    error={errors.ingredients?.[index]?.unit}
+                  >
+                    <Input
+                      {...register(`ingredients.${index}.unit`)}
+                      placeholder="g, ml, cups, etc."
+                    />
+                  </FormField>
+
+                  <div className="flex items-end">
+                    <Button
+                      type="button"
+                      variant="destructive"
+                      onClick={() => removeIngredient(index)}
+                      className="w-full"
+                    >
+                      <Trash2 className="w-4 h-4" />
+                    </Button>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
 
           <FormField

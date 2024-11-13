@@ -25,6 +25,9 @@ public class CreateRecipeDto
     public int Servings { get; set; }
 
     [Required]
+    public required string Difficulty { get; set; }
+
+    [Required]
     public required string CreatedById { get; set; }
 
     [Required]
@@ -34,4 +37,5 @@ public class CreateRecipeDto
     public required List<CreateRecipeIngredientDto> Ingredients { get; set; }
 
     public required List<CreateRecipeTagDto> Tags { get; set; }
+    public IFormFile? Image { get; set; }
 }
