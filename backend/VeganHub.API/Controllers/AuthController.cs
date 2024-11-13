@@ -173,7 +173,6 @@ public class AuthController : ControllerBase
 
             user.DisplayName = dto.DisplayName;
             user.Bio = dto.Bio;
-            user.Email = dto.Email;
 
             var result = await _userManager.UpdateAsync(user);
 
@@ -185,7 +184,6 @@ public class AuthController : ControllerBase
                 user = new
                 {
                     id = user.Id,
-                    email = user.Email,
                     username = user.UserName,
                     displayName = user.DisplayName,
                     bio = user.Bio,
