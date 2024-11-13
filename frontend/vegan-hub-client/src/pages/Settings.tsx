@@ -8,6 +8,7 @@ import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/com
 
 export default function Settings() {
   const { user } = useAuth();
+  console.log('Current user:', user);
   const { toast } = useToast();
   const [isLoading, setIsLoading] = useState(false);
   const [emailNotifications, setEmailNotifications] = useState({
