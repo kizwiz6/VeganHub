@@ -25,8 +25,7 @@ export function Profile() {
     resolver: zodResolver(profileSchema),
     defaultValues: {
       displayName: user?.displayName || '',
-      bio: user?.bio || '',
-      email: user?.email || '',
+      bio: user?.bio || ''
     }
   });
 
@@ -60,7 +59,6 @@ export function Profile() {
         await updateProfile({
           displayName: user?.displayName || '',
           bio: user?.bio || '',
-          email: user?.email || '',
           avatar: response.user.avatar // Make sure this matches your User type
         });
       }
@@ -94,7 +92,7 @@ export function Profile() {
             <h1 className="text-2xl font-bold">
               {user?.displayName || user?.username}
             </h1>
-            <p className="text-gray-600">{user?.email}</p>
+            <p className="text-gray-600">{user?.username}</p>
           </div>
         </div>
 
@@ -118,17 +116,6 @@ export function Profile() {
                 {...register('bio')}
                 error={errors.bio}
                 className="h-32"
-              />
-            </div>
-
-            <div>
-              <label className="block text-sm font-medium text-gray-700">
-                Email
-              </label>
-              <Input
-                {...register('email')}
-                error={errors.email}
-                type="email"
               />
             </div>
 
