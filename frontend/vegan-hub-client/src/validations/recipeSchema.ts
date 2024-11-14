@@ -40,7 +40,8 @@ export const createRecipeSchema = z.object({
   ingredients: z.array(ingredientSchema)
     .min(1, 'At least one ingredient is required'),
   tags: z.array(z.string())
-    .min(1, 'At least one tag is required'),
+    .min(1, 'Please add at least one tag')
+    .max(10, 'Maximum of 10 tags allowed'),
   image: z.any().optional(),
 });
 

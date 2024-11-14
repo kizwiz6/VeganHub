@@ -5,6 +5,8 @@ import { Button } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
+import { useTheme } from '@/hooks/useTheme';
+import { Moon, Sun } from 'lucide-react';
 
 export default function Settings() {
   const { user } = useAuth();
@@ -17,6 +19,7 @@ export default function Settings() {
     recipeLikes: true,
     newsletter: false,
   });
+  const { theme, toggleTheme } = useTheme();
 
   const [dietaryPreferences, setDietaryPreferences] = useState({
     glutenFree: false,
@@ -63,7 +66,7 @@ export default function Settings() {
     } finally {
       setIsLoading(false);
     }
-  };
+  }
 
   return (
     <div className="container mx-auto py-8 px-4">
@@ -72,6 +75,7 @@ export default function Settings() {
       <Tabs defaultValue="account" className="space-y-6">
         <TabsList>
           <TabsTrigger value="account">Account</TabsTrigger>
+          <TabsTrigger value="appearance">Appearance</TabsTrigger>
           <TabsTrigger value="notifications">Notifications</TabsTrigger>
           <TabsTrigger value="dietary">Dietary Preferences</TabsTrigger>
           <TabsTrigger value="privacy">Privacy & Security</TabsTrigger>
@@ -101,6 +105,39 @@ export default function Settings() {
               <Button variant="destructive" className="mt-2">
                 Delete Account
               </Button>
+            </CardContent>
+          </Card>
+        </TabsContent>
+
+        <TabsContent value="appearance">
+          <Card>
+            <CardHeader>
+              <CardTitle>Appearance</CardTitle>
+              <CardDescription>
+                Customise how VeganHub looks on your device
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <div className="flex items-center justify-between">
+                <div className="space-y-0.5">
+                  <label className="text-sm font-medium">Dark Mode</label>
+                  <p className="text-sm text-gray-500 dark:text-gray-400">
+                    Switch between light and dark themes
+                  </p>
+                </div>
+                <Button
+                  variant="outline"
+                  size="icon"
+                  onClick={toggleTheme}
+                  className="h-8 w-8"
+                >
+                  {theme === 'dark' ? (
+                    <Moon className="h-4 w-4" />
+                  ) : (
+                    <Sun className="h-4 w-4" />
+                  )}
+                </Button>
+              </div>
             </CardContent>
           </Card>
         </TabsContent>

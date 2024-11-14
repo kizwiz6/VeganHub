@@ -1,8 +1,8 @@
+/* src/index.css */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* If you want to keep some custom styles, you can add them after the Tailwind imports */
 @layer base {
   :root {
     font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -11,8 +11,29 @@
   }
 
   body {
-    @apply bg-gray-50 text-gray-900;
+    @apply bg-gray-50 text-gray-900 transition-colors duration-200;
   }
+
+  .dark body {
+    @apply bg-dark-bg text-dark-text;
+  }
+
+  .dark .card {
+    @apply bg-dark-card border-dark-border;
+  }
+}
+
+.select__control {
+  min-height: 2.5rem !important;
+}
+
+.select__value-container {
+  padding: 2px 8px !important;
+}
+
+.select__input {
+  margin: 0 !important;
+  padding: 0 !important;
 }
 
 /* Any additional custom styles that can't be handled by Tailwind can go here */

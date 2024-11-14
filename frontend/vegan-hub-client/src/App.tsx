@@ -11,51 +11,54 @@ import { EmailVerification } from './components/auth/EmailVerification';
 import ResetPassword from './pages/ResetPassword';
 import { Profile } from '@/pages/Profile';
 import Settings from './pages/Settings';
+import { ThemeProvider } from '@/contexts/ThemeContext';
 
 function App() {
   return (
     <Router>
-      <AuthProvider>
-        <Layout>
-          <Routes>
-            {/* Public routes */}
-            <Route path="/" element={<Home />} />
-            <Route path="/recipes" element={<Home />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="/verify-email" element={<EmailVerification />} />
-            <Route path="/reset-password" element={<ResetPassword />} />
+      <ThemeProvider>
+        <AuthProvider>
+          <Layout>
+            <Routes>
+              {/* Public routes */}
+              <Route path="/" element={<Home />} />
+              <Route path="/recipes" element={<Home />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/register" element={<Register />} />
+              <Route path="/verify-email" element={<EmailVerification />} />
+              <Route path="/reset-password" element={<ResetPassword />} />
 
-            {/* Protected routes */}
-            <Route
-              path="/profile"
-              element={
-                <ProtectedRoute>
-                  <Profile />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/recipes/new"
-              element={
-                <ProtectedRoute>
-                  <CreateRecipe />
-                </ProtectedRoute>
-              }
-            />
-            {/* Add Settings route */}
-            <Route
-              path="/settings"
-              element={
-                <ProtectedRoute>
-                  <Settings />
-                </ProtectedRoute>
-              }
-            />
-          </Routes>
-          <Toaster />
-        </Layout>
-      </AuthProvider>
+              {/* Protected routes */}
+              <Route
+                path="/profile"
+                element={
+                  <ProtectedRoute>
+                    <Profile />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/recipes/new"
+                element={
+                  <ProtectedRoute>
+                    <CreateRecipe />
+                  </ProtectedRoute>
+                }
+              />
+              {/* Add Settings route */}
+              <Route
+                path="/settings"
+                element={
+                  <ProtectedRoute>
+                    <Settings />
+                  </ProtectedRoute>
+                }
+              />
+            </Routes>
+            <Toaster />
+          </Layout>
+        </AuthProvider>
+      </ThemeProvider>
     </Router>
   );
 }
