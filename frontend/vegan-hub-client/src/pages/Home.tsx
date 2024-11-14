@@ -115,8 +115,8 @@ export default function Home() {
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-8">
           <div>
-            <h1 className="text-3xl font-bold text-gray-900">Vegan Recipes</h1>
-            <p className="mt-1 text-gray-600">
+            <h1 className="text-3xl font-bold text-gray-900 dark:text-white">Vegan Recipes</h1>
+            <p className="text-gray-600 dark:text-gray-300">
               Discover and share delicious plant-based recipes
             </p>
           </div>

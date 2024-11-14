@@ -14,17 +14,17 @@ export default function Navbar() {
   const { user, isAuthenticated, logout } = useAuth();
 
   return (
-    <nav className="bg-white shadow-sm">
+    <nav className="bg-white shadow-sm dark:bg-gray-900 dark:border-b dark:border-gray-800">
       <div className="container mx-auto px-4">
         <div className="flex h-16 justify-between items-center">
-          <Link to="/" className="text-xl font-bold text-green-600">
+          <Link to="/" className="text-xl font-bold text-green-600 dark:text-green-500">
             VeganHub
           </Link>
-          
+
           <div className="flex items-center gap-4">
-            <Link 
-              to="/recipes" 
-              className="text-gray-600 hover:text-green-600 transition-colors"
+            <Link
+              to="/recipes"
+              className="text-gray-600 hover:text-green-600 dark:text-gray-300 dark:hover:text-green-500"
             >
               Recipes
             </Link>

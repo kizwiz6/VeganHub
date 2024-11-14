@@ -240,5 +240,21 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\uploads\avatars\60823d41-71b1-417a-a0e0-95d86b979360-638670370569535886.PNG))</OriginalItemSpec>
     </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\uploads\avatars\60823d41-71b1-417a-a0e0-95d86b979360-638670381745036761.PNG))">
+      <SourceType>Package</SourceType>
+      <SourceId>VeganHub.API</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/VeganHub.API</BasePath>
+      <RelativePath>uploads/avatars/60823d41-71b1-417a-a0e0-95d86b979360-638670381745036761.PNG</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\uploads\avatars\60823d41-71b1-417a-a0e0-95d86b979360-638670381745036761.PNG))</OriginalItemSpec>
+    </StaticWebAsset>
   </ItemGroup>
 </Project>

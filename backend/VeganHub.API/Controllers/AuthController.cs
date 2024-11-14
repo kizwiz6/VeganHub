@@ -53,7 +53,14 @@ public class AuthController : ControllerBase
             if (result.Succeeded)
             {
                 _logger.LogInformation("User created successfully");
-                return Ok(new { message = "Registration successful" });
+                return Ok(new { 
+                    message = "Registration successful",
+                    user = new {
+                        user.Id,
+                        user.UserName,
+                        user.Email
+                    }
+                });
             }
 
             return BadRequest(new { Errors = result.Errors });
