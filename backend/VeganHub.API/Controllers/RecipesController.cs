@@ -1,12 +1,12 @@
-// VeganHub.API/Controllers/RecipesController.cs
+// VegWiz.API/Controllers/RecipesController.cs
 
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
-using VeganHub.Core.Interfaces;
-using VeganHub.Core.Models;
-using VeganHub.API.DTOs;
+using VegWiz.Core.Interfaces;
+using VegWiz.Core.Models;
+using VegWiz.API.DTOs;
 
-namespace VeganHub.API.Controllers;
+namespace VegWiz.API.Controllers;
 
 /// <summary>
 /// Controller for managing recipe operations.

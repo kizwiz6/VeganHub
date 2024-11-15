@@ -21,8 +21,8 @@
 </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\VeganHub.Core\VeganHub.Core.csproj" />
-    <ProjectReference Include="..\VeganHub.Infrastructure\VeganHub.Infrastructure.csproj" />
+    <ProjectReference Include="..\VegWiz.Core\VegWiz.Core.csproj" />
+    <ProjectReference Include="..\VegWiz.Infrastructure\VegWiz.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

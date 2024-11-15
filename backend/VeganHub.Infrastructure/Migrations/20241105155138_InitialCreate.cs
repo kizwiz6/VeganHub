@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace VeganHub.Infrastructure.Migrations
+namespace VegWiz.Infrastructure.Migrations
 {
     /// <inheritdoc />
     public partial class InitialCreate : Migration

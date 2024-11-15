@@ -1,5 +1,5 @@
-// VeganHub.Core/Models/NutritionalInfo.cs
-namespace VeganHub.Core.Models;
+// VegWiz.Core/Models/NutritionalInfo.cs
+namespace VegWiz.Core.Models;
 
 public class NutritionalInfo
 {

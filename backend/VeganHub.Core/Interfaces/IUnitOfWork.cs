@@ -1,5 +1,5 @@
-// VeganHub.Core/Interfaces/IUnitOfWork.cs
-namespace VeganHub.Core.Interfaces;
+// VegWiz.Core/Interfaces/IUnitOfWork.cs
+namespace VegWiz.Core.Interfaces;
 
 public interface IUnitOfWork
 {

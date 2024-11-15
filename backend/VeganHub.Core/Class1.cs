@@ -1,4 +1,4 @@
-﻿namespace VeganHub.Core;
+﻿namespace VegWiz.Core;
 
 public class Class1
 {

@@ -3,10 +3,10 @@ using Microsoft.OpenApi.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
-using VeganHub.Core.Interfaces;
-using VeganHub.Infrastructure.Data;
-using VeganHub.Infrastructure.Repositories;
-using VeganHub.Core.Configuration;
+using VegWiz.Core.Interfaces;
+using VegWiz.Infrastructure.Data;
+using VegWiz.Infrastructure.Repositories;
+using VegWiz.Core.Configuration;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.FileProviders;
 using System.IO;
@@ -41,7 +41,7 @@ builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new OpenApiInfo
     {
-        Title = "VeganHub API",
+        Title = "VegWiz API",
         Version = "v1",
         Description = "API for managing vegan recipes and meal planning"
     });
@@ -73,7 +73,7 @@ builder.Services.AddSwaggerGen(c =>
 });
 
 // Add Identity
-builder.Services.AddIdentity<VeganHub.Core.Models.ApplicationUser, IdentityRole>(options =>
+builder.Services.AddIdentity<VegWiz.Core.Models.ApplicationUser, IdentityRole>(options =>
 {
     options.Password.RequiredLength = 8;
     options.Password.RequireNonAlphanumeric = true;
@@ -119,7 +119,7 @@ builder.Services.AddAuthorization(options =>
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(
         builder.Configuration.GetConnectionString("DefaultConnection"),
-        b => b.MigrationsAssembly("VeganHub.Infrastructure")
+        b => b.MigrationsAssembly("VegWiz.Infrastructure")
     ));
 
 // Add repositories and unit of work
@@ -148,7 +148,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI(c =>
     {
-        c.SwaggerEndpoint("/swagger/v1/swagger.json", "VeganHub API v1");
+        c.SwaggerEndpoint("/swagger/v1/swagger.json", "VegWiz API v1");
         c.RoutePrefix = "swagger";
     });
 }

@@ -2036,7 +2036,7 @@
           }
         }
       },
-      "VeganHub.Core/1.0.0": {
+      "VegWiz.Core/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
@@ -2044,13 +2044,13 @@
           "Microsoft.EntityFrameworkCore": "8.0.10"
         },
         "compile": {
-          "bin/placeholder/VeganHub.Core.dll": {}
+          "bin/placeholder/VegWiz.Core.dll": {}
         },
         "runtime": {
-          "bin/placeholder/VeganHub.Core.dll": {}
+          "bin/placeholder/VegWiz.Core.dll": {}
         }
       },
-      "VeganHub.Infrastructure/1.0.0": {
+      "VegWiz.Infrastructure/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
@@ -2058,13 +2058,13 @@
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "8.0.10",
           "Microsoft.EntityFrameworkCore": "8.0.10",
           "Microsoft.EntityFrameworkCore.SqlServer": "8.0.10",
-          "VeganHub.Core": "1.0.0"
+          "VegWiz.Core": "1.0.0"
         },
         "compile": {
-          "bin/placeholder/VeganHub.Infrastructure.dll": {}
+          "bin/placeholder/VegWiz.Infrastructure.dll": {}
         },
         "runtime": {
-          "bin/placeholder/VeganHub.Infrastructure.dll": {}
+          "bin/placeholder/VegWiz.Infrastructure.dll": {}
         }
       }
     }
@@ -5135,15 +5135,15 @@
         "useSharedDesignerContext.txt"
       ]
     },
-    "VeganHub.Core/1.0.0": {
+    "VegWiz.Core/1.0.0": {
       "type": "project",
-      "path": "../VeganHub.Core/VeganHub.Core.csproj",
-      "msbuildProject": "../VeganHub.Core/VeganHub.Core.csproj"
+      "path": "../VegWiz.Core/VegWiz.Core.csproj",
+      "msbuildProject": "../VegWiz.Core/VegWiz.Core.csproj"
     },
-    "VeganHub.Infrastructure/1.0.0": {
+    "VegWiz.Infrastructure/1.0.0": {
       "type": "project",
-      "path": "../VeganHub.Infrastructure/VeganHub.Infrastructure.csproj",
-      "msbuildProject": "../VeganHub.Infrastructure/VeganHub.Infrastructure.csproj"
+      "path": "../VegWiz.Infrastructure/VegWiz.Infrastructure.csproj",
+      "msbuildProject": "../VegWiz.Infrastructure/VegWiz.Infrastructure.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -5156,8 +5156,8 @@
       "Microsoft.EntityFrameworkCore.Design >= 8.0.10",
       "Swashbuckle.AspNetCore >= 6.9.0",
       "System.IdentityModel.Tokens.Jwt >= 8.2.0",
-      "VeganHub.Core >= 1.0.0",
-      "VeganHub.Infrastructure >= 1.0.0"
+      "VegWiz.Core >= 1.0.0",
+      "VegWiz.Infrastructure >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -5167,11 +5167,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Kieran\\Documents\\Coding\\Websites\\VeganHub\\backend\\VeganHub.API\\VeganHub.API.csproj",
-      "projectName": "VeganHub.API",
-      "projectPath": "C:\\Users\\Kieran\\Documents\\Coding\\Websites\\VeganHub\\backend\\VeganHub.API\\VeganHub.API.csproj",
+      "projectUniqueName": "C:\\Users\\Kieran\\Documents\\Coding\\Websites\\VegWiz\\backend\\VegWiz.API\\VegWiz.API.csproj",
+      "projectName": "VegWiz.API",
+      "projectPath": "C:\\Users\\Kieran\\Documents\\Coding\\Websites\\VegWiz\\backend\\VegWiz.API\\VegWiz.API.csproj",
       "packagesPath": "C:\\Users\\Kieran\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Kieran\\Documents\\Coding\\Websites\\VeganHub\\backend\\VeganHub.API\\obj\\",
+      "outputPath": "C:\\Users\\Kieran\\Documents\\Coding\\Websites\\VegWiz\\backend\\VegWiz.API\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -5193,11 +5193,11 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\Kieran\\Documents\\Coding\\Websites\\VeganHub\\backend\\VeganHub.Core\\VeganHub.Core.csproj": {
-              "projectPath": "C:\\Users\\Kieran\\Documents\\Coding\\Websites\\VeganHub\\backend\\VeganHub.Core\\VeganHub.Core.csproj"
+            "C:\\Users\\Kieran\\Documents\\Coding\\Websites\\VegWiz\\backend\\VegWiz.Core\\VegWiz.Core.csproj": {
+              "projectPath": "C:\\Users\\Kieran\\Documents\\Coding\\Websites\\VegWiz\\backend\\VegWiz.Core\\VegWiz.Core.csproj"
             },
-            "C:\\Users\\Kieran\\Documents\\Coding\\Websites\\VeganHub\\backend\\VeganHub.Infrastructure\\VeganHub.Infrastructure.csproj": {
-              "projectPath": "C:\\Users\\Kieran\\Documents\\Coding\\Websites\\VeganHub\\backend\\VeganHub.Infrastructure\\VeganHub.Infrastructure.csproj"
+            "C:\\Users\\Kieran\\Documents\\Coding\\Websites\\VegWiz\\backend\\VegWiz.Infrastructure\\VegWiz.Infrastructure.csproj": {
+              "projectPath": "C:\\Users\\Kieran\\Documents\\Coding\\Websites\\VegWiz\\backend\\VegWiz.Infrastructure\\VegWiz.Infrastructure.csproj"
             }
           }
         }

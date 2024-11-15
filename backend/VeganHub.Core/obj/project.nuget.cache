@@ -2,7 +2,7 @@
   "version": 2,
   "dgSpecHash": "zJwg2IPNXJI=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Kieran\\Documents\\Coding\\Websites\\VeganHub\\backend\\VeganHub.Core\\VeganHub.Core.csproj",
+  "projectFilePath": "C:\\Users\\Kieran\\Documents\\Coding\\Websites\\VegWiz\\backend\\VegWiz.Core\\VegWiz.Core.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Kieran\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\8.0.10\\microsoft.aspnetcore.cryptography.internal.8.0.10.nupkg.sha512",
     "C:\\Users\\Kieran\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\8.0.10\\microsoft.aspnetcore.cryptography.keyderivation.8.0.10.nupkg.sha512",

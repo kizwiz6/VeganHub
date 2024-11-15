@@ -5,11 +5,11 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using VeganHub.Infrastructure.Data;
+using VegWiz.Infrastructure.Data;
 
 #nullable disable
 
-namespace VeganHub.Infrastructure.Migrations
+namespace VegWiz.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     [Migration("20241109124353_AddUserProfileFields")]
@@ -173,7 +173,7 @@ namespace VeganHub.Infrastructure.Migrations
                     b.ToTable("RecipeTags", (string)null);
                 });
 
-            modelBuilder.Entity("VeganHub.Core.Models.ApplicationUser", b =>
+            modelBuilder.Entity("VegWiz.Core.Models.ApplicationUser", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -269,7 +269,7 @@ namespace VeganHub.Infrastructure.Migrations
                     b.ToTable("AspNetUsers", (string)null);
                 });
 
-            modelBuilder.Entity("VeganHub.Core.Models.Recipe", b =>
+            modelBuilder.Entity("VegWiz.Core.Models.Recipe", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -319,7 +319,7 @@ namespace VeganHub.Infrastructure.Migrations
                     b.ToTable("Recipes");
                 });
 
-            modelBuilder.Entity("VeganHub.Core.Models.RecipeTag", b =>
+            modelBuilder.Entity("VegWiz.Core.Models.RecipeTag", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -338,7 +338,7 @@ namespace VeganHub.Infrastructure.Migrations
                     b.ToTable("Tags");
                 });
 
-            modelBuilder.Entity("VeganHub.Core.Models.UserDietary", b =>
+            modelBuilder.Entity("VegWiz.Core.Models.UserDietary", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -375,7 +375,7 @@ namespace VeganHub.Infrastructure.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
-                    b.HasOne("VeganHub.Core.Models.ApplicationUser", null)
+                    b.HasOne("VegWiz.Core.Models.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -384,7 +384,7 @@ namespace VeganHub.Infrastructure.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
-                    b.HasOne("VeganHub.Core.Models.ApplicationUser", null)
+                    b.HasOne("VegWiz.Core.Models.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -399,7 +399,7 @@ namespace VeganHub.Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("VeganHub.Core.Models.ApplicationUser", null)
+                    b.HasOne("VegWiz.Core.Models.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -408,7 +408,7 @@ namespace VeganHub.Infrastructure.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
-                    b.HasOne("VeganHub.Core.Models.ApplicationUser", null)
+                    b.HasOne("VegWiz.Core.Models.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -417,22 +417,22 @@ namespace VeganHub.Infrastructure.Migrations
 
             modelBuilder.Entity("RecipeRecipeTag", b =>
                 {
-                    b.HasOne("VeganHub.Core.Models.Recipe", null)
+                    b.HasOne("VegWiz.Core.Models.Recipe", null)
                         .WithMany()
                         .HasForeignKey("RecipeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("VeganHub.Core.Models.RecipeTag", null)
+                    b.HasOne("VegWiz.Core.Models.RecipeTag", null)
                         .WithMany()
                         .HasForeignKey("TagsId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("VeganHub.Core.Models.Recipe", b =>
+            modelBuilder.Entity("VegWiz.Core.Models.Recipe", b =>
                 {
-                    b.OwnsOne("VeganHub.Core.Models.NutritionalInfo", "NutritionalInfo", b1 =>
+                    b.OwnsOne("VegWiz.Core.Models.NutritionalInfo", "NutritionalInfo", b1 =>
                         {
                             b1.Property<Guid>("RecipeId")
                                 .HasColumnType("uniqueidentifier");
@@ -460,7 +460,7 @@ namespace VeganHub.Infrastructure.Migrations
                                 .HasForeignKey("RecipeId");
                         });
 
-                    b.OwnsMany("VeganHub.Core.Models.RecipeIngredient", "Ingredients", b1 =>
+                    b.OwnsMany("VegWiz.Core.Models.RecipeIngredient", "Ingredients", b1 =>
                         {
                             b1.Property<Guid>("Id")
                                 .ValueGeneratedOnAdd()
@@ -489,7 +489,7 @@ namespace VeganHub.Infrastructure.Migrations
                             b1.WithOwner()
                                 .HasForeignKey("RecipeId");
 
-                            b1.OwnsOne("VeganHub.Core.Models.NutritionalInfo", "NutritionalInfo", b2 =>
+                            b1.OwnsOne("VegWiz.Core.Models.NutritionalInfo", "NutritionalInfo", b2 =>
                                 {
                                     b2.Property<Guid>("RecipeIngredientId")
                                         .HasColumnType("uniqueidentifier");
@@ -527,18 +527,18 @@ namespace VeganHub.Infrastructure.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("VeganHub.Core.Models.UserDietary", b =>
+            modelBuilder.Entity("VegWiz.Core.Models.UserDietary", b =>
                 {
-                    b.HasOne("VeganHub.Core.Models.ApplicationUser", "User")
+                    b.HasOne("VegWiz.Core.Models.ApplicationUser", "User")
                         .WithOne("Dietary")
-                        .HasForeignKey("VeganHub.Core.Models.UserDietary", "UserId")
+                        .HasForeignKey("VegWiz.Core.Models.UserDietary", "UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("VeganHub.Core.Models.ApplicationUser", b =>
+            modelBuilder.Entity("VegWiz.Core.Models.ApplicationUser", b =>
                 {
                     b.Navigation("Dietary");
                 });

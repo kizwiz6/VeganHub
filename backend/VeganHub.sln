@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VeganHub.API", "VeganHub.API\VeganHub.API.csproj", "{4C1D6494-4A1E-4915-8886-9B92DB4B4884}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VegWiz.API", "VegWiz.API\VegWiz.API.csproj", "{4C1D6494-4A1E-4915-8886-9B92DB4B4884}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VeganHub.Core", "VeganHub.Core\VeganHub.Core.csproj", "{D14284F5-11BB-47F0-AC58-B87DC81D8AD1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VegWiz.Core", "VegWiz.Core\VegWiz.Core.csproj", "{D14284F5-11BB-47F0-AC58-B87DC81D8AD1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VeganHub.Infrastructure", "VeganHub.Infrastructure\VeganHub.Infrastructure.csproj", "{0C49381C-CA45-42D2-B033-AE82C75883D7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VegWiz.Infrastructure", "VegWiz.Infrastructure\VegWiz.Infrastructure.csproj", "{0C49381C-CA45-42D2-B033-AE82C75883D7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VeganHub.Tests", "VeganHub.Tests\VeganHub.Tests.csproj", "{B12A10B1-0F8A-4796-8E34-C9DB05B447CF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VegWiz.Tests", "VegWiz.Tests\VegWiz.Tests.csproj", "{B12A10B1-0F8A-4796-8E34-C9DB05B447CF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

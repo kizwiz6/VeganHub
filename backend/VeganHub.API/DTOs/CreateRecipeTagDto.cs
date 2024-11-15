@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace VeganHub.API.DTOs;
+namespace VegWiz.API.DTOs;
 
 public class CreateRecipeTagDto
 {

@@ -1,5 +1,5 @@
-// VeganHub.Core/Models/RecipeRating.cs
-namespace VeganHub.Core.Models;
+// VegWiz.Core/Models/RecipeRating.cs
+namespace VegWiz.Core.Models;
 
 public class RecipeRating
 {

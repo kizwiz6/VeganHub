@@ -9,6 +9,7 @@ interface FormFieldProps {
   children: ReactNode;
   className?: string;
   helpText?: string;
+  id: string;
   isValid?: boolean;
 }
 
@@ -19,16 +20,14 @@ export function FormField({
   className,
   helpText,
   id,
-}: FormFieldProps & { id?: string }) {
+}: FormFieldProps) {
   const getErrorMessage = (error: FormFieldProps["error"]): string | null => {
     if (!error) return null;
 
-    // If it's a FieldError object with message
     if ("message" in error && typeof error.message === "string") {
       return error.message;
     }
 
-    // If it's a FieldErrors object
     if (typeof error === "object") {
       const firstError = Object.values(error)[0];
       if (firstError && "message" in firstError) {
@@ -43,7 +42,11 @@ export function FormField({
     <div className={cn("space-y-2", className)}>
       <label
         htmlFor={id}
-        className="block text-sm font-medium text-gray-700 dark:text-gray-200"
+        className={cn(
+          "block text-sm font-medium",
+          error ? "text-red-500" : "text-gray-700 dark:text-gray-200",
+         // isValid && "text-green-500" // Optional styling if isValid is true
+        )}
       >
         {label}
       </label>

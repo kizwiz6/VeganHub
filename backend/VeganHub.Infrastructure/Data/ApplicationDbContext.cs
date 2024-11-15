@@ -1,10 +1,10 @@
-// VeganHub.Infrastructure/Data/ApplicationDbContext.cs
+// VegWiz.Infrastructure/Data/ApplicationDbContext.cs
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using VeganHub.Core.Models;
+using VegWiz.Core.Models;
 using System.Text.Json;
 
-namespace VeganHub.Infrastructure.Data
+namespace VegWiz.Infrastructure.Data
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {

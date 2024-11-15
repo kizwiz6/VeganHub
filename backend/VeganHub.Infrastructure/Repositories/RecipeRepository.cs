@@ -1,9 +1,9 @@
 using Microsoft.EntityFrameworkCore;
-using VeganHub.Core.Interfaces;
-using VeganHub.Core.Models;
-using VeganHub.Infrastructure.Data;
+using VegWiz.Core.Interfaces;
+using VegWiz.Core.Models;
+using VegWiz.Infrastructure.Data;
 
-namespace VeganHub.Infrastructure.Repositories;
+namespace VegWiz.Infrastructure.Repositories;
 
 /// <summary>
 /// Implementation of the recipe repository pattern for database operations.

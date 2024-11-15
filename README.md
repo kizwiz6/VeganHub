@@ -1,4 +1,4 @@
-# VeganHub - Vegan Recipe Sharing Platform
+# VegWiz - Vegan Recipe Sharing Platform
 
 ## Project Overview
 A web application for sharing and discovering vegan recipes, featuring a modern, responsive interface with smooth animations and user-friendly interactions.

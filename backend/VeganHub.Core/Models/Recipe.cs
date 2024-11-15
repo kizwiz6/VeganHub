@@ -1,9 +1,9 @@
-// VeganHub.Core/Models/Recipe.cs
+// VegWiz.Core/Models/Recipe.cs
 using System;
 using System.Collections.Generic;
-using VeganHub.Core.Enums;
+using VegWiz.Core.Enums;
 
-namespace VeganHub.Core.Models;
+namespace VegWiz.Core.Models;
 
 /// <summary>
 /// Represents a recipe in the system.

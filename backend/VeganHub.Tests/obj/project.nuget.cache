@@ -2,7 +2,7 @@
   "version": 2,
   "dgSpecHash": "BgHB4EclYbw=",
   "success": true,
-  "projectFilePath": "C:\\Users\\kizwi\\source\\VeganHub\\backend\\VeganHub.Tests\\VeganHub.Tests.csproj",
+  "projectFilePath": "C:\\Users\\kizwi\\source\\VegWiz\\backend\\VegWiz.Tests\\VegWiz.Tests.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\kizwi\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\kizwi\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",

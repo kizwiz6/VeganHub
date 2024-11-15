@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
-    <ProjectReference Include="..\VeganHub.Core\VeganHub.Core.csproj" />
+    <ProjectReference Include="..\VegWiz.Core\VegWiz.Core.csproj" />
   </ItemGroup>
 
   <ItemGroup>

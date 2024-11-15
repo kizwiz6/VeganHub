@@ -1,10 +1,10 @@
-// VeganHub.Core/Interfaces/IRecipeRepository.cs
+// VegWiz.Core/Interfaces/IRecipeRepository.cs
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using VeganHub.Core.Models;
+using VegWiz.Core.Models;
 
-namespace VeganHub.Core.Interfaces;
+namespace VegWiz.Core.Interfaces;
 
 /// <summary>
 /// Interface for recipe repository operations.

@@ -1,4 +1,4 @@
-﻿namespace VeganHub.Infrastructure;
+﻿namespace VegWiz.Infrastructure;
 
 public class Class1
 {

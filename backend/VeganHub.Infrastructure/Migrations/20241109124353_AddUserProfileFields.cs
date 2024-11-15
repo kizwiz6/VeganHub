@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace VeganHub.Infrastructure.Migrations
+namespace VegWiz.Infrastructure.Migrations
 {
     /// <inheritdoc />
     public partial class AddUserProfileFields : Migration

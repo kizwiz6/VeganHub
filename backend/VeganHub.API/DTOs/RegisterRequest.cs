@@ -1,4 +1,4 @@
-// VeganHub.API/DTOs/RegisterRequest.cs
+// VegWiz.API/DTOs/RegisterRequest.cs
 public class RegisterRequest
 {
     public string Email { get; set; } = string.Empty;

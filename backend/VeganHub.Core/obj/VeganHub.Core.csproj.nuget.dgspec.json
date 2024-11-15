@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Kieran\\Documents\\Coding\\Websites\\VeganHub\\backend\\VeganHub.Core\\VeganHub.Core.csproj": {}
+    "C:\\Users\\Kieran\\Documents\\Coding\\Websites\\VegWiz\\backend\\VegWiz.Core\\VegWiz.Core.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Kieran\\Documents\\Coding\\Websites\\VeganHub\\backend\\VeganHub.Core\\VeganHub.Core.csproj": {
+    "C:\\Users\\Kieran\\Documents\\Coding\\Websites\\VegWiz\\backend\\VegWiz.Core\\VegWiz.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Kieran\\Documents\\Coding\\Websites\\VeganHub\\backend\\VeganHub.Core\\VeganHub.Core.csproj",
-        "projectName": "VeganHub.Core",
-        "projectPath": "C:\\Users\\Kieran\\Documents\\Coding\\Websites\\VeganHub\\backend\\VeganHub.Core\\VeganHub.Core.csproj",
+        "projectUniqueName": "C:\\Users\\Kieran\\Documents\\Coding\\Websites\\VegWiz\\backend\\VegWiz.Core\\VegWiz.Core.csproj",
+        "projectName": "VegWiz.Core",
+        "projectPath": "C:\\Users\\Kieran\\Documents\\Coding\\Websites\\VegWiz\\backend\\VegWiz.Core\\VegWiz.Core.csproj",
         "packagesPath": "C:\\Users\\Kieran\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Kieran\\Documents\\Coding\\Websites\\VeganHub\\backend\\VeganHub.Core\\obj\\",
+        "outputPath": "C:\\Users\\Kieran\\Documents\\Coding\\Websites\\VegWiz\\backend\\VegWiz.Core\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

@@ -1,5 +1,5 @@
-// VeganHub.Core/Configuration/JwtSettings.cs
-namespace VeganHub.Core.Configuration;
+// VegWiz.Core/Configuration/JwtSettings.cs
+namespace VegWiz.Core.Configuration;
 
 public class JwtSettings
 {    public string Key { get; set; } = string.Empty;

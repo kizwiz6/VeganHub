@@ -1,7 +1,7 @@
 // ApplicationUser.cs
 using Microsoft.AspNetCore.Identity;
 
-namespace VeganHub.Core.Models;
+namespace VegWiz.Core.Models;
 
 public class ApplicationUser : IdentityUser
 {
