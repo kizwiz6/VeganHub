@@ -21,19 +21,22 @@ public class AuthController : ControllerBase
     private readonly JwtSettings _jwtSettings;
     private readonly ILogger<AuthController> _logger;
     private readonly IWebHostEnvironment _webHostEnvironment;
+    private readonly IEmailService _emailService;
 
     public AuthController(
         UserManager<ApplicationUser> userManager,
         SignInManager<ApplicationUser> signInManager,
         IOptions<JwtSettings> jwtSettings,
         ILogger<AuthController> logger,
-        IWebHostEnvironment webHostEnvironment)
+        IWebHostEnvironment webHostEnvironment,
+        IEmailService emailService)
     {
         _userManager = userManager;
         _signInManager = signInManager;
         _jwtSettings = jwtSettings.Value;
         _logger = logger;
         _webHostEnvironment = webHostEnvironment;
+        _emailService = emailService;
     }
 
     [HttpPost("register")]
@@ -46,24 +49,31 @@ public class AuthController : ControllerBase
             {
                 UserName = request.Username,
                 Email = request.Email,
-                CreatedAt = DateTime.UtcNow
+                CreatedAt = DateTime.UtcNow,
+                EmailConfirmed = false // Ensure email isn't confirmed
             };
 
             var result = await _userManager.CreateAsync(user, request.Password);
-            if (result.Succeeded)
+            if (!result.Succeeded)
             {
-                _logger.LogInformation("User created successfully");
-                return Ok(new { 
-                    message = "Registration successful",
-                    user = new {
-                        user.Id,
-                        user.UserName,
-                        user.Email
-                    }
-                });
+                return BadRequest(new { Errors = result.Errors });
             }
 
-            return BadRequest(new { Errors = result.Errors });
+            // Generate and send verification email
+            var token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+            await _emailService.SendVerificationEmailAsync(request.Email, token);
+
+            _logger.LogInformation("User created successfully, verification email sent");
+            return Ok(new
+            {
+                message = "Registration successful. Please check your email to verify your account.",
+                user = new
+                {
+                    user.Id,
+                    user.UserName,
+                    user.Email
+                }
+            });
         }
         catch (Exception ex)
         {

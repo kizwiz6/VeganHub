@@ -21,7 +21,7 @@ if (builder.Environment.IsDevelopment())
 // Add services to the container.
 builder.Services.AddControllers();
 
-// Add JWT Settings first
+// Add JWT Settings 
 builder.Services.Configure<JwtSettings>(builder.Configuration.GetSection("JwtSettings"));
 var jwtSettings = builder.Configuration.GetSection("JwtSettings").Get<JwtSettings>();
 
@@ -71,6 +71,8 @@ builder.Services.AddSwaggerGen(c =>
         }
     });
 });
+
+builder.Services.AddScoped<IEmailService, EmailService>();
 
 // Add Identity
 builder.Services.AddIdentity<VegWiz.Core.Models.ApplicationUser, IdentityRole>(options =>

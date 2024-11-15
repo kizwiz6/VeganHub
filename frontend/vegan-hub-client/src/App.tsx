@@ -16,9 +16,11 @@ import { ThemeProvider } from '@/contexts/ThemeContext';
 import RecipeDetail from './pages/RecipeDetail';
 import Privacy from './pages/Privacy.tsx';
 import Terms from './pages/Terms.tsx';
+import { GoogleOAuthProvider } from '@react-oauth/google';
 
 function App() {
   return (
+    <GoogleOAuthProvider clientId={import.meta.env.VITE_GOOGLE_CLIENT_ID}>
     <Router>
       <ThemeProvider>
         <AuthProvider>
@@ -67,6 +69,7 @@ function App() {
         </AuthProvider>
       </ThemeProvider>
     </Router>
+    </GoogleOAuthProvider>
   );
 }
 
