@@ -1,3 +1,10 @@
+// src/types/recipe.ts
+export enum RecipeStatus {
+  PENDING = 'pending',
+  APPROVED = 'approved',
+  REJECTED = 'rejected'
+}
+
 export interface Recipe {
   id: string;
   title: string;
@@ -15,6 +22,10 @@ export interface Recipe {
   imageUrl?: string;
   difficulty?: string;
   slug: string;
+  status: RecipeStatus;
+  moderationNotes?: string;
+  submittedAt: Date;
+  approvedAt?: Date;
 }
 
 export interface RecipeWithDifficulty extends Recipe {
