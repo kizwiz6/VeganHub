@@ -1,8 +1,8 @@
 import { Button } from '@/components/ui/button';
-import { Github, Twitter, Chrome } from 'lucide-react';  // Changed from Google to Chrome
+import { Chrome, Facebook } from 'lucide-react';
 
 interface SocialLoginProps {
-  onSocialLogin: (provider: 'google' | 'github' | 'twitter') => Promise<void>;
+  onSocialLogin: (provider: 'google' | 'facebook') => Promise<void>;
   isLoading?: boolean;
 }
 
@@ -33,19 +33,10 @@ export function SocialLogin({ onSocialLogin, isLoading }: SocialLoginProps) {
         <Button
           variant="outline"
           disabled={isLoading}
-          onClick={() => onSocialLogin('github')}
+          onClick={() => onSocialLogin('facebook')}
           className="w-full"
         >
-          <Github className="h-4 w-4" />
-        </Button>
-
-        <Button
-          variant="outline"
-          disabled={isLoading}
-          onClick={() => onSocialLogin('twitter')}
-          className="w-full"
-        >
-          <Twitter className="h-4 w-4" />
+          <Facebook className="h-4 w-4" />
         </Button>
       </div>
     </div>

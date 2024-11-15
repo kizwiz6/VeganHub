@@ -1,7 +1,7 @@
 // src/components/ui/form-field.tsx
-import { ReactNode } from 'react';
-import { FieldError, FieldErrors, FieldValues } from 'react-hook-form';
-import { cn } from '@/lib/utils';
+import React, { ReactNode } from "react";
+import { FieldError, FieldErrors, FieldValues } from "react-hook-form";
+import { cn } from "@/lib/utils";
 
 interface FormFieldProps {
   label: string;
@@ -17,20 +17,21 @@ export function FormField({
   error,
   children,
   className,
-  helpText
-}: FormFieldProps) {
-  const getErrorMessage = (error: FormFieldProps['error']): string | null => {
+  helpText,
+  id,
+}: FormFieldProps & { id?: string }) {
+  const getErrorMessage = (error: FormFieldProps["error"]): string | null => {
     if (!error) return null;
 
     // If it's a FieldError object with message
-    if ('message' in error && typeof error.message === 'string') {
+    if ("message" in error && typeof error.message === "string") {
       return error.message;
     }
 
     // If it's a FieldErrors object
-    if (typeof error === 'object') {
+    if (typeof error === "object") {
       const firstError = Object.values(error)[0];
-      if (firstError && 'message' in firstError) {
+      if (firstError && "message" in firstError) {
         return firstError.message || null;
       }
     }
@@ -39,18 +40,22 @@ export function FormField({
   };
 
   return (
-    <div className={cn('space-y-2', className)}>
-      <label className="block text-sm font-medium text-gray-700 dark:text-gray-200">
+    <div className={cn("space-y-2", className)}>
+      <label
+        htmlFor={id}
+        className="block text-sm font-medium text-gray-700 dark:text-gray-200"
+      >
         {label}
       </label>
       <div className="relative">
-        {children}
+        {React.cloneElement(children as React.ReactElement, { id })}
       </div>
-      {error && getErrorMessage(error) ? (
+      {error && (
         <p className="text-sm text-red-500">{getErrorMessage(error)}</p>
-      ) : helpText ? (
-        <p className="text-sm text-gray-500 dark:text-gray-300">{helpText}</p>
-      ) : null}
+      )}
+      {helpText && !error && (
+        <p className="text-sm text-gray-500 dark:text-gray-400">{helpText}</p>
+      )}
     </div>
   );
 }

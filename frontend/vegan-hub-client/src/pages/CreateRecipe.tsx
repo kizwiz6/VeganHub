@@ -129,6 +129,7 @@ export default function CreateRecipe() {
 
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-8">
           <FormField
+            id="recipe-title"
             label="Title"
             error={errors.title}
             isValid={dirtyFields.title && !errors.title}

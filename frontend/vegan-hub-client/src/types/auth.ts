@@ -28,6 +28,8 @@ export interface AuthContextType {
   register: (email: string, password: string, username: string) => Promise<void>;
   logout: () => Promise<void>;
   updateProfile: (data: ProfileFormData) => Promise<{ user: User }>;
+  handleGoogleLogin: () => Promise<void>;
+  handleFacebookLogin: () => Promise<void>;
 }
 
 export interface AuthResponse {
