@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\kizwi\\source\\VeganHub\\backend\\VeganHub.Tests\\VeganHub.Tests.csproj": {}
+    "C:\\Users\\Kieran\\Documents\\Coding\\Websites\\VeganHub\\backend\\VeganHub.Tests\\VeganHub.Tests.csproj": {}
   },
   "projects": {
-    "C:\\Users\\kizwi\\source\\VeganHub\\backend\\VeganHub.API\\VeganHub.API.csproj": {
+    "C:\\Users\\Kieran\\Documents\\Coding\\Websites\\VeganHub\\backend\\VeganHub.API\\VeganHub.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\kizwi\\source\\VeganHub\\backend\\VeganHub.API\\VeganHub.API.csproj",
+        "projectUniqueName": "C:\\Users\\Kieran\\Documents\\Coding\\Websites\\VeganHub\\backend\\VeganHub.API\\VeganHub.API.csproj",
         "projectName": "VeganHub.API",
-        "projectPath": "C:\\Users\\kizwi\\source\\VeganHub\\backend\\VeganHub.API\\VeganHub.API.csproj",
-        "packagesPath": "C:\\Users\\kizwi\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\kizwi\\source\\VeganHub\\backend\\VeganHub.API\\obj\\",
+        "projectPath": "C:\\Users\\Kieran\\Documents\\Coding\\Websites\\VeganHub\\backend\\VeganHub.API\\VeganHub.API.csproj",
+        "packagesPath": "C:\\Users\\Kieran\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Kieran\\Documents\\Coding\\Websites\\VeganHub\\backend\\VeganHub.API\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\kizwi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Kieran\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -33,11 +33,11 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\kizwi\\source\\VeganHub\\backend\\VeganHub.Core\\VeganHub.Core.csproj": {
-                "projectPath": "C:\\Users\\kizwi\\source\\VeganHub\\backend\\VeganHub.Core\\VeganHub.Core.csproj"
+              "C:\\Users\\Kieran\\Documents\\Coding\\Websites\\VeganHub\\backend\\VeganHub.Core\\VeganHub.Core.csproj": {
+                "projectPath": "C:\\Users\\Kieran\\Documents\\Coding\\Websites\\VeganHub\\backend\\VeganHub.Core\\VeganHub.Core.csproj"
               },
-              "C:\\Users\\kizwi\\source\\VeganHub\\backend\\VeganHub.Infrastructure\\VeganHub.Infrastructure.csproj": {
-                "projectPath": "C:\\Users\\kizwi\\source\\VeganHub\\backend\\VeganHub.Infrastructure\\VeganHub.Infrastructure.csproj"
+              "C:\\Users\\Kieran\\Documents\\Coding\\Websites\\VeganHub\\backend\\VeganHub.Infrastructure\\VeganHub.Infrastructure.csproj": {
+                "projectPath": "C:\\Users\\Kieran\\Documents\\Coding\\Websites\\VeganHub\\backend\\VeganHub.Infrastructure\\VeganHub.Infrastructure.csproj"
               }
             }
           }
@@ -83,6 +83,10 @@
               "target": "Package",
               "version": "[8.0.10, )"
             },
+            "SendGrid": {
+              "target": "Package",
+              "version": "[9.29.3, )"
+            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.9.0, )"
@@ -115,20 +119,20 @@
         }
       }
     },
-    "C:\\Users\\kizwi\\source\\VeganHub\\backend\\VeganHub.Core\\VeganHub.Core.csproj": {
+    "C:\\Users\\Kieran\\Documents\\Coding\\Websites\\VeganHub\\backend\\VeganHub.Core\\VeganHub.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\kizwi\\source\\VeganHub\\backend\\VeganHub.Core\\VeganHub.Core.csproj",
+        "projectUniqueName": "C:\\Users\\Kieran\\Documents\\Coding\\Websites\\VeganHub\\backend\\VeganHub.Core\\VeganHub.Core.csproj",
         "projectName": "VeganHub.Core",
-        "projectPath": "C:\\Users\\kizwi\\source\\VeganHub\\backend\\VeganHub.Core\\VeganHub.Core.csproj",
-        "packagesPath": "C:\\Users\\kizwi\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\kizwi\\source\\VeganHub\\backend\\VeganHub.Core\\obj\\",
+        "projectPath": "C:\\Users\\Kieran\\Documents\\Coding\\Websites\\VeganHub\\backend\\VeganHub.Core\\VeganHub.Core.csproj",
+        "packagesPath": "C:\\Users\\Kieran\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Kieran\\Documents\\Coding\\Websites\\VeganHub\\backend\\VeganHub.Core\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\kizwi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Kieran\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -190,20 +194,20 @@
         }
       }
     },
-    "C:\\Users\\kizwi\\source\\VeganHub\\backend\\VeganHub.Infrastructure\\VeganHub.Infrastructure.csproj": {
+    "C:\\Users\\Kieran\\Documents\\Coding\\Websites\\VeganHub\\backend\\VeganHub.Infrastructure\\VeganHub.Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\kizwi\\source\\VeganHub\\backend\\VeganHub.Infrastructure\\VeganHub.Infrastructure.csproj",
+        "projectUniqueName": "C:\\Users\\Kieran\\Documents\\Coding\\Websites\\VeganHub\\backend\\VeganHub.Infrastructure\\VeganHub.Infrastructure.csproj",
         "projectName": "VeganHub.Infrastructure",
-        "projectPath": "C:\\Users\\kizwi\\source\\VeganHub\\backend\\VeganHub.Infrastructure\\VeganHub.Infrastructure.csproj",
-        "packagesPath": "C:\\Users\\kizwi\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\kizwi\\source\\VeganHub\\backend\\VeganHub.Infrastructure\\obj\\",
+        "projectPath": "C:\\Users\\Kieran\\Documents\\Coding\\Websites\\VeganHub\\backend\\VeganHub.Infrastructure\\VeganHub.Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\Kieran\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Kieran\\Documents\\Coding\\Websites\\VeganHub\\backend\\VeganHub.Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\kizwi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Kieran\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -219,8 +223,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\kizwi\\source\\VeganHub\\backend\\VeganHub.Core\\VeganHub.Core.csproj": {
-                "projectPath": "C:\\Users\\kizwi\\source\\VeganHub\\backend\\VeganHub.Core\\VeganHub.Core.csproj"
+              "C:\\Users\\Kieran\\Documents\\Coding\\Websites\\VeganHub\\backend\\VeganHub.Core\\VeganHub.Core.csproj": {
+                "projectPath": "C:\\Users\\Kieran\\Documents\\Coding\\Websites\\VeganHub\\backend\\VeganHub.Core\\VeganHub.Core.csproj"
               }
             }
           }
@@ -261,6 +265,10 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[8.0.10, )"
+            },
+            "SendGrid": {
+              "target": "Package",
+              "version": "[9.29.3, )"
             }
           },
           "imports": [
@@ -283,20 +291,20 @@
         }
       }
     },
-    "C:\\Users\\kizwi\\source\\VeganHub\\backend\\VeganHub.Tests\\VeganHub.Tests.csproj": {
+    "C:\\Users\\Kieran\\Documents\\Coding\\Websites\\VeganHub\\backend\\VeganHub.Tests\\VeganHub.Tests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\kizwi\\source\\VeganHub\\backend\\VeganHub.Tests\\VeganHub.Tests.csproj",
+        "projectUniqueName": "C:\\Users\\Kieran\\Documents\\Coding\\Websites\\VeganHub\\backend\\VeganHub.Tests\\VeganHub.Tests.csproj",
         "projectName": "VeganHub.Tests",
-        "projectPath": "C:\\Users\\kizwi\\source\\VeganHub\\backend\\VeganHub.Tests\\VeganHub.Tests.csproj",
-        "packagesPath": "C:\\Users\\kizwi\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\kizwi\\source\\VeganHub\\backend\\VeganHub.Tests\\obj\\",
+        "projectPath": "C:\\Users\\Kieran\\Documents\\Coding\\Websites\\VeganHub\\backend\\VeganHub.Tests\\VeganHub.Tests.csproj",
+        "packagesPath": "C:\\Users\\Kieran\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Kieran\\Documents\\Coding\\Websites\\VeganHub\\backend\\VeganHub.Tests\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\kizwi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Kieran\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -312,14 +320,14 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\kizwi\\source\\VeganHub\\backend\\VeganHub.API\\VeganHub.API.csproj": {
-                "projectPath": "C:\\Users\\kizwi\\source\\VeganHub\\backend\\VeganHub.API\\VeganHub.API.csproj"
+              "C:\\Users\\Kieran\\Documents\\Coding\\Websites\\VeganHub\\backend\\VeganHub.API\\VeganHub.API.csproj": {
+                "projectPath": "C:\\Users\\Kieran\\Documents\\Coding\\Websites\\VeganHub\\backend\\VeganHub.API\\VeganHub.API.csproj"
               },
-              "C:\\Users\\kizwi\\source\\VeganHub\\backend\\VeganHub.Core\\VeganHub.Core.csproj": {
-                "projectPath": "C:\\Users\\kizwi\\source\\VeganHub\\backend\\VeganHub.Core\\VeganHub.Core.csproj"
+              "C:\\Users\\Kieran\\Documents\\Coding\\Websites\\VeganHub\\backend\\VeganHub.Core\\VeganHub.Core.csproj": {
+                "projectPath": "C:\\Users\\Kieran\\Documents\\Coding\\Websites\\VeganHub\\backend\\VeganHub.Core\\VeganHub.Core.csproj"
               },
-              "C:\\Users\\kizwi\\source\\VeganHub\\backend\\VeganHub.Infrastructure\\VeganHub.Infrastructure.csproj": {
-                "projectPath": "C:\\Users\\kizwi\\source\\VeganHub\\backend\\VeganHub.Infrastructure\\VeganHub.Infrastructure.csproj"
+              "C:\\Users\\Kieran\\Documents\\Coding\\Websites\\VeganHub\\backend\\VeganHub.Infrastructure\\VeganHub.Infrastructure.csproj": {
+                "projectPath": "C:\\Users\\Kieran\\Documents\\Coding\\Websites\\VeganHub\\backend\\VeganHub.Infrastructure\\VeganHub.Infrastructure.csproj"
               }
             }
           }

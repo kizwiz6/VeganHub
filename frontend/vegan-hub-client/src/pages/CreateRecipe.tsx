@@ -30,11 +30,11 @@ export default function CreateRecipe() {
   } = useForm<CreateRecipeFormData>({
     resolver: zodResolver(createRecipeSchema),
     defaultValues: {
-      ingredients: [{ 
-        name: '', 
-        quantity: 0, 
-        unit: '', 
-        nutritionalInfo: { calories: 0, protein: 0, carbohydrates: 0, fat: 0, fiber: 0 } 
+      ingredients: [{
+        name: '',
+        quantity: 0,
+        unit: '',
+        nutritionalInfo: { calories: 0, protein: 0, carbohydrates: 0, fat: 0, fiber: 0 }
       }],
       tags: [],
       difficulty: 'Medium'
@@ -77,31 +77,31 @@ export default function CreateRecipe() {
         .toLowerCase()
         .replace(/[^a-z0-9]+/g, '-')
         .replace(/(^-|-$)/g, '');
-  
+
       const recipe = {
         ...data,
         slug: baseSlug,
         status: 'pending',
         submittedAt: new Date().toISOString(),
       };
-  
+
       // Submit to API
       await api.post('/recipes', recipe);
-  
+
       toast({
         title: 'Recipe submitted!',
         description: 'Your recipe is pending approval. We\'ll notify you once it\'s reviewed.',
       });
-  
+
       // Redirect to recipes list
       navigate('/recipes');
     } catch (err) {
       console.error('Error creating recipe:', err);
-  
+
       const errorMessage = err instanceof Error
         ? err.message
         : 'Failed to create recipe. Please try again.';
-  
+
       toast({
         title: 'Error',
         description: errorMessage,
@@ -129,6 +129,7 @@ export default function CreateRecipe() {
 
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-8">
           <FormField
+            id="recipe-title"
             label="Title"
             error={errors.title}
             isValid={dirtyFields.title && !errors.title}
@@ -146,6 +147,7 @@ export default function CreateRecipe() {
           </FormField>
 
           <FormField
+            id="recipe-title"
             label="Description"
             error={errors.description}
             isValid={dirtyFields.description && !errors.description}
@@ -164,23 +166,24 @@ export default function CreateRecipe() {
 
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
             <FormField
+              id="prep-time"
               label="Prep Time (mins)"
               error={errors.prepTime}
               isValid={dirtyFields.prepTime && !errors.prepTime}
             >
               <Input
-                {...register('prepTime', { valueAsNumber: true })}
-                type="number"
-                placeholder="15"
+                {...register('title')}
+                placeholder="E.g., Creamy Vegan Mushroom Risotto"
                 className={cn(
                   "dark:bg-gray-800 dark:text-gray-100 dark:placeholder-gray-400",
-                  errors.prepTime && 'border-red-500',
-                  dirtyFields.prepTime && !errors.prepTime && 'border-green-500'
+                  errors.title && 'border-red-500',
+                  dirtyFields.title && !errors.title && 'border-green-500'
                 )}
               />
             </FormField>
 
             <FormField
+              id="cook-time"
               label="Cook Time (mins)"
               error={errors.cookTime}
               isValid={dirtyFields.cookTime && !errors.cookTime}
@@ -198,6 +201,7 @@ export default function CreateRecipe() {
             </FormField>
 
             <FormField
+              id="servings"
               label="Servings"
               error={errors.servings}
               isValid={dirtyFields.servings && !errors.servings}
@@ -215,6 +219,7 @@ export default function CreateRecipe() {
             </FormField>
 
             <FormField
+              id="difficulty"
               label="Difficulty"
               error={errors.difficulty}
               isValid={dirtyFields.difficulty && !errors.difficulty}
@@ -252,6 +257,7 @@ export default function CreateRecipe() {
               {ingredientFields.map((field, index) => (
                 <div key={field.id} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 p-4 border rounded-lg dark:border-gray-700 dark:bg-gray-800">
                   <FormField
+                    id="name"
                     label="Name"
                     error={errors.ingredients?.[index]?.name}
                   >
@@ -264,6 +270,7 @@ export default function CreateRecipe() {
 
 
                   <FormField
+                    id="quantity"
                     label="Quantity"
                     error={errors.ingredients?.[index]?.quantity}
                   >
@@ -278,6 +285,7 @@ export default function CreateRecipe() {
 
 
                   <FormField
+                    id="unit"
                     label="Unit"
                     error={errors.ingredients?.[index]?.unit}
                   >
@@ -304,6 +312,7 @@ export default function CreateRecipe() {
           </div>
 
           <FormField
+            id="tags"
             label="Tags"
             error={errors.tags ? { message: 'Please add at least one tag' } : undefined}
             isValid={dirtyFields.tags && !errors.tags}
@@ -321,12 +330,13 @@ export default function CreateRecipe() {
           </FormField>
 
           <FormField
+            id="instructions"
             label="Instructions"
             error={errors.instructions}
             isValid={dirtyFields.instructions && !errors.instructions}
             helpText="Add step-by-step instructions"
           >
-          <Textarea
+            <Textarea
               {...register('instructions')}
               placeholder="1. Begin by..."
               className={cn(

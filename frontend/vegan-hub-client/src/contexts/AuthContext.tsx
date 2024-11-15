@@ -4,6 +4,7 @@ import { useToast } from '@/hooks/use-toast';
 import { authApi } from '@/lib/api/auth';
 import type { User, AuthContextType } from '@/types/auth';
 import type { ProfileFormData } from '@/types/profile';
+import { GoogleOAuthProvider, useGoogleLogin } from '@react-oauth/google';
 
 export const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
@@ -79,7 +80,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   }, [isLoading]);
 
   const handleAuthError = (error: AuthError) => {
-    const errorMessage = error.errors 
+    const errorMessage = error.errors
       ? Object.values(error.errors).flat().join('. ')
       : error.message || 'An error occurred';
 
@@ -190,6 +191,62 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     }
   };
 
+  const handleGoogleLogin = async () => {
+    try {
+      const login = useGoogleLogin({
+        onSuccess: async (response) => {
+          // Send token to your backend
+          const result = await authApi.googleLogin(response.access_token);
+          setUser(result.user);
+          localStorage.setItem('token', result.token);
+        },
+      });
+
+      login();
+    } catch (error) {
+      console.error('Google login failed:', error);
+      toast({
+        title: 'Error',
+        description: 'Failed to login with Google',
+        variant: 'destructive',
+      });
+    }
+  };
+
+  // Facebook response type
+  interface FacebookLoginResponse {
+    authResponse?: {
+      accessToken: string;
+    };
+    status?: string;
+  }
+
+  const handleFacebookLogin = async () => {
+    try {
+      window.FB?.login(async (response: FacebookLoginResponse) => {
+        if (response.authResponse?.accessToken) {
+          const result = await authApi.facebookLogin(response.authResponse.accessToken);
+          setUser(result.user);
+          localStorage.setItem('token', result.token);
+
+          navigate('/recipes');
+
+          toast({
+            title: 'Success',
+            description: 'Successfully logged in with Facebook',
+          });
+        }
+      });
+    } catch (error) {
+      console.error('Facebook login failed:', error);
+      toast({
+        title: 'Error',
+        description: 'Failed to login with Facebook',
+        variant: 'destructive',
+      });
+    }
+  };
+
   return (
     <AuthContext.Provider
       value={{
@@ -200,6 +257,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         register,
         logout,
         updateProfile,
+        handleGoogleLogin,  
+        handleFacebookLogin  
       }}
     >
       {isLoading ? (

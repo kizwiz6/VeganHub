@@ -10,6 +10,11 @@ const api = axios.create({
   timeout: 10000,
 });
 
+export interface SocialLoginResponse {
+  user: User;
+  token: string;
+}
+
 export interface AuthResponse {
   user: {
     id: string;
@@ -221,6 +226,16 @@ export const authApi = {
       }
     }
     return new Error('An unexpected error occurred');
+  },
+
+  googleLogin: async (token: string): Promise<SocialLoginResponse> => {
+    const response = await api.post('/auth/google', { token });
+    return response.data;
+  },
+
+  facebookLogin: async (token: string): Promise<SocialLoginResponse> => {
+    const response = await api.post('/auth/facebook', { token });
+    return response.data;
   }
 };
 
