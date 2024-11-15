@@ -13,6 +13,7 @@ import { useToast } from '@/hooks/use-toast';
 import { cn } from '@/lib/utils';
 import { Trash2 } from 'lucide-react';
 import { TagInput } from '@/components/ui/tag-input';
+import { api } from '@/lib/api/axios';
 
 export default function CreateRecipe() {
   const [formProgress, setFormProgress] = useState(0);
@@ -71,21 +72,36 @@ export default function CreateRecipe() {
 
   const onSubmit = async (data: CreateRecipeFormData) => {
     try {
-      console.log('Form data:', data);
-
+      // Generate unique slug from title
+      const baseSlug = data.title
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, '-')
+        .replace(/(^-|-$)/g, '');
+  
+      const recipe = {
+        ...data,
+        slug: baseSlug,
+        status: 'pending',
+        submittedAt: new Date().toISOString(),
+      };
+  
+      // Submit to API
+      await api.post('/recipes', recipe);
+  
       toast({
-        title: 'Recipe created!',
-        description: 'Your recipe has been successfully created.',
+        title: 'Recipe submitted!',
+        description: 'Your recipe is pending approval. We\'ll notify you once it\'s reviewed.',
       });
-
+  
+      // Redirect to recipes list
       navigate('/recipes');
     } catch (err) {
       console.error('Error creating recipe:', err);
-
+  
       const errorMessage = err instanceof Error
         ? err.message
         : 'Failed to create recipe. Please try again.';
-
+  
       toast({
         title: 'Error',
         description: errorMessage,
