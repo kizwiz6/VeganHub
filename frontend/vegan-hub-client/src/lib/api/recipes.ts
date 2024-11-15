@@ -1,6 +1,7 @@
 // src/lib/api/recipes.ts
 import { Recipe, RecipeStatus } from '@/types/recipe';
 import { api } from './axios';
+import { sampleRecipes } from '@/data';
 
 interface ModerationData {
   status: RecipeStatus;
@@ -8,10 +9,18 @@ interface ModerationData {
 }
 
 export const recipesApi = {
-  getBySlug: async (slug: string): Promise<Recipe> => {
-    const response = await api.get(`/recipes/${slug}`);
-    return response.data;
-  },
+    getAll: async (): Promise<Recipe[]> => {
+        // Only return approved recipes
+        return sampleRecipes.filter(recipe => recipe.status === RecipeStatus.APPROVED);
+        },
+
+    getBySlug: async (slug: string): Promise<Recipe> => {
+    const recipe = sampleRecipes.find(r => r.slug === slug);
+    if (!recipe) {
+        throw new Error('Recipe not found');
+    }
+    return recipe;
+    },
 
   getPendingRecipes: async (): Promise<Recipe[]> => {
     const response = await api.get('/recipes/pending');

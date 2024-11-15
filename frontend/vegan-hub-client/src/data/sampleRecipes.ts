@@ -1,9 +1,13 @@
-import { RecipeWithDifficulty } from '@/types/recipe';
+import { Recipe, RecipeStatus } from '@/types/recipe';
 
-export const sampleRecipes: RecipeWithDifficulty[] = [
+export const sampleRecipes: Recipe[] = [
     {
       id: '1',
       title: 'Vegan Chocolate Cake',
+      status: RecipeStatus.APPROVED,
+      submittedAt: new Date('2024-11-14'),
+      approvedAt: new Date('2024-11-15'),
+      slug: 'vegan-chocolate-cake',
       description: 'Rich and moist chocolate cake that\'s completely plant-based',
       instructions: '1. Mix dry ingredients\n2. Add wet ingredients\n3. Bake at 350°F for 30 minutes',
       prepTime: '20',
@@ -30,6 +34,10 @@ export const sampleRecipes: RecipeWithDifficulty[] = [
     {
       id: '2',
       title: 'Quinoa Buddha Bowl',
+      status: RecipeStatus.APPROVED,
+      submittedAt: new Date('2024-11-14'),
+      approvedAt: new Date('2024-11-15'),
+      slug: 'quinoa-buddha-bowl',
       description: 'A nutritious and filling bowl packed with protein',
       instructions: '1. Cook quinoa\n2. Roast vegetables\n3. Assemble bowl',
       prepTime: '15',
@@ -56,6 +64,10 @@ export const sampleRecipes: RecipeWithDifficulty[] = [
     {
       id: '3',
       title: 'Overnight Oats with Berries',
+      status: RecipeStatus.APPROVED,
+      submittedAt: new Date('2024-11-14'),
+      approvedAt: new Date('2024-11-15'),
+      slug: 'overnight-oats-with-berries',
       description: 'Creamy overnight oats topped with fresh berries and nuts',
       instructions: '1. Mix oats with plant milk\n2. Add toppings\n3. Refrigerate overnight',
       prepTime: '10',
@@ -83,6 +95,10 @@ export const sampleRecipes: RecipeWithDifficulty[] = [
     {
       id: '4',
       title: 'Spicy Thai Green Curry',
+      status: RecipeStatus.APPROVED,
+      submittedAt: new Date('2024-11-14'),
+      approvedAt: new Date('2024-11-15'),
+      slug: 'spicy-thai-green-curry',
       description: 'Aromatic and spicy Thai curry with coconut milk and vegetables',
       instructions: '1. Prepare curry paste\n2. Cook vegetables\n3. Simmer with coconut milk',
       prepTime: '30',
@@ -110,6 +126,10 @@ export const sampleRecipes: RecipeWithDifficulty[] = [
     {
       id: '5',
       title: 'Raw Vegan Energy Balls',
+      status: RecipeStatus.APPROVED,
+      submittedAt: new Date('2024-11-14'),
+      approvedAt: new Date('2024-11-15'),
+      slug: 'raw-vegan-energy-balls',
       description: 'No-bake energy balls perfect for a healthy snack',
       instructions: '1. Blend dates and nuts\n2. Form balls\n3. Roll in coconut',
       prepTime: '12',
@@ -137,6 +157,10 @@ export const sampleRecipes: RecipeWithDifficulty[] = [
     {
       id: '6',
       title: 'Homemade Vegan Pizza',
+      status: RecipeStatus.APPROVED,
+      submittedAt: new Date('2024-11-14'),
+      approvedAt: new Date('2024-11-15'),
+      slug: 'homemade-vegan-pizza',
       description: 'Crispy crust topped with fresh vegetables and dairy-free cheese',
       instructions: '1. Make dough\n2. Prepare toppings\n3. Bake until crispy',
       prepTime: '40',
@@ -163,6 +187,10 @@ export const sampleRecipes: RecipeWithDifficulty[] = [
     {
       id: '7',
       title: 'Green Smoothie Bowl',
+      status: RecipeStatus.APPROVED,
+      submittedAt: new Date('2024-11-14'),
+      approvedAt: new Date('2024-11-15'),
+      slug: 'green-smoothie-bowl',
       description: 'Nutrient-packed smoothie bowl with tropical fruits',
       instructions: '1. Blend ingredients\n2. Add toppings\n3. Serve immediately',
       prepTime: '8',
@@ -190,6 +218,10 @@ export const sampleRecipes: RecipeWithDifficulty[] = [
     {
       id: '8',
       title: 'Mushroom Wellington',
+      status: RecipeStatus.APPROVED,
+      submittedAt: new Date('2024-11-14'),
+      approvedAt: new Date('2024-11-15'),
+      slug: 'mushroom-wellington',
       description: 'Elegant pastry-wrapped mushroom roast perfect for special occasions',
       instructions: '1. Prepare filling\n2. Wrap in pastry\n3. Bake until golden',
       prepTime: '45',
