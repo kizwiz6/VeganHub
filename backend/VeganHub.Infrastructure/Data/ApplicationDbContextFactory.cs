@@ -1,16 +1,16 @@
-// VegWiz.Infrastructure/Data/ApplicationDbContextFactory.cs
+// VeganHub.Infrastructure/Data/ApplicationDbContextFactory.cs
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
 
-namespace VegWiz.Infrastructure.Data;
+namespace VeganHub.Infrastructure.Data;
 
 public class ApplicationDbContextFactory : IDesignTimeDbContextFactory<ApplicationDbContext>
 {
     public ApplicationDbContext CreateDbContext(string[] args)
     {
         // Get the API project directory (up one level from Infrastructure)
-        var apiProjectPath = Path.Combine(Directory.GetCurrentDirectory(), "..", "VegWiz.API");
+        var apiProjectPath = Path.Combine(Directory.GetCurrentDirectory(), "..", "VeganHub.API");
 
         var configuration = new ConfigurationBuilder()
             .SetBasePath(apiProjectPath)
@@ -21,7 +21,7 @@ public class ApplicationDbContextFactory : IDesignTimeDbContextFactory<Applicati
         var optionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>();
         optionsBuilder.UseSqlServer(
             configuration.GetConnectionString("DefaultConnection"),
-            b => b.MigrationsAssembly("VegWiz.Infrastructure")
+            b => b.MigrationsAssembly("VeganHub.Infrastructure")
         );
 
         return new ApplicationDbContext(optionsBuilder.Options);

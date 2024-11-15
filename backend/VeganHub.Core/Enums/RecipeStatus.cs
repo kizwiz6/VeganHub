@@ -1,5 +1,5 @@
-// VegWiz.Core/Enums/RecipeStatus.cs
-namespace VegWiz.Core.Enums;
+// VeganHub.Core/Enums/RecipeStatus.cs
+namespace VeganHub.Core.Enums;
 
 /// <summary>
 /// Represents the current status of a recipe.

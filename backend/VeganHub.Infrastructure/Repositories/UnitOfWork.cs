@@ -1,7 +1,7 @@
-using VegWiz.Core.Interfaces;
-using VegWiz.Infrastructure.Data;
+using VeganHub.Core.Interfaces;
+using VeganHub.Infrastructure.Data;
 
-namespace VegWiz.Infrastructure.Repositories;
+namespace VeganHub.Infrastructure.Repositories;
 
 /// <summary>
 /// Implementation of the Unit of Work pattern to manage transactions and repositories.

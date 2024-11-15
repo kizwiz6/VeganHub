@@ -1,4 +1,4 @@
-namespace VegWiz.Tests;
+namespace VeganHub.Tests;
 
 public class UnitTest1
 {

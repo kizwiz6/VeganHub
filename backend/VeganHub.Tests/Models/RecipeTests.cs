@@ -1,9 +1,9 @@
 using Xunit;
 using FluentAssertions;
-using VegWiz.Core.Models;
-using VegWiz.Core.Enums;
+using VeganHub.Core.Models;
+using VeganHub.Core.Enums;
 
-namespace VegWiz.Tests.Models;
+namespace VeganHub.Tests.Models;
 
 public class RecipeTests
 {

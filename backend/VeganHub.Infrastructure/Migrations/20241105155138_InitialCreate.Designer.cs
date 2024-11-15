@@ -5,11 +5,11 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using VegWiz.Infrastructure.Data;
+using VeganHub.Infrastructure.Data;
 
 #nullable disable
 
-namespace VegWiz.Infrastructure.Migrations
+namespace VeganHub.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     [Migration("20241105155138_InitialCreate")]
@@ -40,7 +40,7 @@ namespace VegWiz.Infrastructure.Migrations
                     b.ToTable("RecipeTags", (string)null);
                 });
 
-            modelBuilder.Entity("VegWiz.Core.Models.Recipe", b =>
+            modelBuilder.Entity("VeganHub.Core.Models.Recipe", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -87,7 +87,7 @@ namespace VegWiz.Infrastructure.Migrations
                     b.ToTable("Recipes");
                 });
 
-            modelBuilder.Entity("VegWiz.Core.Models.RecipeTag", b =>
+            modelBuilder.Entity("VeganHub.Core.Models.RecipeTag", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -108,22 +108,22 @@ namespace VegWiz.Infrastructure.Migrations
 
             modelBuilder.Entity("RecipeRecipeTag", b =>
                 {
-                    b.HasOne("VegWiz.Core.Models.Recipe", null)
+                    b.HasOne("VeganHub.Core.Models.Recipe", null)
                         .WithMany()
                         .HasForeignKey("RecipeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("VegWiz.Core.Models.RecipeTag", null)
+                    b.HasOne("VeganHub.Core.Models.RecipeTag", null)
                         .WithMany()
                         .HasForeignKey("TagsId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("VegWiz.Core.Models.Recipe", b =>
+            modelBuilder.Entity("VeganHub.Core.Models.Recipe", b =>
                 {
-                    b.OwnsOne("VegWiz.Core.Models.NutritionalInfo", "NutritionalInfo", b1 =>
+                    b.OwnsOne("VeganHub.Core.Models.NutritionalInfo", "NutritionalInfo", b1 =>
                         {
                             b1.Property<Guid>("RecipeId")
                                 .HasColumnType("uniqueidentifier");
@@ -151,7 +151,7 @@ namespace VegWiz.Infrastructure.Migrations
                                 .HasForeignKey("RecipeId");
                         });
 
-                    b.OwnsMany("VegWiz.Core.Models.RecipeIngredient", "Ingredients", b1 =>
+                    b.OwnsMany("VeganHub.Core.Models.RecipeIngredient", "Ingredients", b1 =>
                         {
                             b1.Property<Guid>("Id")
                                 .ValueGeneratedOnAdd()
@@ -180,7 +180,7 @@ namespace VegWiz.Infrastructure.Migrations
                             b1.WithOwner()
                                 .HasForeignKey("RecipeId");
 
-                            b1.OwnsOne("VegWiz.Core.Models.NutritionalInfo", "NutritionalInfo", b2 =>
+                            b1.OwnsOne("VeganHub.Core.Models.NutritionalInfo", "NutritionalInfo", b2 =>
                                 {
                                     b2.Property<Guid>("RecipeIngredientId")
                                         .HasColumnType("uniqueidentifier");

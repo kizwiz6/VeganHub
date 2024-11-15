@@ -8,7 +8,7 @@ export default function Terms() {
         <div className="prose dark:prose-invert max-w-none">
           <section className="mb-8">
             <h2 className="text-2xl font-semibold mb-4">1. Acceptance of Terms</h2>
-            <p>By accessing and using VegWiz, you agree to be bound by these Terms and Conditions.</p>
+            <p>By accessing and using VeganHub, you agree to be bound by these Terms and Conditions.</p>
           </section>
 
           <section className="mb-8">
@@ -24,7 +24,7 @@ export default function Terms() {
 
           <section className="mb-8">
             <h2 className="text-2xl font-semibold mb-4">3. Content Moderation</h2>
-            <p>VegWiz reserves the right to:</p>
+            <p>VeganHub reserves the right to:</p>
             <ul className="list-disc pl-6 space-y-2">
               <li>Review all submitted recipes</li>
               <li>Reject content that doesn't meet our guidelines</li>
@@ -35,7 +35,7 @@ export default function Terms() {
 
           <section className="mb-8">
             <h2 className="text-2xl font-semibold mb-4">4. Intellectual Property</h2>
-            <p>Users retain rights to their submitted recipes but grant VegWiz license to display and promote the content.</p>
+            <p>Users retain rights to their submitted recipes but grant VeganHub license to display and promote the content.</p>
           </section>
 
           <section className="mb-8">

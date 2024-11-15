@@ -2,11 +2,11 @@ using Moq;
 using Xunit;
 using FluentAssertions;
 using Microsoft.EntityFrameworkCore;
-using VegWiz.Core.Models;
-using VegWiz.Infrastructure.Data;
-using VegWiz.Infrastructure.Repositories;
+using VeganHub.Core.Models;
+using VeganHub.Infrastructure.Data;
+using VeganHub.Infrastructure.Repositories;
 
-namespace VegWiz.Tests.Repositories;
+namespace VeganHub.Tests.Repositories;
 
 public class RecipeRepositoryTests
 {

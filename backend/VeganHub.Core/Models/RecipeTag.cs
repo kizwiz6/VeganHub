@@ -1,5 +1,5 @@
-// VegWiz.Core/Models/RecipeTag.cs
-namespace VegWiz.Core.Models;
+// VeganHub.Core/Models/RecipeTag.cs
+namespace VeganHub.Core.Models;
 
 public class RecipeTag
 {

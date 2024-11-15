@@ -1,6 +1,6 @@
-@VegWiz.API_HostAddress = http://localhost:5140
+@VeganHub.API_HostAddress = http://localhost:5140
 
-GET {{VegWiz.API_HostAddress}}/weatherforecast/
+GET {{VeganHub.API_HostAddress}}/weatherforecast/
 Accept: application/json
 
 ###

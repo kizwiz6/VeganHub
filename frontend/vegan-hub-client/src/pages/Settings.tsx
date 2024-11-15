@@ -114,7 +114,7 @@ export default function Settings() {
             <CardHeader>
               <CardTitle>Appearance</CardTitle>
               <CardDescription>
-                Customise how VegWiz looks on your device
+                Customise how VeganHub looks on your device
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">

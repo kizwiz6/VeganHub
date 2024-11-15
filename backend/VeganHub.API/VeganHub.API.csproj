@@ -12,6 +12,7 @@
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.10" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.10" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
+    <PackageReference Include="SendGrid" Version="9.29.3" />
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.2.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.10">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -21,8 +22,8 @@
 </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\VegWiz.Core\VegWiz.Core.csproj" />
-    <ProjectReference Include="..\VegWiz.Infrastructure\VegWiz.Infrastructure.csproj" />
+    <ProjectReference Include="..\VeganHub.Core\VeganHub.Core.csproj" />
+    <ProjectReference Include="..\VeganHub.Infrastructure\VeganHub.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,9 +1,9 @@
-// VegWiz.Infrastructure/Configuration/RecipeTagConfiguration.cs
+// VeganHub.Infrastructure/Configuration/RecipeTagConfiguration.cs
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using VegWiz.Core.Models;
+using VeganHub.Core.Models;
 
-namespace VegWiz.Infrastructure.Configuration;
+namespace VeganHub.Infrastructure.Configuration;
 
 /// <summary>
 /// Configuration class for the RecipeTag entity.

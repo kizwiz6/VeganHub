@@ -1,4 +1,4 @@
-// VegWiz.API/DTOs/UpdateProfileDto.cs
+// VeganHub.API/DTOs/UpdateProfileDto.cs
 public class UpdateProfileDto
 {
     public string DisplayName { get; set; }

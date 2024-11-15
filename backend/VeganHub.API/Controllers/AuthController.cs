@@ -1,12 +1,12 @@
-// VegWiz.API/Controllers/AuthController.cs
+// VeganHub.API/Controllers/AuthController.cs
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using Microsoft.Extensions.Hosting;
-using VegWiz.Core.Configuration;
-using VegWiz.Core.Models;
+using VeganHub.Core.Configuration;
+using VeganHub.Core.Models;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using Microsoft.IdentityModel.Tokens;

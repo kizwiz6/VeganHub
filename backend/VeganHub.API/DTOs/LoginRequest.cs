@@ -1,4 +1,4 @@
-// VegWiz.API/DTOs/LoginRequest.cs
+// VeganHub.API/DTOs/LoginRequest.cs
 public class LoginRequest
 {
     public string Email { get; set; } = string.Empty;

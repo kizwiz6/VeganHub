@@ -1,5 +1,5 @@
-// VegWiz.Core/Models/RecipeIngredient.cs
-namespace VegWiz.Core.Models;
+// VeganHub.Core/Models/RecipeIngredient.cs
+namespace VeganHub.Core.Models;
 
 public class RecipeIngredient
 {

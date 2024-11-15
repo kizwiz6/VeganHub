@@ -3,12 +3,12 @@ using Microsoft.Extensions.Logging;
 using Moq;
 using Xunit;
 using FluentAssertions;
-using VegWiz.API.Controllers;
-using VegWiz.Core.Interfaces;
-using VegWiz.Core.Models;
-using VegWiz.API.DTOs;
+using VeganHub.API.Controllers;
+using VeganHub.Core.Interfaces;
+using VeganHub.Core.Models;
+using VeganHub.API.DTOs;
 
-namespace VegWiz.Tests.Controllers;
+namespace VeganHub.Tests.Controllers;
 
 public class RecipesControllerTests
 {

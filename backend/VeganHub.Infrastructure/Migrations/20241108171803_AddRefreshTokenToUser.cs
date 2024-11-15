@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace VegWiz.Infrastructure.Migrations
+namespace VeganHub.Infrastructure.Migrations
 {
     /// <inheritdoc />
     public partial class AddRefreshTokenToUser : Migration

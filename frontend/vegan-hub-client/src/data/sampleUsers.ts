@@ -21,7 +21,7 @@ export const sampleUsers: User[] = [
   {
     id: 'user2',
     username: 'greencooking',
-    email: 'mike@VegWiz.com',
+    email: 'mike@VeganHub.com',
     displayName: 'Mike Green',
     bio: 'Professional vegan chef with a passion for creating delicious plant-based meals',
     createdAt: '2024-11-06T00:00:00Z',
@@ -37,7 +37,7 @@ export const sampleUsers: User[] = [
   {
     id: 'user3',
     username: 'healthyeats',
-    email: 'emily@VegWiz.com',
+    email: 'emily@VeganHub.com',
     displayName: 'Emily Health',
     avatar: '/avatars/emily.jpg',
     bio: 'Nutritionist sharing healthy vegan recipes',

@@ -1473,6 +1473,32 @@
           "lib/netstandard1.0/_._": {}
         }
       },
+      "SendGrid/9.29.3": {
+        "type": "package",
+        "dependencies": {
+          "Newtonsoft.Json": "13.0.1",
+          "starkbank-ecdsa": "[1.3.3, 2.0.0)"
+        },
+        "compile": {
+          "lib/netstandard2.0/SendGrid.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/SendGrid.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
+      "starkbank-ecdsa/1.3.3": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.1/StarkbankEcdsa.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.1/StarkbankEcdsa.dll": {}
+        }
+      },
       "Swashbuckle.AspNetCore/6.9.0": {
         "type": "package",
         "dependencies": {
@@ -2520,7 +2546,7 @@
           "build/net6.0/xunit.runner.visualstudio.props": {}
         }
       },
-      "VegWiz.API/1.0.0": {
+      "VeganHub.API/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
@@ -2529,22 +2555,23 @@
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "8.0.10",
           "Microsoft.AspNetCore.Mvc.Core": "2.2.5",
           "Microsoft.AspNetCore.OpenApi": "8.0.10",
+          "SendGrid": "9.29.3",
           "Swashbuckle.AspNetCore": "6.9.0",
           "System.IdentityModel.Tokens.Jwt": "8.2.0",
-          "VegWiz.Core": "1.0.0",
-          "VegWiz.Infrastructure": "1.0.0"
+          "VeganHub.Core": "1.0.0",
+          "VeganHub.Infrastructure": "1.0.0"
         },
         "compile": {
-          "bin/placeholder/VegWiz.API.dll": {}
+          "bin/placeholder/VeganHub.API.dll": {}
         },
         "runtime": {
-          "bin/placeholder/VegWiz.API.dll": {}
+          "bin/placeholder/VeganHub.API.dll": {}
         },
         "frameworkReferences": [
           "Microsoft.AspNetCore.App"
         ]
       },
-      "VegWiz.Core/1.0.0": {
+      "VeganHub.Core/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
@@ -2552,13 +2579,13 @@
           "Microsoft.EntityFrameworkCore": "8.0.10"
         },
         "compile": {
-          "bin/placeholder/VegWiz.Core.dll": {}
+          "bin/placeholder/VeganHub.Core.dll": {}
         },
         "runtime": {
-          "bin/placeholder/VegWiz.Core.dll": {}
+          "bin/placeholder/VeganHub.Core.dll": {}
         }
       },
-      "VegWiz.Infrastructure/1.0.0": {
+      "VeganHub.Infrastructure/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
@@ -2566,13 +2593,14 @@
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "8.0.10",
           "Microsoft.EntityFrameworkCore": "8.0.10",
           "Microsoft.EntityFrameworkCore.SqlServer": "8.0.10",
-          "VegWiz.Core": "1.0.0"
+          "SendGrid": "9.29.3",
+          "VeganHub.Core": "1.0.0"
         },
         "compile": {
-          "bin/placeholder/VegWiz.Infrastructure.dll": {}
+          "bin/placeholder/VeganHub.Infrastructure.dll": {}
         },
         "runtime": {
-          "bin/placeholder/VegWiz.Infrastructure.dll": {}
+          "bin/placeholder/VeganHub.Infrastructure.dll": {}
         }
       }
     }
@@ -4529,6 +4557,45 @@
         "lib/netstandard1.0/_._",
         "runtime.native.system.4.0.0.nupkg.sha512",
         "runtime.native.system.nuspec"
+      ]
+    },
+    "SendGrid/9.29.3": {
+      "sha512": "nb/zHePecN9U4/Bmct+O+lpgK994JklbCCNMIgGPOone/DngjQoMCHeTvkl+m0Nglvm0dqMEshmvB4fO8eF3dA==",
+      "type": "package",
+      "path": "sendgrid/9.29.3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net40/SendGrid.dll",
+        "lib/net40/SendGrid.pdb",
+        "lib/net40/SendGrid.xml",
+        "lib/net452/SendGrid.dll",
+        "lib/net452/SendGrid.pdb",
+        "lib/net452/SendGrid.xml",
+        "lib/netstandard1.3/SendGrid.dll",
+        "lib/netstandard1.3/SendGrid.pdb",
+        "lib/netstandard1.3/SendGrid.xml",
+        "lib/netstandard2.0/SendGrid.dll",
+        "lib/netstandard2.0/SendGrid.pdb",
+        "lib/netstandard2.0/SendGrid.xml",
+        "sendgrid.9.29.3.nupkg.sha512",
+        "sendgrid.nuspec"
+      ]
+    },
+    "starkbank-ecdsa/1.3.3": {
+      "sha512": "OblOaKb1enXn+dSp7tsx9yjwV+/BEKM9jFhshIkZTwCk7LuTFTp+wSon6rFzuPiIiTGtvVWQNUw2slHjGktJog==",
+      "type": "package",
+      "path": "starkbank-ecdsa/1.3.3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net40/StarkbankEcdsa.dll",
+        "lib/net452/StarkbankEcdsa.dll",
+        "lib/netstandard1.3/StarkbankEcdsa.dll",
+        "lib/netstandard2.0/StarkbankEcdsa.dll",
+        "lib/netstandard2.1/StarkbankEcdsa.dll",
+        "starkbank-ecdsa.1.3.3.nupkg.sha512",
+        "starkbank-ecdsa.nuspec"
       ]
     },
     "Swashbuckle.AspNetCore/6.9.0": {
@@ -7197,20 +7264,20 @@
         "xunit.runner.visualstudio.nuspec"
       ]
     },
-    "VegWiz.API/1.0.0": {
+    "VeganHub.API/1.0.0": {
       "type": "project",
-      "path": "../VegWiz.API/VegWiz.API.csproj",
-      "msbuildProject": "../VegWiz.API/VegWiz.API.csproj"
+      "path": "../VeganHub.API/VeganHub.API.csproj",
+      "msbuildProject": "../VeganHub.API/VeganHub.API.csproj"
     },
-    "VegWiz.Core/1.0.0": {
+    "VeganHub.Core/1.0.0": {
       "type": "project",
-      "path": "../VegWiz.Core/VegWiz.Core.csproj",
-      "msbuildProject": "../VegWiz.Core/VegWiz.Core.csproj"
+      "path": "../VeganHub.Core/VeganHub.Core.csproj",
+      "msbuildProject": "../VeganHub.Core/VeganHub.Core.csproj"
     },
-    "VegWiz.Infrastructure/1.0.0": {
+    "VeganHub.Infrastructure/1.0.0": {
       "type": "project",
-      "path": "../VegWiz.Infrastructure/VegWiz.Infrastructure.csproj",
-      "msbuildProject": "../VegWiz.Infrastructure/VegWiz.Infrastructure.csproj"
+      "path": "../VeganHub.Infrastructure/VeganHub.Infrastructure.csproj",
+      "msbuildProject": "../VeganHub.Infrastructure/VeganHub.Infrastructure.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -7218,32 +7285,32 @@
       "FluentAssertions >= 6.12.1",
       "Microsoft.NET.Test.Sdk >= 17.11.1",
       "Moq >= 4.20.72",
-      "VegWiz.API >= 1.0.0",
-      "VegWiz.Core >= 1.0.0",
-      "VegWiz.Infrastructure >= 1.0.0",
+      "VeganHub.API >= 1.0.0",
+      "VeganHub.Core >= 1.0.0",
+      "VeganHub.Infrastructure >= 1.0.0",
       "coverlet.collector >= 6.0.0",
       "xunit >= 2.9.2",
       "xunit.runner.visualstudio >= 2.5.3"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\kizwi\\.nuget\\packages\\": {},
+    "C:\\Users\\Kieran\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\kizwi\\source\\VegWiz\\backend\\VegWiz.Tests\\VegWiz.Tests.csproj",
-      "projectName": "VegWiz.Tests",
-      "projectPath": "C:\\Users\\kizwi\\source\\VegWiz\\backend\\VegWiz.Tests\\VegWiz.Tests.csproj",
-      "packagesPath": "C:\\Users\\kizwi\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\kizwi\\source\\VegWiz\\backend\\VegWiz.Tests\\obj\\",
+      "projectUniqueName": "C:\\Users\\Kieran\\Documents\\Coding\\Websites\\VeganHub\\backend\\VeganHub.Tests\\VeganHub.Tests.csproj",
+      "projectName": "VeganHub.Tests",
+      "projectPath": "C:\\Users\\Kieran\\Documents\\Coding\\Websites\\VeganHub\\backend\\VeganHub.Tests\\VeganHub.Tests.csproj",
+      "packagesPath": "C:\\Users\\Kieran\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Kieran\\Documents\\Coding\\Websites\\VeganHub\\backend\\VeganHub.Tests\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\kizwi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Kieran\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -7259,14 +7326,14 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\kizwi\\source\\VegWiz\\backend\\VegWiz.API\\VegWiz.API.csproj": {
-              "projectPath": "C:\\Users\\kizwi\\source\\VegWiz\\backend\\VegWiz.API\\VegWiz.API.csproj"
+            "C:\\Users\\Kieran\\Documents\\Coding\\Websites\\VeganHub\\backend\\VeganHub.API\\VeganHub.API.csproj": {
+              "projectPath": "C:\\Users\\Kieran\\Documents\\Coding\\Websites\\VeganHub\\backend\\VeganHub.API\\VeganHub.API.csproj"
             },
-            "C:\\Users\\kizwi\\source\\VegWiz\\backend\\VegWiz.Core\\VegWiz.Core.csproj": {
-              "projectPath": "C:\\Users\\kizwi\\source\\VegWiz\\backend\\VegWiz.Core\\VegWiz.Core.csproj"
+            "C:\\Users\\Kieran\\Documents\\Coding\\Websites\\VeganHub\\backend\\VeganHub.Core\\VeganHub.Core.csproj": {
+              "projectPath": "C:\\Users\\Kieran\\Documents\\Coding\\Websites\\VeganHub\\backend\\VeganHub.Core\\VeganHub.Core.csproj"
             },
-            "C:\\Users\\kizwi\\source\\VegWiz\\backend\\VegWiz.Infrastructure\\VegWiz.Infrastructure.csproj": {
-              "projectPath": "C:\\Users\\kizwi\\source\\VegWiz\\backend\\VegWiz.Infrastructure\\VegWiz.Infrastructure.csproj"
+            "C:\\Users\\Kieran\\Documents\\Coding\\Websites\\VeganHub\\backend\\VeganHub.Infrastructure\\VeganHub.Infrastructure.csproj": {
+              "projectPath": "C:\\Users\\Kieran\\Documents\\Coding\\Websites\\VeganHub\\backend\\VeganHub.Infrastructure\\VeganHub.Infrastructure.csproj"
             }
           }
         }

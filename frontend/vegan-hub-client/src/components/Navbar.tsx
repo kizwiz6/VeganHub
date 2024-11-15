@@ -18,7 +18,7 @@ export default function Navbar() {
       <div className="container mx-auto px-4">
         <div className="flex h-16 justify-between items-center">
           <Link to="/" className="text-xl font-bold text-green-600 dark:text-green-500">
-            VegWiz
+            VeganHub
           </Link>
 
           <div className="flex items-center gap-4">
