@@ -12,6 +12,7 @@ import ResetPassword from './pages/ResetPassword';
 import { Profile } from '@/pages/Profile';
 import Settings from './pages/Settings';
 import { ThemeProvider } from '@/contexts/ThemeContext';
+import  RecipeDetail from './pages/RecipeDetail'
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
               {/* Public routes */}
               <Route path="/" element={<Home />} />
               <Route path="/recipes" element={<Home />} />
+              <Route path="/recipes/:slug" element={<RecipeDetail />} /> 
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
               <Route path="/verify-email" element={<EmailVerification />} />

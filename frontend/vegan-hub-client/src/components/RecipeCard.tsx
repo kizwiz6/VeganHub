@@ -1,3 +1,4 @@
+// src/components/RecipeCard.tsx
 import { Recipe } from '@/types/recipe';
 import { Clock, Users, Heart } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -10,7 +11,7 @@ interface RecipeCardProps {
 export function RecipeCard({ recipe }: RecipeCardProps) {
   return (
     <div className="group relative bg-white rounded-lg shadow-md overflow-hidden transition-all hover:shadow-lg">
-      <Link to={`/recipes/${recipe.id}`}>
+      <Link to={`/recipes/${recipe.title.toLowerCase().replace(/\s+/g, '-')}`}>
         {/* Image Container */}
         <div className="aspect-[4/3] relative overflow-hidden bg-gray-100">
           {recipe.imageUrl ? (

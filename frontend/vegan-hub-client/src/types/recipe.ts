@@ -14,6 +14,7 @@ export interface Recipe {
   likes: number;
   imageUrl?: string;
   difficulty?: string;
+  slug: string;
 }
 
 export interface RecipeWithDifficulty extends Recipe {

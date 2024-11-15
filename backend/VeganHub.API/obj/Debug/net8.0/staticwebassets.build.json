@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "fTKrrSgyuagti+Y+vyFcWQljkRNmnwmIcF06ILNsejA=",
+  "Hash": "nkus+8fBBKNcN/bRohO3Vgr0/wfiuXAhD1/GqdYeEvg=",
   "Source": "VeganHub.API",
   "BasePath": "_content/VeganHub.API",
   "Mode": "Default",
@@ -10,17 +10,17 @@
     {
       "Name": "VeganHub.API\\wwwroot",
       "Source": "VeganHub.API",
-      "ContentRoot": "C:\\Users\\kizwi\\source\\VeganHub\\backend\\VeganHub.API\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Kieran\\Documents\\Coding\\Websites\\VeganHub\\backend\\VeganHub.API\\wwwroot\\",
       "BasePath": "_content/VeganHub.API",
       "Pattern": "**"
     }
   ],
   "Assets": [
     {
-      "Identity": "C:\\Users\\kizwi\\source\\VeganHub\\backend\\VeganHub.API\\wwwroot\\uploads\\avatars\\60823d41-71b1-417a-a0e0-95d86b979360-638670016896721285.jpg",
+      "Identity": "C:\\Users\\Kieran\\Documents\\Coding\\Websites\\VeganHub\\backend\\VeganHub.API\\wwwroot\\uploads\\avatars\\60823d41-71b1-417a-a0e0-95d86b979360-638670016896721285.jpg",
       "SourceId": "VeganHub.API",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\kizwi\\source\\VeganHub\\backend\\VeganHub.API\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Kieran\\Documents\\Coding\\Websites\\VeganHub\\backend\\VeganHub.API\\wwwroot\\",
       "BasePath": "_content/VeganHub.API",
       "RelativePath": "uploads/avatars/60823d41-71b1-417a-a0e0-95d86b979360-638670016896721285.jpg",
       "AssetKind": "All",
@@ -36,10 +36,10 @@
       "OriginalItemSpec": "wwwroot\\uploads\\avatars\\60823d41-71b1-417a-a0e0-95d86b979360-638670016896721285.jpg"
     },
     {
-      "Identity": "C:\\Users\\kizwi\\source\\VeganHub\\backend\\VeganHub.API\\wwwroot\\uploads\\avatars\\60823d41-71b1-417a-a0e0-95d86b979360-638670019658447226.jpg",
+      "Identity": "C:\\Users\\Kieran\\Documents\\Coding\\Websites\\VeganHub\\backend\\VeganHub.API\\wwwroot\\uploads\\avatars\\60823d41-71b1-417a-a0e0-95d86b979360-638670019658447226.jpg",
       "SourceId": "VeganHub.API",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\kizwi\\source\\VeganHub\\backend\\VeganHub.API\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Kieran\\Documents\\Coding\\Websites\\VeganHub\\backend\\VeganHub.API\\wwwroot\\",
       "BasePath": "_content/VeganHub.API",
       "RelativePath": "uploads/avatars/60823d41-71b1-417a-a0e0-95d86b979360-638670019658447226.jpg",
       "AssetKind": "All",
@@ -55,10 +55,10 @@
       "OriginalItemSpec": "wwwroot\\uploads\\avatars\\60823d41-71b1-417a-a0e0-95d86b979360-638670019658447226.jpg"
     },
     {
-      "Identity": "C:\\Users\\kizwi\\source\\VeganHub\\backend\\VeganHub.API\\wwwroot\\uploads\\avatars\\60823d41-71b1-417a-a0e0-95d86b979360-638670020736664639.jpg",
+      "Identity": "C:\\Users\\Kieran\\Documents\\Coding\\Websites\\VeganHub\\backend\\VeganHub.API\\wwwroot\\uploads\\avatars\\60823d41-71b1-417a-a0e0-95d86b979360-638670020736664639.jpg",
       "SourceId": "VeganHub.API",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\kizwi\\source\\VeganHub\\backend\\VeganHub.API\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Kieran\\Documents\\Coding\\Websites\\VeganHub\\backend\\VeganHub.API\\wwwroot\\",
       "BasePath": "_content/VeganHub.API",
       "RelativePath": "uploads/avatars/60823d41-71b1-417a-a0e0-95d86b979360-638670020736664639.jpg",
       "AssetKind": "All",
@@ -74,10 +74,10 @@
       "OriginalItemSpec": "wwwroot\\uploads\\avatars\\60823d41-71b1-417a-a0e0-95d86b979360-638670020736664639.jpg"
     },
     {
-      "Identity": "C:\\Users\\kizwi\\source\\VeganHub\\backend\\VeganHub.API\\wwwroot\\uploads\\avatars\\60823d41-71b1-417a-a0e0-95d86b979360-638670029771719770.jpg",
+      "Identity": "C:\\Users\\Kieran\\Documents\\Coding\\Websites\\VeganHub\\backend\\VeganHub.API\\wwwroot\\uploads\\avatars\\60823d41-71b1-417a-a0e0-95d86b979360-638670029771719770.jpg",
       "SourceId": "VeganHub.API",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\kizwi\\source\\VeganHub\\backend\\VeganHub.API\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Kieran\\Documents\\Coding\\Websites\\VeganHub\\backend\\VeganHub.API\\wwwroot\\",
       "BasePath": "_content/VeganHub.API",
       "RelativePath": "uploads/avatars/60823d41-71b1-417a-a0e0-95d86b979360-638670029771719770.jpg",
       "AssetKind": "All",
@@ -93,10 +93,10 @@
       "OriginalItemSpec": "wwwroot\\uploads\\avatars\\60823d41-71b1-417a-a0e0-95d86b979360-638670029771719770.jpg"
     },
     {
-      "Identity": "C:\\Users\\kizwi\\source\\VeganHub\\backend\\VeganHub.API\\wwwroot\\uploads\\avatars\\60823d41-71b1-417a-a0e0-95d86b979360-638670030667020040.jpg",
+      "Identity": "C:\\Users\\Kieran\\Documents\\Coding\\Websites\\VeganHub\\backend\\VeganHub.API\\wwwroot\\uploads\\avatars\\60823d41-71b1-417a-a0e0-95d86b979360-638670030667020040.jpg",
       "SourceId": "VeganHub.API",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\kizwi\\source\\VeganHub\\backend\\VeganHub.API\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Kieran\\Documents\\Coding\\Websites\\VeganHub\\backend\\VeganHub.API\\wwwroot\\",
       "BasePath": "_content/VeganHub.API",
       "RelativePath": "uploads/avatars/60823d41-71b1-417a-a0e0-95d86b979360-638670030667020040.jpg",
       "AssetKind": "All",
@@ -112,10 +112,10 @@
       "OriginalItemSpec": "wwwroot\\uploads\\avatars\\60823d41-71b1-417a-a0e0-95d86b979360-638670030667020040.jpg"
     },
     {
-      "Identity": "C:\\Users\\kizwi\\source\\VeganHub\\backend\\VeganHub.API\\wwwroot\\uploads\\avatars\\60823d41-71b1-417a-a0e0-95d86b979360-638670032593213878.PNG",
+      "Identity": "C:\\Users\\Kieran\\Documents\\Coding\\Websites\\VeganHub\\backend\\VeganHub.API\\wwwroot\\uploads\\avatars\\60823d41-71b1-417a-a0e0-95d86b979360-638670032593213878.PNG",
       "SourceId": "VeganHub.API",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\kizwi\\source\\VeganHub\\backend\\VeganHub.API\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Kieran\\Documents\\Coding\\Websites\\VeganHub\\backend\\VeganHub.API\\wwwroot\\",
       "BasePath": "_content/VeganHub.API",
       "RelativePath": "uploads/avatars/60823d41-71b1-417a-a0e0-95d86b979360-638670032593213878.PNG",
       "AssetKind": "All",
@@ -131,10 +131,10 @@
       "OriginalItemSpec": "wwwroot\\uploads\\avatars\\60823d41-71b1-417a-a0e0-95d86b979360-638670032593213878.PNG"
     },
     {
-      "Identity": "C:\\Users\\kizwi\\source\\VeganHub\\backend\\VeganHub.API\\wwwroot\\uploads\\avatars\\60823d41-71b1-417a-a0e0-95d86b979360-638670035583345420.jpg",
+      "Identity": "C:\\Users\\Kieran\\Documents\\Coding\\Websites\\VeganHub\\backend\\VeganHub.API\\wwwroot\\uploads\\avatars\\60823d41-71b1-417a-a0e0-95d86b979360-638670035583345420.jpg",
       "SourceId": "VeganHub.API",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\kizwi\\source\\VeganHub\\backend\\VeganHub.API\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Kieran\\Documents\\Coding\\Websites\\VeganHub\\backend\\VeganHub.API\\wwwroot\\",
       "BasePath": "_content/VeganHub.API",
       "RelativePath": "uploads/avatars/60823d41-71b1-417a-a0e0-95d86b979360-638670035583345420.jpg",
       "AssetKind": "All",
@@ -150,10 +150,10 @@
       "OriginalItemSpec": "wwwroot\\uploads\\avatars\\60823d41-71b1-417a-a0e0-95d86b979360-638670035583345420.jpg"
     },
     {
-      "Identity": "C:\\Users\\kizwi\\source\\VeganHub\\backend\\VeganHub.API\\wwwroot\\uploads\\avatars\\60823d41-71b1-417a-a0e0-95d86b979360-638670038920020251.jpg",
+      "Identity": "C:\\Users\\Kieran\\Documents\\Coding\\Websites\\VeganHub\\backend\\VeganHub.API\\wwwroot\\uploads\\avatars\\60823d41-71b1-417a-a0e0-95d86b979360-638670038920020251.jpg",
       "SourceId": "VeganHub.API",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\kizwi\\source\\VeganHub\\backend\\VeganHub.API\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Kieran\\Documents\\Coding\\Websites\\VeganHub\\backend\\VeganHub.API\\wwwroot\\",
       "BasePath": "_content/VeganHub.API",
       "RelativePath": "uploads/avatars/60823d41-71b1-417a-a0e0-95d86b979360-638670038920020251.jpg",
       "AssetKind": "All",
@@ -169,10 +169,10 @@
       "OriginalItemSpec": "wwwroot\\uploads\\avatars\\60823d41-71b1-417a-a0e0-95d86b979360-638670038920020251.jpg"
     },
     {
-      "Identity": "C:\\Users\\kizwi\\source\\VeganHub\\backend\\VeganHub.API\\wwwroot\\uploads\\avatars\\60823d41-71b1-417a-a0e0-95d86b979360-638670173527008095.gif",
+      "Identity": "C:\\Users\\Kieran\\Documents\\Coding\\Websites\\VeganHub\\backend\\VeganHub.API\\wwwroot\\uploads\\avatars\\60823d41-71b1-417a-a0e0-95d86b979360-638670173527008095.gif",
       "SourceId": "VeganHub.API",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\kizwi\\source\\VeganHub\\backend\\VeganHub.API\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Kieran\\Documents\\Coding\\Websites\\VeganHub\\backend\\VeganHub.API\\wwwroot\\",
       "BasePath": "_content/VeganHub.API",
       "RelativePath": "uploads/avatars/60823d41-71b1-417a-a0e0-95d86b979360-638670173527008095.gif",
       "AssetKind": "All",
@@ -188,10 +188,10 @@
       "OriginalItemSpec": "wwwroot\\uploads\\avatars\\60823d41-71b1-417a-a0e0-95d86b979360-638670173527008095.gif"
     },
     {
-      "Identity": "C:\\Users\\kizwi\\source\\VeganHub\\backend\\VeganHub.API\\wwwroot\\uploads\\avatars\\60823d41-71b1-417a-a0e0-95d86b979360-638670179849560494.jpg",
+      "Identity": "C:\\Users\\Kieran\\Documents\\Coding\\Websites\\VeganHub\\backend\\VeganHub.API\\wwwroot\\uploads\\avatars\\60823d41-71b1-417a-a0e0-95d86b979360-638670179849560494.jpg",
       "SourceId": "VeganHub.API",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\kizwi\\source\\VeganHub\\backend\\VeganHub.API\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Kieran\\Documents\\Coding\\Websites\\VeganHub\\backend\\VeganHub.API\\wwwroot\\",
       "BasePath": "_content/VeganHub.API",
       "RelativePath": "uploads/avatars/60823d41-71b1-417a-a0e0-95d86b979360-638670179849560494.jpg",
       "AssetKind": "All",
@@ -207,10 +207,10 @@
       "OriginalItemSpec": "wwwroot\\uploads\\avatars\\60823d41-71b1-417a-a0e0-95d86b979360-638670179849560494.jpg"
     },
     {
-      "Identity": "C:\\Users\\kizwi\\source\\VeganHub\\backend\\VeganHub.API\\wwwroot\\uploads\\avatars\\60823d41-71b1-417a-a0e0-95d86b979360-638670190388797176.jpg",
+      "Identity": "C:\\Users\\Kieran\\Documents\\Coding\\Websites\\VeganHub\\backend\\VeganHub.API\\wwwroot\\uploads\\avatars\\60823d41-71b1-417a-a0e0-95d86b979360-638670190388797176.jpg",
       "SourceId": "VeganHub.API",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\kizwi\\source\\VeganHub\\backend\\VeganHub.API\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Kieran\\Documents\\Coding\\Websites\\VeganHub\\backend\\VeganHub.API\\wwwroot\\",
       "BasePath": "_content/VeganHub.API",
       "RelativePath": "uploads/avatars/60823d41-71b1-417a-a0e0-95d86b979360-638670190388797176.jpg",
       "AssetKind": "All",
@@ -226,10 +226,10 @@
       "OriginalItemSpec": "wwwroot\\uploads\\avatars\\60823d41-71b1-417a-a0e0-95d86b979360-638670190388797176.jpg"
     },
     {
-      "Identity": "C:\\Users\\kizwi\\source\\VeganHub\\backend\\VeganHub.API\\wwwroot\\uploads\\avatars\\60823d41-71b1-417a-a0e0-95d86b979360-638670190627667388.PNG",
+      "Identity": "C:\\Users\\Kieran\\Documents\\Coding\\Websites\\VeganHub\\backend\\VeganHub.API\\wwwroot\\uploads\\avatars\\60823d41-71b1-417a-a0e0-95d86b979360-638670190627667388.PNG",
       "SourceId": "VeganHub.API",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\kizwi\\source\\VeganHub\\backend\\VeganHub.API\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Kieran\\Documents\\Coding\\Websites\\VeganHub\\backend\\VeganHub.API\\wwwroot\\",
       "BasePath": "_content/VeganHub.API",
       "RelativePath": "uploads/avatars/60823d41-71b1-417a-a0e0-95d86b979360-638670190627667388.PNG",
       "AssetKind": "All",
@@ -245,10 +245,10 @@
       "OriginalItemSpec": "wwwroot\\uploads\\avatars\\60823d41-71b1-417a-a0e0-95d86b979360-638670190627667388.PNG"
     },
     {
-      "Identity": "C:\\Users\\kizwi\\source\\VeganHub\\backend\\VeganHub.API\\wwwroot\\uploads\\avatars\\60823d41-71b1-417a-a0e0-95d86b979360-638670363033632437.jpg",
+      "Identity": "C:\\Users\\Kieran\\Documents\\Coding\\Websites\\VeganHub\\backend\\VeganHub.API\\wwwroot\\uploads\\avatars\\60823d41-71b1-417a-a0e0-95d86b979360-638670363033632437.jpg",
       "SourceId": "VeganHub.API",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\kizwi\\source\\VeganHub\\backend\\VeganHub.API\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Kieran\\Documents\\Coding\\Websites\\VeganHub\\backend\\VeganHub.API\\wwwroot\\",
       "BasePath": "_content/VeganHub.API",
       "RelativePath": "uploads/avatars/60823d41-71b1-417a-a0e0-95d86b979360-638670363033632437.jpg",
       "AssetKind": "All",
@@ -264,10 +264,10 @@
       "OriginalItemSpec": "wwwroot\\uploads\\avatars\\60823d41-71b1-417a-a0e0-95d86b979360-638670363033632437.jpg"
     },
     {
-      "Identity": "C:\\Users\\kizwi\\source\\VeganHub\\backend\\VeganHub.API\\wwwroot\\uploads\\avatars\\60823d41-71b1-417a-a0e0-95d86b979360-638670368343658972.PNG",
+      "Identity": "C:\\Users\\Kieran\\Documents\\Coding\\Websites\\VeganHub\\backend\\VeganHub.API\\wwwroot\\uploads\\avatars\\60823d41-71b1-417a-a0e0-95d86b979360-638670368343658972.PNG",
       "SourceId": "VeganHub.API",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\kizwi\\source\\VeganHub\\backend\\VeganHub.API\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Kieran\\Documents\\Coding\\Websites\\VeganHub\\backend\\VeganHub.API\\wwwroot\\",
       "BasePath": "_content/VeganHub.API",
       "RelativePath": "uploads/avatars/60823d41-71b1-417a-a0e0-95d86b979360-638670368343658972.PNG",
       "AssetKind": "All",
@@ -283,10 +283,10 @@
       "OriginalItemSpec": "wwwroot\\uploads\\avatars\\60823d41-71b1-417a-a0e0-95d86b979360-638670368343658972.PNG"
     },
     {
-      "Identity": "C:\\Users\\kizwi\\source\\VeganHub\\backend\\VeganHub.API\\wwwroot\\uploads\\avatars\\60823d41-71b1-417a-a0e0-95d86b979360-638670370569535886.PNG",
+      "Identity": "C:\\Users\\Kieran\\Documents\\Coding\\Websites\\VeganHub\\backend\\VeganHub.API\\wwwroot\\uploads\\avatars\\60823d41-71b1-417a-a0e0-95d86b979360-638670370569535886.PNG",
       "SourceId": "VeganHub.API",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\kizwi\\source\\VeganHub\\backend\\VeganHub.API\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Kieran\\Documents\\Coding\\Websites\\VeganHub\\backend\\VeganHub.API\\wwwroot\\",
       "BasePath": "_content/VeganHub.API",
       "RelativePath": "uploads/avatars/60823d41-71b1-417a-a0e0-95d86b979360-638670370569535886.PNG",
       "AssetKind": "All",
@@ -302,10 +302,10 @@
       "OriginalItemSpec": "wwwroot\\uploads\\avatars\\60823d41-71b1-417a-a0e0-95d86b979360-638670370569535886.PNG"
     },
     {
-      "Identity": "C:\\Users\\kizwi\\source\\VeganHub\\backend\\VeganHub.API\\wwwroot\\uploads\\avatars\\60823d41-71b1-417a-a0e0-95d86b979360-638670381745036761.PNG",
+      "Identity": "C:\\Users\\Kieran\\Documents\\Coding\\Websites\\VeganHub\\backend\\VeganHub.API\\wwwroot\\uploads\\avatars\\60823d41-71b1-417a-a0e0-95d86b979360-638670381745036761.PNG",
       "SourceId": "VeganHub.API",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\kizwi\\source\\VeganHub\\backend\\VeganHub.API\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Kieran\\Documents\\Coding\\Websites\\VeganHub\\backend\\VeganHub.API\\wwwroot\\",
       "BasePath": "_content/VeganHub.API",
       "RelativePath": "uploads/avatars/60823d41-71b1-417a-a0e0-95d86b979360-638670381745036761.PNG",
       "AssetKind": "All",
